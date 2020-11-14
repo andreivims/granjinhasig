@@ -7,16 +7,14 @@
 	
 	echo"<Br>----------------<Br>";
 	
-	$teste = classCRUD();
-	
-	$teste->campos["andre"] = "antonio"
+	$teste = new classGenericaBD();
+	$teste->campos["andre"] = "antonio";
 	$teste->campos["tatiane"] = 156;
 	$teste->campos["julia"] = "guedes";
+	var_dump($teste);
 	
-	
+
 	echo"<Br>----------------<Br>";
-	
-	
 ?>
 	
 	<script type="text/javascript" src="../js/pessoas.js"></script>

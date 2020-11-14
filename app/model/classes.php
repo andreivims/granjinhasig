@@ -5,7 +5,7 @@
 	
 	
 	
-	class classCRUD
+	class classGenericaBD
 	{ 
 		 public $campos;
 		 
