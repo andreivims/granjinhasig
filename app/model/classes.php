@@ -5,6 +5,21 @@
 	
 	
 	
+	class classCRUD
+	{ 
+		 public $campos;
+		 
+		 public function HTML($tipo){
+			 
+			 
+		}
+		 
+		
+		
+		
+	}
+	
+	
 	class Pessoa
 	{ 
 		 public $idPessoa;
