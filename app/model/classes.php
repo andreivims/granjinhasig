@@ -5,11 +5,43 @@
 	
 	
 	
-	class classGenericaBD
+	class GenericaTabelaBD
 	{ 
-		 public $campos;
+		public $nome; 
+		public $campos; //array() GenericaCamposBD
+		
+		function __construct($setNome, $setCampos){
+			
+			 $this->nome = $setNome; 
+			 $this->campos = $setCampos; 
+			
+		}
+		
+		public function setConteudoHTML($setTipoHTML, $setConteudoTipoHTML, $setDescricao){
+			 
+			 //ktestsetetsetse
+		}
 		 
-		 public function HTML($tipo){
+		
+		
+		
+	}
+	
+	
+	class GenericaCamposBD
+	{ 
+		public $nome;
+		public $valor;
+		public $tipoHTML;
+		public $conteudoTipoHTML; //array();
+		public $descricao; //string
+		
+		public function inserirHTML(){
+			 
+			 //ktestsetetsetse
+		}
+		
+		public function setConteudoHTML($setTipoHTML, $setConteudoTipoHTML, $setDescricao){
 			 
 			 //ktestsetetsetse
 		}
