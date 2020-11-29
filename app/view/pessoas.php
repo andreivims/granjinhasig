@@ -7,12 +7,13 @@
 	
 	echo"<Br>----------------<Br>";
 	
+	/*
 	$teste = new classGenericaBD();
 	$teste->campos["andre"] = "antonio";
 	$teste->campos["tatiane"] = 156;
 	$teste->campos["julia"] = "guedes";
 	var_dump($teste);
-	
+	*/
 
 	echo"<Br>----------------<Br>";
 ?>
