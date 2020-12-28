@@ -20,6 +20,38 @@
 				
 				
 <?PHP
+
+
+		class PacGeral{
+			
+			public $heightGeral;
+			public $widthGeral;
+			
+			
+		}
+		
+		
+		class CabecalhoTabela{
+			
+			
+			public $cabecalho1Height;
+			public $cabecalho1Width;
+			
+			public function setCabecalho($cont1height, $cont1width){
+				$this->cabecalho1Height = $cont1height;
+				$this->cabecalho1Width = $cont1width;
+				
+			}
+			
+			public function cssCabecalho(){
+				
+				
+			}
+			
+			
+		}
+
+
 		$heightGeral = 200;
 		$widthGeral = 1300;
 		$cabecalho1Height = 180;
