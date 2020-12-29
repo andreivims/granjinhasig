@@ -1,6 +1,145 @@
 <?PHP
 
+	    class PacGeral{
+			
+			public $height;
+			public $width;
+			
+			function __construct($height, $width){
+				$this->height = $height;
+				$this->width = $width;
+			}
+			 
+		}
+		
+		
+		class Cabecalho{
+			
+			
+			public $cabecalho1Height;
+			public $cabecalho1Width;
+			
+			function __construct($cont1h, $cont1w){
+				$this->cabecalho1Height = $cont1h;
+				$this->cabecalho1Width = $cont1w;
+				
+			}
+			
+			public function cssCabecalho($PAC){
+				
+				echo "
+					.tableCabecalho
+					{
+						position: relative;
+						float: left;
+						
+						border: 1px solid black;
+						border-collapse: collapse;
+					}
+					.cabecalho1{
+						 height: ".( $this->cabecalho1Height )."px;
+						 width: ".($this->cabecalho1Width * $PAC->width)."px;
+						 border: 1px solid black;
+						 border-collapse: collapse;
+					}
+					
+					.cabecalho2{
+						 width: ".((1-$this->cabecalho1Width) * $PAC->width)."px;
+						 border: 1px solid black;
+						 border-collapse: collapse;
+					}
+					
+				 
+				";
+			}
+			
+			public function htmlCabecalho($campo1, $campo2, $campo3){
+				
+				echo "
+			 
+					<table class='tableCabecalho'>
+						<tr>
+							<td rowspan='2' class='cabecalho1'>".($campo1)."</td> <td class='cabecalho2'>".($campo2)."</td> 
+						</tr>
+						<tr>
+							 <!-- td --> <td class='cabecalho2'>".($campo3)."</td> 
+						</tr>
+						
+					</table>
+					
+				 
+				";
+			}
+			
+			
+		}
+		
+		
+		class Informativo{
+			
+			
+			public $infoHeight;
+			
+			function __construct($height){
+				$this->infoHeight = $height;
+				
+			}
+			
+			public function cssInformativo($PAC){
+				
+				 echo "
+			 
+					.infoTabela{
+						
+						position: relative;
+						float: left;
+						
+						margin-top: 20px;
+						
+						border: 1px solid black;
+						border-collapse: collapse;
+						
+						height: ".($this->infoHeight)."px;
+						width: ".($PAC->width)."px;
+					}
+					
+					
+				 
+				";
+		
+			}
+			
+			public function htmlInformativo($arrayInfos){
+				
+				echo "<table class='infoTabela'> <tr>";
+				
+				for($i=0; $i<count($arrayInfos); $i++){
+					
+					echo"<td>".($arrayInfos[$i])."</td> ";
+				}
+				
+							
+				echo "</tr> </table> ";
+			}
+			
+			
+			
+		}
+		
+		
+		$heightGeral = 200;
+		$widthGeral = 1300;
 
+		$pac = new PacGeral($heightGeral, $widthGeral);
+		
+		$cabecalho1Height = 180;
+		$cabecalho1Width = 0.75;
+		$cabecalho = new Cabecalho($cabecalho1Height, $cabecalho1Width);
+		
+		
+		$infoHeight = 100;
+		$info = new Informativo($infoHeight);
+		
 
 
 
@@ -12,90 +151,23 @@
 		
 		
 		<head>
-			<title>Título da página</title>
+			<title>PAC - Programa de Auto Controle</title>
 			<meta charset="utf-8">
 			
 			
 			<style>
 				
-				
-<?PHP
-
-
-		class PacGeral{
-			
-			public $heightGeral;
-			public $widthGeral;
-			
-			
-		}
-		
-		
-		class CabecalhoTabela{
-			
-			
-			public $cabecalho1Height;
-			public $cabecalho1Width;
-			
-			public function setCabecalho($cont1height, $cont1width){
-				$this->cabecalho1Height = $cont1height;
-				$this->cabecalho1Width = $cont1width;
-				
-			}
-			
-			public function cssCabecalho(){
-				
-				
-			}
-			
-			
-		}
-
-
-		$heightGeral = 200;
-		$widthGeral = 1300;
-		$cabecalho1Height = 180;
-		$cabecalho1Width = 0.75;
-		function tabelaCabecalho($heightGeral, $widthGeral, $cabecalho1Height, $cabecalho1Width){
-			echo "
-			 
-				.cabecalho1{
-					 height: ".( $cabecalho1Height )."px;
-					 width: ".($cabecalho1Width * $widthGeral)."px;
-					 border: 1px solid black;
-					 border-collapse: collapse;
-				}
-				
-				.cabecalho2{
-					 width: ".((1-$cabecalho1Width) * $widthGeral)."px;
-					 border: 1px solid black;
-					 border-collapse: collapse;
-				}
-				
-			 
-			";
-			 
-			 
-		}
-		tabelaCabecalho($heightGeral, $widthGeral, $cabecalho1Height, $cabecalho1Width);
-		
-		 
-		 
-?>
-				table
-				{
-					
+				td{
 					border: 1px solid black;
 					border-collapse: collapse;
 				}
 				
-				.tabelaCabecalho{
-					position: relative;
-					float: left;
-					 
-				}
-				
-					
+<?PHP
+	
+				$cabecalho->cssCabecalho($pac);
+				$info->cssInformativo($pac);
+		 
+?>
 			
 			</style>
 			
@@ -103,17 +175,15 @@
 		
 		<body>
 			
-			<table class="tabelaCabecalho">
-				<tr>
-					<td rowspan="2" class="cabecalho1">1</td> <td class="cabecalho2">2</td> 
-				</tr>
-				<tr>
-					 <!-- td --> <td>3</td> 
-				</tr>
+			
+<?PHP
+	
+				$cabecalho->htmlCabecalho("111", "222", "333");
 				
-			
-			</table>
-			
+				$infos = array("1111111", "2222222", "33333333 lksdajflk kjlskdfjlka  ksdjkalfsj jklsjladkfjksd   jsdaklfljksdfk   sjdklafjkl  jlksadjlf<Br> lsakdfjk  sadlkfjl kjsadf l", "444444");
+				$info->htmlInformativo($infos);
+		 
+?>			
 			
 			
 			
