@@ -1,5 +1,13 @@
 <?PHP
 
+
+	if(isset($_POST['CONTROLE'])) $CONTROLE = filter_input(INPUT_POST, 'CONTROLE', FILTER_SANITIZE_SPECIAL_CHARS);
+	elseif(isset($_GET['CONTROLE'])) $CONTROLE = filter_input(INPUT_GET, 'CONTROLE', FILTER_SANITIZE_SPECIAL_CHARS);
+	else $CONTROLE = "";
+
+
+
+
 	    class PacGeral{
 			
 			public $height;
@@ -127,20 +135,28 @@
 		}
 		
 		
-		$heightGeral = 200;
-		$widthGeral = 1300;
+		if($CONTROLE == "pac1"){
+			
+		}else{
+			
+			$heightGeral = 200;
+			$widthGeral = 1300;
+			
+			$cabecalho1Height = 180;
+			$cabecalho1Width = 0.75;
+			$cabecalho = new Cabecalho($cabecalho1Height, $cabecalho1Width);
+			
+			
+			$infoHeight = 100;
+			$info = new Informativo($infoHeight);
+		}
+		
 
+		
+		
+		
 		$pac = new PacGeral($heightGeral, $widthGeral);
 		
-		$cabecalho1Height = 180;
-		$cabecalho1Width = 0.75;
-		$cabecalho = new Cabecalho($cabecalho1Height, $cabecalho1Width);
-		
-		
-		$infoHeight = 100;
-		$info = new Informativo($infoHeight);
-		
-
 
 
 ?>
@@ -177,11 +193,16 @@
 			
 			
 <?PHP
-	
+			if($CONTROLE == "pac1"){
+			
+			}else{
+				
 				$cabecalho->htmlCabecalho("111", "222", "333");
 				
 				$infos = array("1111111", "2222222", "33333333 lksdajflk kjlskdfjlka  ksdjkalfsj jklsjladkfjksd   jsdaklfljksdfk   sjdklafjkl  jlksadjlf<Br> lsakdfjk  sadlkfjl kjsadf l", "444444");
 				$info->htmlInformativo($infos);
+				
+			}
 		 
 ?>			
 			
