@@ -7,6 +7,41 @@
 
 
 
+	 if(isset($_GET['ano']))
+	{
+		$ano = $_GET['ano'];
+	}else
+	{
+		 $ano = date('Y');
+	}
+	
+	 if(isset($_GET['mes']))
+	{
+		$mes = $_GET['mes'];
+	}else
+	{
+		 $mes = date('m');
+	}
+	
+	 
+	 $mesEscrito = mes_ano($mes, $ano);
+	
+	 function mes_ano($mes, $ano)
+	{
+		
+		 $meses = array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+		 
+		 $data = date($ano . '-'. $mes .'-10' );
+
+		 $mesnumero = (int)date('m', strtotime($data));
+		 
+		 return $meses[$mesnumero-1];
+
+			
+	}
+	
+	
+
 
 	    class PacGeral{
 			
@@ -43,18 +78,44 @@
 						
 						border: 1px solid black;
 						border-collapse: collapse;
+						
+						font-family: ARIAL;
+						text-align: center;
+						
+					
 					}
 					.cabecalho1{
 						 height: ".( $this->cabecalho1Height )."px;
 						 width: ".($this->cabecalho1Width * $PAC->width)."px;
 						 border: 1px solid black;
 						 border-collapse: collapse;
+						 
+						 font-size: 25px;
+						 font-weight: bold;
 					}
+					
+						 .logo
+						{
+							 float: left;
+							 position: absolute;
+							 top: 0px;
+							 left: 10px;
+							 
+							 height: 90px;
+							 width: 90px;
+							 
+							
+							 
+							
+						}
 					
 					.cabecalho2{
 						 width: ".((1-$this->cabecalho1Width) * $PAC->width)."px;
 						 border: 1px solid black;
 						 border-collapse: collapse;
+						 
+						 font-weight: bold;
+						 background-color: rgb(245,245,245);
 					}
 					
 				 
@@ -67,7 +128,10 @@
 			 
 					<table class='tableCabecalho'>
 						<tr>
-							<td rowspan='2' class='cabecalho1'>".($campo1)."</td> <td class='cabecalho2'>".($campo2)."</td> 
+							<td rowspan='2' class='cabecalho1'>
+								<div class='logo b_all brz' ><img src='granjinha.jpeg' alt='Granjinha' width=90 height=90></div>
+								".($campo1)."
+							</td> <td class='cabecalho2'>".($campo2)."</td> 
 						</tr>
 						<tr>
 							 <!-- td --> <td class='cabecalho2'>".($campo3)."</td> 
@@ -102,13 +166,15 @@
 						position: relative;
 						float: left;
 						
-						margin-top: 20px;
+						margin-top: 10px;
 						
 						border: 1px solid black;
 						border-collapse: collapse;
 						
 						height: ".($this->infoHeight)."px;
 						width: ".($PAC->width)."px;
+						
+						background-color: rgb(245,245,245);
 					}
 					
 					
@@ -139,15 +205,17 @@
 			
 		}else{
 			
-			$heightGeral = 200;
-			$widthGeral = 1300;
+			$heightGeral = 400;
+			$widthGeral = 1050;
+			$pac = new PacGeral($heightGeral, $widthGeral);
 			
-			$cabecalho1Height = 180;
+			
+			$cabecalho1Height = 90;
 			$cabecalho1Width = 0.75;
 			$cabecalho = new Cabecalho($cabecalho1Height, $cabecalho1Width);
 			
 			
-			$infoHeight = 100;
+			$infoHeight = 80;
 			$info = new Informativo($infoHeight);
 		}
 		
@@ -155,7 +223,7 @@
 		
 		
 		
-		$pac = new PacGeral($heightGeral, $widthGeral);
+		
 		
 
 
@@ -191,13 +259,13 @@
 		
 		<body>
 			
-			
+			<div style="height: <?PHP echo $pac->height; ?>px; width: <?PHP echo $pac->width; ?>px; border: 1px solid black;">
 <?PHP
 			if($CONTROLE == "pac1"){
 			
 			}else{
 				
-				$cabecalho->htmlCabecalho("111", "222", "333");
+				$cabecalho->htmlCabecalho("CHECK-LIST DE LUMINÁRIAS", "PAC 03 - FML 11", $mesEscrito ." - ". $ano);
 				
 				$infos = array("1111111", "2222222", "33333333 lksdajflk kjlskdfjlka  ksdjkalfsj jklsjladkfjksd   jsdaklfljksdfk   sjdklafjkl  jlksadjlf<Br> lsakdfjk  sadlkfjl kjsadf l", "444444");
 				$info->htmlInformativo($infos);
@@ -206,6 +274,7 @@
 		 
 ?>			
 			
+			</div>
 			
 			
 		</body>
