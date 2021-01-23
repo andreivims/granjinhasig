@@ -49,6 +49,8 @@
 						 border: 1px solid black;
 						 border-collapse: collapse;
 						 
+						 padding-left: 10px;
+						 text-align: center;
 						 font-size: 25px;
 						 font-weight: bold;
 					}
@@ -59,7 +61,7 @@
 							 position: absolute;
 							 top: 0px;
 							 left: 10px;
-							 
+							 padding-top: 2px;
 							 height: 90px;
 							 width: 90px;
 							 
@@ -72,6 +74,7 @@
 						 width: ".((1-$this->cabecalho1Width) * $PAC->width)."px;
 						 border: 1px solid black;
 						 border-collapse: collapse;
+						 
 						 
 						 font-weight: bold;
 						 background-color: rgb(245,245,245);
@@ -90,7 +93,8 @@
 							<td rowspan='2' class='cabecalho1'>
 								<div class='logo ' ><img src='granjinha.jpeg' alt='Granjinha' width=90 height=90></div>
 								".($campo1)."
-							</td> <td class='cabecalho2'>".($campo2)."</td> 
+							</td> 
+							<td class='cabecalho2'>".($campo2)."</td> 
 						</tr>
 						<tr>
 							 <!-- td --> <td class='cabecalho2'>".($campo3)."</td> 

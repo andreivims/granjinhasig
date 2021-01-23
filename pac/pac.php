@@ -4,6 +4,7 @@
 	 include "classpac.php";
 	 include "classpac3.php";
 	 include "classpac12.php";
+	 include "classpac13.php";
 
 
 
@@ -51,8 +52,13 @@
 
 	  
 		
-		
-		
+		$heightGeral = 200;
+		$widthGeral = 500;
+		$cabecalho1Height = 90;
+		$cabecalho1Width = 0.75;
+		$infoHeight = 30;
+			
+			
 		if($CONTROLE == "pac1"){
 			
 		}else if($CONTROLE == "pac3"){
@@ -68,7 +74,7 @@
 			$pac3 = new ContentPAC3();
 			
 		
-		}else{
+		}else if($CONTROLE == "pac12"){
 			
 			$heightGeral = 1500;
 			$widthGeral = 1050;
@@ -80,7 +86,19 @@
 			
 			$pac12 = new ContentPAC12();
 			
-		}
+		}else if($CONTROLE == "pac13"){
+			
+			$heightGeral = 650;
+			$widthGeral = 1050;
+			
+			$cabecalho1Height = 90;
+			$cabecalho1Width = 0.75;
+			
+			$infoHeight = 50;
+			
+			$pac13 = new ContentPAC13();
+			
+		}else{}
 		
 		$pac = new PacGeral($heightGeral, $widthGeral);
 		$cabecalho = new Cabecalho($cabecalho1Height, $cabecalho1Width);
@@ -125,12 +143,17 @@
 					$pac3->cssContentPAC3($pac);
 					
 				
-				}else{
+				}else if($CONTROLE == "pac12"){
 					
 					$pac12->cssContentPAC12($pac);
 					
 				
-				}
+				}else if($CONTROLE == "pac13"){
+					
+					$pac13->cssContentPAC13($pac);
+					
+				
+				}else{}
 ?>
 
 				
@@ -152,6 +175,12 @@
 					border-collapse: collapse;
 				}
 				
+				.tdPadding13
+				{
+						
+					padding: 13px;
+						
+				}
 				tr,td{
 					 padding: 3px;
 				}
@@ -167,7 +196,13 @@
 <?PHP
 
 
-
+			$cabecalhoNome = "Qual PAC??";
+			$cabecalhoSubNome = "???";
+			$cabecalhoSubNome2 = $mesEscrito ." - ". $ano;
+			$infos = array("???");
+			$htmlPACs = "";
+			$legenda = "";
+			
 			if($CONTROLE == "pac1"){
 			
 			}else if($CONTROLE == "pac3"){
@@ -186,7 +221,7 @@
 				
 				$legenda = "<b>LEGENDA:</b>(C) Conforme; (NC) Não conforme; ";
 				
-			}else{
+			}else if($CONTROLE == "pac12"){
 				
 				
 				$cabecalhoNome = "CONTROLE DIÁRIO DE TEMPERATURA";
@@ -202,9 +237,27 @@
 				
 				$legenda = "";
 				
-			}
+			}else if($CONTROLE == "pac13"){
+				
+				
+				$cabecalhoNome = "CALIBRAÇÃO DA CLASSIFICADORA DE OVOS";
+				$cabecalhoSubNome = "PAC 13 - FML 18";
+				$cabecalhoSubNome2 = $ano;
+				
+				
+				$infos = array(
+					"<b>Período:</b> <br>Mensal", 
+					"<b>Parâmetros Avaliados:</b> <br>Tamanho dos ovos (em gramas):<br> <b>Jumbo</b> maior 72; <b>Extra</b> entre 72 e 63; <b>Grande</b> entre 62 e 55;<Br> <b>Médio</b> entre 54 e 49; <b>Pequeno</b> entre 48 e 43; <b>Industrial</b> menor 43", 
+					"<b>Ações Corretivas:</b> <br>Calibrar as balanças usando os Ovos-Pesos do fabricante"
+				);
+				
+				$htmlPACs = $pac13->htmlContentPAC13($mes, $ano);
+				
+				$legenda = "<b>LEGENDA:</b>(C) Conforme; (NC) Não conforme; ";
+				
+			}else{}
 			
-			$cabecalho->htmlCabecalho($cabecalhoNome, $cabecalhoSubNome, $mesEscrito ." - ". $ano);
+			$cabecalho->htmlCabecalho($cabecalhoNome, $cabecalhoSubNome, $cabecalhoSubNome2);
 			$info->htmlInformativo($infos);
 			
 			echo $htmlPACs;

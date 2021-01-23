@@ -22,11 +22,7 @@
 					}
 					
 					
-					.trpac12{
-						
-						 padding: 13px;
-						
-					}
+					
 					
 				 
 				";
@@ -46,11 +42,11 @@
 					<table class='contentpac12'>
 			
 						<tr > 
-							<td class='trpac12 bgGrey'><b>Data</b></td>
-							<td class='trpac12 bgGrey'><b>Semana</b></td>
-							<td class='trpac12 bgGrey'><b>Horário</b></td>
-							<td class='trpac12 bgGrey'><b>Mínima em ºC</b></td>
-							<td class='trpac12 bgGrey'><b>Máxima em ºC</b></td>
+							<td class='tdPadding13 bgGrey'><b>Data</b></td>
+							<td class='tdPadding13 bgGrey'><b>Semana</b></td>
+							<td class='tdPadding13 bgGrey'><b>Horário</b></td>
+							<td class='tdPadding13 bgGrey'><b>Mínima em ºC</b></td>
+							<td class='tdPadding13 bgGrey'><b>Máxima em ºC</b></td>
 						</tr>
 				";
 						
@@ -66,11 +62,11 @@
 						
 						$returnHtml .= "
 							<tr > 
-								<td class='trpac12 bgGrey'>Dia "; if(($i+1)<10){ $returnHtml .= "0";} $returnHtml .=  ($i+1); $returnHtml .= "</td>
-								<td class='trpac12 bgGrey'>"; $returnHtml .= $diasemana[$diasemana_numero]; $returnHtml .= "</td>
-								<td class='trpac12 '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td class='trpac12 '></td>
-								<td class='trpac12 '></td>
+								<td class='tdPadding13 bgGrey'>Dia "; if(($i+1)<10){ $returnHtml .= "0";} $returnHtml .=  ($i+1); $returnHtml .= "</td>
+								<td class='tdPadding13 bgGrey'>"; $returnHtml .= $diasemana[$diasemana_numero]; $returnHtml .= "</td>
+								<td class='tdPadding13 '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td class='tdPadding13 '></td>
+								<td class='tdPadding13 '></td>
 							</tr>
 						";
 					}

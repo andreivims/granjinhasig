@@ -1,0 +1,280 @@
+
+
+
+				.bggrey 
+				{
+					//background: #FeFefe;
+					background-color: rgb(245,245,245);
+					
+				}
+				
+				 .b_all
+				{
+					 border-collapse: collapse; 
+					 border: 1px solid black;
+				}
+				.bt
+				{
+					 border-collapse: collapse; 
+					 border-top: 1px solid black;
+				}
+				.br
+				{
+					 border-collapse: collapse; 
+					 border-right: 1px solid black;
+				}
+				.bl
+				{
+					 border-collapse: collapse; 
+					 border-left: 1px solid black;
+				}
+				 .bb
+				{
+					 border-collapse: collapse; 
+					 border-bottom: 1px solid black;
+				} 
+
+
+
+				.b2_all
+				{
+					 border-collapse: collapse; 
+					 border: 2px solid black;
+				}
+				.b2t
+				{
+					 border-collapse: collapse; 
+					 border-top: 2px solid black;
+				}
+				.b2r
+				{
+					 border-collapse: collapse; 
+					 border-right: 2px solid black;
+				}
+				.b2l
+				{
+					 border-collapse: collapse; 
+					 border-left: 2px solid black;
+				}
+				 .b2b
+				{
+					 border-collapse: collapse; 
+					 border-bottom: 2px solid black;
+				} 
+				
+				
+				.b_allz
+				{
+					 border-collapse: collapse; 
+					 border: 0px solid black;
+				}
+				.btz
+				{
+					 border-collapse: collapse; 
+					 border-top: 0px solid black;
+				}
+				.brz
+				{
+					 border-collapse: collapse; 
+					 border-right: 0px solid black;
+				}
+				.blz
+				{
+					 border-collapse: collapse; 
+					 border-left: 0px solid black;
+				}
+				.bbz
+				{
+					 border-collapse: collapse; 
+					 border-bottom: 0px solid black;
+				}
+				 
+				 
+				 
+				 .cabecalho
+				{
+					
+					 float: left;
+					 position: relative;
+					 
+					 height: 90px;
+					 width: 850px;
+					 
+					 font-family: ARIAL;
+					 text-align: center;
+					 
+					
+					 
+				}
+						
+						.logo
+						{
+							 float: left;
+							 position: absolute;
+							 top: 0px;
+							 left: 0px;
+							 
+							 height: 90px;
+							 width: 110px;
+							 
+							
+							 
+							
+						}
+						 .descricao
+						{
+							 float: left;
+							 position: absolute; 
+							 top: 0px;
+							 left: 110px;
+							 
+							 height: 90px;
+							 width: 520px;
+							 
+							 font-size: 25px;
+							 font-weight: bold;
+							 
+							 min-height: 100%;
+		  
+							 
+						}
+						
+						
+						
+						.info
+						{
+							 float: left;
+							 position: absolute; 
+							 top: 0px;
+							 left: 630px;
+							 
+							 font-weight: bold;
+							 
+							 height: 30px;
+							 width: 220px;
+							 
+						}
+						 .mes
+						{
+							 float: left;
+							 position: absolute; 
+							 top: 30px;
+							 left: 630px;
+							 
+							 font-weight: bold;
+							 
+							 height: 30px;
+							 width: 220px;
+							 
+						}
+						 .ano
+						{
+							 float: left;
+							 position: absolute; 
+							 top: 60px;
+							 left: 630px;
+							 
+							 font-weight: bold;
+							 
+							 height: 30px;
+							 width: 220px;
+							 
+						} 
+						
+						
+						
+				
+				 .instrucao
+				{
+					
+					 float: left;
+					 position: relative;
+
+					 width: 850px;
+					 
+					 font-family: ARIAL;
+					 text-align: center;
+					 
+					 margin-top: 10px;
+					
+					 
+				}
+				
+					 .partInstrucao
+					{
+						
+						 float: left;
+						 position: absolute;
+						  
+						 
+						 
+					}
+				
+				
+				 .conteudo
+				{
+					
+					 float: left;
+					 position: relative;
+					
+					 
+					 //height: 100px;
+					 width: 850px;
+					 
+					 font-family: ARIAL;
+					 text-align: center;
+					 
+					 margin-top: 10px;
+					 
+				}
+				
+				
+				.rodape
+				{
+					
+					 float: left;
+					 position: relative;
+					
+					 
+					 height: 100px;
+					 width: 850px;
+					 
+					 font-family: ARIAL;
+					 text-align: center;
+					 
+					 margin-top: 10px;
+					 
+				}
+					 .legenda
+					{
+						
+						 width: 840px;
+						 padding: 5px;
+					}
+					
+					
+					.monitor
+					{
+						 //height: 100px;
+						 width: 850px;
+						 
+						 margin-top: 20px;
+					}
+					
+				
+				
+				 .centrov
+				{
+					 
+					  display: -webkit-flex;
+					  display: flex;
+					  -webkit-align-items: center;
+					  align-items: center;
+					  -webkit-justify-content: center;
+					  justify-content: center;
+					 
+				}
+				
+				
+				
+				 
