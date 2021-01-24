@@ -44,7 +44,6 @@
 						<tr > 
 							<td class='tdPadding13 bgGrey'><b>Data</b></td>
 							<td class='tdPadding13 bgGrey'><b>Semana</b></td>
-							<td class='tdPadding13 bgGrey'><b>Horário</b></td>
 							<td class='tdPadding13 bgGrey'><b>Mínima em ºC</b></td>
 							<td class='tdPadding13 bgGrey'><b>Máxima em ºC</b></td>
 						</tr>
@@ -64,7 +63,6 @@
 							<tr > 
 								<td class='tdPadding13 bgGrey'>Dia "; if(($i+1)<10){ $returnHtml .= "0";} $returnHtml .=  ($i+1); $returnHtml .= "</td>
 								<td class='tdPadding13 bgGrey'>"; $returnHtml .= $diasemana[$diasemana_numero]; $returnHtml .= "</td>
-								<td class='tdPadding13 '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td class='tdPadding13 '></td>
 								<td class='tdPadding13 '></td>
 							</tr>
