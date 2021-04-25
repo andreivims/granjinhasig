@@ -6,20 +6,12 @@
 	{
 		
 		
-		
-		
-		
 			
 		$( "#cadastro" ).click(function() {
 		  
 		  alert( "Handler for .click() called." );
-		  
-		  
-		
-			 $( "#tableshowpessoas" ).add("<tr> <td>Nome</td> <td>s</td> <td>Endereço</td> <td>Localização</td> <td>CPF/CNPJ</td> <td>Jurídica</td> </tr>");
+	
 
-			 
-			 
 			$.ajax({
 				 url : "../controller/controllerpessoa.php",
 				 type : 'post',
@@ -49,6 +41,7 @@
 				 $(".resultado").html(out);
 			})
 			.fail(function(jqXHR, textStatus, msg){
+				
 				 alert(msg);
 			});
 		});
