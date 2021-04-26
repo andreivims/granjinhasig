@@ -41,7 +41,7 @@
 	</div>
 	
 	<div class="mostrarpessoas">
-		<table id="tableshowpessoas" border=1>
+		<table class="tableshowpessoas" border=1>
 			<tr>
 				<td>Nome</td> <td>Apelido</td> <td>Endereço</td> <td>Localização</td> <td>CPF/CNPJ</td> <td>Jurídica</td> 
 			</tr>

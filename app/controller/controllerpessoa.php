@@ -62,6 +62,7 @@
 	
 	$result = array( 
 		'idPessoa' => $idPessoa, 
+		'idPessoa' => 555555, 
 		'nome' => $nome, 
 		'apelido' => $apelido,
 		'endereco' => $endereco,
@@ -70,6 +71,7 @@
 		'cnpjcpf' => $cnpjcpf
 	
 	); 
+	
 	
 	echo json_encode($result);
 
