@@ -50,7 +50,7 @@
 			.fail(function(jqXHR, textStatus, msg){
 				
 				 alert(msg);
-			});
+			});;
 			
 		}
 		
