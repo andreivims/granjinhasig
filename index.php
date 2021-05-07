@@ -18,255 +18,469 @@
 	
 	
 	
-		
-	 $loteProducao = array();
-	 $loteProducao[0] = 0.0;
-	 $loteProducao[1] = 0.0;
-	 $loteProducao[2] = 0.0;
-	 $loteProducao[3] = 0.0;
-	 $loteProducao[4] = 0.0;
-	 $loteProducao[5] = 0.0;
-	 $loteProducao[6] = 0.0;
-	 $loteProducao[7] = 0.0;
-	 $loteProducao[8] = 0.0;
-	 $loteProducao[9] = 0.0;
-	 $loteProducao[10] = 0.0;
-	 $loteProducao[11] = 0.0;
-	 $loteProducao[12] = 0.0;
-	 $loteProducao[13] = 0.0;
-	 $loteProducao[14] = 0.0;
-	 $loteProducao[15] = 0.0;
-	 $loteProducao[16] = 0.0;
-	 $loteProducao[17] = 0.1;
-	 $loteProducao[18] = 0.3;
-	 $loteProducao[19] = 0.6;
-	 $loteProducao[20] = 0.8;
-	 $loteProducao[21] = 0.9;
-	 $loteProducao[22] = 0.91;
-	 $loteProducao[23] = 0.92;
-	 $loteProducao[24] = 0.93;
-	 $loteProducao[25] = 0.94;
-	 $loteProducao[26] = 0.95;
-	 $loteProducao[27] = 0.95;
-	 $loteProducao[28] = 0.95;
-	 $loteProducao[29] = 0.95;
-	 $loteProducao[30] = 0.95;
-	 $loteProducao[31] = 0.94;
-	 $loteProducao[32] = 0.94;
-	 $loteProducao[33] = 0.94;
-	 $loteProducao[34] = 0.94;
-	 $loteProducao[35] = 0.93;
-	 $loteProducao[36] = 0.93;
-	 $loteProducao[37] = 0.93;
-	 $loteProducao[38] = 0.93;
-	 $loteProducao[39] = 0.92;
-	 $loteProducao[40] = 0.92;
-	 $loteProducao[41] = 0.92;
-	 $loteProducao[42] = 0.92;
-	 $loteProducao[43] = 0.91;
-	 $loteProducao[44] = 0.91;
-	 $loteProducao[45] = 0.91;
-	 $loteProducao[46] = 0.91;
-	 $loteProducao[47] = 0.9;
-	 $loteProducao[48] = 0.9;
-	 $loteProducao[49] = 0.89;
-	 $loteProducao[50] = 0.89;
-	 $loteProducao[51] = 0.89;
-	 $loteProducao[52] = 0.88;
-	 $loteProducao[53] = 0.88;
-	 $loteProducao[54] = 0.87;
-	 $loteProducao[55] = 0.87;
-	 $loteProducao[56] = 0.87;
-	 $loteProducao[57] = 0.86;
-	 $loteProducao[58] = 0.86;
-	 $loteProducao[59] = 0.85;
-	 $loteProducao[60] = 0.85;
-	 $loteProducao[61] = 0.85;
-	 $loteProducao[62] = 0.84;
-	 $loteProducao[63] = 0.84;
-	 $loteProducao[64] = 0.83;
-	 $loteProducao[65] = 0.83;
-	 $loteProducao[66] = 0.83;
-	 $loteProducao[67] = 0.82;
-	 $loteProducao[68] = 0.82;
-	 $loteProducao[69] = 0.81;
-	 $loteProducao[70] = 0.81;
-	 $loteProducao[71] = 0.8;
-	 $loteProducao[72] = 0.8;
-	 $loteProducao[73] = 0.79;
-	 $loteProducao[74] = 0.78;
-	 $loteProducao[75] = 0.77;
-	 $loteProducao[76] = 0.76;
-	 $loteProducao[77] = 0.75;
-	 $loteProducao[78] = 0.74;
-	 $loteProducao[79] = 0.73;
-	 $loteProducao[80] = 0.72;
-	 $loteProducao[81] = 0.72;
-	 $loteProducao[82] = 0.72;
-	 $loteProducao[83] = 0.72;
-	 $loteProducao[84] = 0.72;
-	 $loteProducao[85] = 0.71;
-	 $loteProducao[86] = 0.71;
-	 $loteProducao[87] = 0.71;
-	 $loteProducao[88] = 0.71;
-	 $loteProducao[89] = 0.7;
-	 
-	 $loteConsumo = array();
-	 $loteConsumo[0] = 14;
-	 $loteConsumo[1] = 19;
-	 $loteConsumo[2] = 24;
-	 $loteConsumo[3] = 28;
-	 $loteConsumo[4] = 35;
-	 $loteConsumo[5] = 39;
-	 $loteConsumo[6] = 42;
-	 $loteConsumo[7] = 46;
-	 $loteConsumo[8] = 50;
-	 $loteConsumo[9] = 54;
-	 $loteConsumo[10] = 60;
-	 $loteConsumo[11] = 64;
-	 $loteConsumo[12] = 70;
-	 $loteConsumo[13] = 73;
-	 $loteConsumo[14] = 76;
-	 $loteConsumo[15] = 79;
-	 $loteConsumo[16] = 81;
-	 $loteConsumo[17] = 85;
-	 $loteConsumo[18] = 89;
-	 $loteConsumo[19] = 93;
-	 $loteConsumo[20] = 98;
-	 $loteConsumo[21] = 102;
-	 $loteConsumo[22] = 105;
-	 $loteConsumo[23] = 108;
-	 $loteConsumo[24] = 110;
-	 $loteConsumo[25] = 111;
-	 $loteConsumo[26] = 111;
-	 $loteConsumo[27] = 111;
-	 $loteConsumo[28] = 111;
-	 $loteConsumo[29] = 111;
-	 $loteConsumo[30] = 112;
-	 $loteConsumo[31] = 112;
-	 $loteConsumo[32] = 112;
-	 $loteConsumo[33] = 112;
-	 $loteConsumo[34] = 112;
-	 $loteConsumo[35] = 112;
-	 $loteConsumo[36] = 112;
-	 $loteConsumo[37] = 112;
-	 $loteConsumo[38] = 112;
-	 $loteConsumo[39] = 112;
-	 $loteConsumo[40] = 112;
-	 $loteConsumo[41] = 112;
-	 $loteConsumo[42] = 112;
-	 $loteConsumo[43] = 112;
-	 $loteConsumo[44] = 111;
-	 $loteConsumo[45] = 111;
-	 $loteConsumo[46] = 111;
-	 $loteConsumo[47] = 111;
-	 $loteConsumo[48] = 111;
-	 $loteConsumo[49] = 111;
-	 $loteConsumo[50] = 111;
-	 $loteConsumo[51] = 111;
-	 $loteConsumo[52] = 110;
-	 $loteConsumo[53] = 110;
-	 $loteConsumo[54] = 110;
-	 $loteConsumo[55] = 110;
-	 $loteConsumo[56] = 110;
-	 $loteConsumo[57] = 110;
-	 $loteConsumo[58] = 110;
-	 $loteConsumo[59] = 110;
-	 $loteConsumo[60] = 110;
-	 $loteConsumo[61] = 110;
-	 $loteConsumo[62] = 110;
-	 $loteConsumo[63] = 110;
-	 $loteConsumo[64] = 110;
-	 $loteConsumo[65] = 110;
-	 $loteConsumo[66] = 110;
-	 $loteConsumo[67] = 110;
-	 $loteConsumo[68] = 110;
-	 $loteConsumo[69] = 110;
-	 $loteConsumo[70] = 110;
-	 $loteConsumo[71] = 110;
-	 $loteConsumo[72] = 110;
-	 $loteConsumo[73] = 110;
-	 $loteConsumo[74] = 110;
-	 $loteConsumo[75] = 110;
-	 $loteConsumo[76] = 110;
-	 $loteConsumo[77] = 110;
-	 $loteConsumo[78] = 110;
-	 $loteConsumo[79] = 110;
-	 $loteConsumo[80] = 110;
-	 $loteConsumo[81] = 110;
-	 $loteConsumo[82] = 110;
-	 $loteConsumo[83] = 110;
-	 $loteConsumo[84] = 110;
-	 $loteConsumo[85] = 110;
-	 $loteConsumo[86] = 110;
-	 $loteConsumo[87] = 110;
-	 $loteConsumo[88] = 110;
-	 $loteConsumo[89] = 110;
-	 
 	 
 	 
 	class LoteGalinhas{
-		 public $mesAloja;
-		 public $semanaDescarte;
-		 public $semanaAlojado;
-		 public $producaoTotal;
-		 public $consumoTotal;
+		
+		 public $precoAve;
+		 public $precoVacinasAve;
+		 public $precoKgInicial;
+		 public $consumoTotalInicial;
+		 
+		 public $precoKgCrescimento;
+		 public $consumoTotalCrescimento;
+		 
+		 public $precoKgPostura;
+		 
+		 public $loteProducao;
+		 public $loteProducaoAcumulado;
+		 public $loteConsumo;
+		 public $loteConsumoAcumulado;
 		 
 		 
-		public function __construct($ma, $sd){
-			 $this->mesAloja = $ma;
-			 $this->semanaDescarte = $sd;
-			 $this->semanaAlojado = 0;
-			 $this->producaoTotal = 0;
-			 $this->consumoTotal = 0;
+		public function __construct($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura){
+			
+			 $this->precoAve = $custoAve;
+			 $this->precoVacinasAve = $custoVacinasAve;
+			 $this->precoKgInicial = $custoInicial;
+			 $this->precoKgCrescimento = $custoCresc;
+			 $this->precoKgPostura = $custoPostura;
+			 
+			 
+			 $this->consumoTotalInicial = 1.9;
+			 $this->consumoTotalCrescimento = 6.0;
+			 
+			 $this->loteProducao = array();
+			 $this->loteProducao[0] = 0.0;
+			 $this->loteProducao[1] = 0.0;
+			 $this->loteProducao[2] = 0.0;
+			 $this->loteProducao[3] = 0.0;
+			 $this->loteProducao[4] = 0.0;
+			 $this->loteProducao[5] = 0.0;
+			 $this->loteProducao[6] = 0.0;
+			 $this->loteProducao[7] = 0.0;
+			 $this->loteProducao[8] = 0.0;
+			 $this->loteProducao[9] = 0.0;
+			 $this->loteProducao[10] = 0.0;
+			 $this->loteProducao[11] = 0.0;
+			 $this->loteProducao[12] = 0.0;
+			 $this->loteProducao[13] = 0.0;
+			 $this->loteProducao[14] = 0.0;
+			 $this->loteProducao[15] = 0.0;
+			 $this->loteProducao[16] = 0.0;
+			 $this->loteProducao[17] = 0.1;
+			 $this->loteProducao[18] = 0.3;
+			 $this->loteProducao[19] = 0.6;
+			 $this->loteProducao[20] = 0.8;
+			 $this->loteProducao[21] = 0.9;
+			 $this->loteProducao[22] = 0.91;
+			 $this->loteProducao[23] = 0.92;
+			 $this->loteProducao[24] = 0.93;
+			 $this->loteProducao[25] = 0.94;
+			 $this->loteProducao[26] = 0.95;
+			 $this->loteProducao[27] = 0.95;
+			 $this->loteProducao[28] = 0.95;
+			 $this->loteProducao[29] = 0.95;
+			 $this->loteProducao[30] = 0.95;
+			 $this->loteProducao[31] = 0.94;
+			 $this->loteProducao[32] = 0.94;
+			 $this->loteProducao[33] = 0.94;
+			 $this->loteProducao[34] = 0.94;
+			 $this->loteProducao[35] = 0.93;
+			 $this->loteProducao[36] = 0.93;
+			 $this->loteProducao[37] = 0.93;
+			 $this->loteProducao[38] = 0.93;
+			 $this->loteProducao[39] = 0.92;
+			 $this->loteProducao[40] = 0.92;
+			 $this->loteProducao[41] = 0.92;
+			 $this->loteProducao[42] = 0.92;
+			 $this->loteProducao[43] = 0.91;
+			 $this->loteProducao[44] = 0.91;
+			 $this->loteProducao[45] = 0.91;
+			 $this->loteProducao[46] = 0.91;
+			 $this->loteProducao[47] = 0.9;
+			 $this->loteProducao[48] = 0.9;
+			 $this->loteProducao[49] = 0.89;
+			 $this->loteProducao[50] = 0.89;
+			 $this->loteProducao[51] = 0.89;
+			 $this->loteProducao[52] = 0.88;
+			 $this->loteProducao[53] = 0.88;
+			 $this->loteProducao[54] = 0.87;
+			 $this->loteProducao[55] = 0.87;
+			 $this->loteProducao[56] = 0.87;
+			 $this->loteProducao[57] = 0.86;
+			 $this->loteProducao[58] = 0.86;
+			 $this->loteProducao[59] = 0.85;
+			 $this->loteProducao[60] = 0.85;
+			 $this->loteProducao[61] = 0.85;
+			 $this->loteProducao[62] = 0.84;
+			 $this->loteProducao[63] = 0.84;
+			 $this->loteProducao[64] = 0.83;
+			 $this->loteProducao[65] = 0.83;
+			 $this->loteProducao[66] = 0.83;
+			 $this->loteProducao[67] = 0.82;
+			 $this->loteProducao[68] = 0.82;
+			 $this->loteProducao[69] = 0.81;
+			 $this->loteProducao[70] = 0.81;
+			 $this->loteProducao[71] = 0.8;
+			 $this->loteProducao[72] = 0.8;
+			 $this->loteProducao[73] = 0.79;
+			 $this->loteProducao[74] = 0.78;
+			 $this->loteProducao[75] = 0.77;
+			 $this->loteProducao[76] = 0.76;
+			 $this->loteProducao[77] = 0.75;
+			 $this->loteProducao[78] = 0.74;
+			 $this->loteProducao[79] = 0.73;
+			 $this->loteProducao[80] = 0.72;
+			 $this->loteProducao[81] = 0.72;
+			 $this->loteProducao[82] = 0.72;
+			 $this->loteProducao[83] = 0.72;
+			 $this->loteProducao[84] = 0.72;
+			 $this->loteProducao[85] = 0.71;
+			 $this->loteProducao[86] = 0.71;
+			 $this->loteProducao[87] = 0.71;
+			 $this->loteProducao[88] = 0.71;
+			 $this->loteProducao[89] = 0.7;
+			 //---------------------------------------------------------------
+			 $this->loteProducaoAcumulado = array();//Aqui é acumulação de producao em porcentagem, basta multiplicar pelo numero de galinhas para saber quanto ovos já foram produzidos na semana tal.
+			 $this->loteProducaoAcumulado[0] = 0;
+			$this->loteProducaoAcumulado[1] = 0;
+			$this->loteProducaoAcumulado[2] = 0;
+			$this->loteProducaoAcumulado[3] = 0;
+			$this->loteProducaoAcumulado[4] = 0;
+			$this->loteProducaoAcumulado[5] = 0;
+			$this->loteProducaoAcumulado[6] = 0;
+			$this->loteProducaoAcumulado[7] = 0;
+			$this->loteProducaoAcumulado[8] = 0;
+			$this->loteProducaoAcumulado[9] = 0;
+			$this->loteProducaoAcumulado[10] = 0;
+			$this->loteProducaoAcumulado[11] = 0;
+			$this->loteProducaoAcumulado[12] = 0;
+			$this->loteProducaoAcumulado[13] = 0;
+			$this->loteProducaoAcumulado[14] = 0;
+			$this->loteProducaoAcumulado[15] = 0;
+			$this->loteProducaoAcumulado[16] = 0;
+			$this->loteProducaoAcumulado[17] = 0.7;
+			$this->loteProducaoAcumulado[18] = 2.8;
+			$this->loteProducaoAcumulado[19] = 7;
+			$this->loteProducaoAcumulado[20] = 12.6;
+			$this->loteProducaoAcumulado[21] = 18.9;
+			$this->loteProducaoAcumulado[22] = 25.27;
+			$this->loteProducaoAcumulado[23] = 31.71;
+			$this->loteProducaoAcumulado[24] = 38.22;
+			$this->loteProducaoAcumulado[25] = 44.8;
+			$this->loteProducaoAcumulado[26] = 51.45;
+			$this->loteProducaoAcumulado[27] = 58.1;
+			$this->loteProducaoAcumulado[28] = 64.75;
+			$this->loteProducaoAcumulado[29] = 71.4;
+			$this->loteProducaoAcumulado[30] = 78.05;
+			$this->loteProducaoAcumulado[31] = 84.63;
+			$this->loteProducaoAcumulado[32] = 91.21;
+			$this->loteProducaoAcumulado[33] = 97.79;
+			$this->loteProducaoAcumulado[34] = 104.37;
+			$this->loteProducaoAcumulado[35] = 110.88;
+			$this->loteProducaoAcumulado[36] = 117.39;
+			$this->loteProducaoAcumulado[37] = 123.9;
+			$this->loteProducaoAcumulado[38] = 130.41;
+			$this->loteProducaoAcumulado[39] = 136.85;
+			$this->loteProducaoAcumulado[40] = 143.29;
+			$this->loteProducaoAcumulado[41] = 149.73;
+			$this->loteProducaoAcumulado[42] = 156.17;
+			$this->loteProducaoAcumulado[43] = 162.54;
+			$this->loteProducaoAcumulado[44] = 168.91;
+			$this->loteProducaoAcumulado[45] = 175.28;
+			$this->loteProducaoAcumulado[46] = 181.65;
+			$this->loteProducaoAcumulado[47] = 187.95;
+			$this->loteProducaoAcumulado[48] = 194.25;
+			$this->loteProducaoAcumulado[49] = 200.48;
+			$this->loteProducaoAcumulado[50] = 206.71;
+			$this->loteProducaoAcumulado[51] = 212.94;
+			$this->loteProducaoAcumulado[52] = 219.1;
+			$this->loteProducaoAcumulado[53] = 225.26;
+			$this->loteProducaoAcumulado[54] = 231.35;
+			$this->loteProducaoAcumulado[55] = 237.44;
+			$this->loteProducaoAcumulado[56] = 243.53;
+			$this->loteProducaoAcumulado[57] = 249.55;
+			$this->loteProducaoAcumulado[58] = 255.57;
+			$this->loteProducaoAcumulado[59] = 261.52;
+			$this->loteProducaoAcumulado[60] = 267.47;
+			$this->loteProducaoAcumulado[61] = 273.42;
+			$this->loteProducaoAcumulado[62] = 279.3;
+			$this->loteProducaoAcumulado[63] = 285.18;
+			$this->loteProducaoAcumulado[64] = 290.99;
+			$this->loteProducaoAcumulado[65] = 296.8;
+			$this->loteProducaoAcumulado[66] = 302.61;
+			$this->loteProducaoAcumulado[67] = 308.35;
+			$this->loteProducaoAcumulado[68] = 314.09;
+			$this->loteProducaoAcumulado[69] = 319.76;
+			$this->loteProducaoAcumulado[70] = 325.43;
+			$this->loteProducaoAcumulado[71] = 331.03;
+			$this->loteProducaoAcumulado[72] = 336.63;
+			$this->loteProducaoAcumulado[73] = 342.16;
+			$this->loteProducaoAcumulado[74] = 347.62;
+			$this->loteProducaoAcumulado[75] = 353.01;
+			$this->loteProducaoAcumulado[76] = 358.33;
+			$this->loteProducaoAcumulado[77] = 363.58;
+			$this->loteProducaoAcumulado[78] = 368.76;
+			$this->loteProducaoAcumulado[79] = 373.87;
+			$this->loteProducaoAcumulado[80] = 378.91;
+			$this->loteProducaoAcumulado[81] = 383.95;
+			$this->loteProducaoAcumulado[82] = 388.99;
+			$this->loteProducaoAcumulado[83] = 394.03;
+			$this->loteProducaoAcumulado[84] = 399.07;
+			$this->loteProducaoAcumulado[85] = 404.04;
+			$this->loteProducaoAcumulado[86] = 409.01;
+			$this->loteProducaoAcumulado[87] = 413.98;
+			$this->loteProducaoAcumulado[88] = 418.95;
+			$this->loteProducaoAcumulado[89] = 423.85;
+			 
+			 //---------------------------------------------------------------
+			 //---------------------------------------------------------------
+			 //---------------------------------------------------------------
+			 
+			 $this->loteConsumo = array();
+			 $this->loteConsumo[0] = 14;
+			 $this->loteConsumo[1] = 19;
+			 $this->loteConsumo[2] = 24;
+			 $this->loteConsumo[3] = 28;
+			 $this->loteConsumo[4] = 35;
+			 $this->loteConsumo[5] = 39;
+			 $this->loteConsumo[6] = 42;
+			 $this->loteConsumo[7] = 46;
+			 $this->loteConsumo[8] = 50;
+			 $this->loteConsumo[9] = 54;
+			 $this->loteConsumo[10] = 60;
+			 $this->loteConsumo[11] = 64;
+			 $this->loteConsumo[12] = 70;
+			 $this->loteConsumo[13] = 73;
+			 $this->loteConsumo[14] = 76;
+			 $this->loteConsumo[15] = 79;
+			 $this->loteConsumo[16] = 81;
+			 $this->loteConsumo[17] = 85;
+			 $this->loteConsumo[18] = 89;
+			 $this->loteConsumo[19] = 93;
+			 $this->loteConsumo[20] = 98;
+			 $this->loteConsumo[21] = 102;
+			 $this->loteConsumo[22] = 105;
+			 $this->loteConsumo[23] = 108;
+			 $this->loteConsumo[24] = 110;
+			 $this->loteConsumo[25] = 111;
+			 $this->loteConsumo[26] = 111;
+			 $this->loteConsumo[27] = 111;
+			 $this->loteConsumo[28] = 111;
+			 $this->loteConsumo[29] = 111;
+			 $this->loteConsumo[30] = 112;
+			 $this->loteConsumo[31] = 112;
+			 $this->loteConsumo[32] = 112;
+			 $this->loteConsumo[33] = 112;
+			 $this->loteConsumo[34] = 112;
+			 $this->loteConsumo[35] = 112;
+			 $this->loteConsumo[36] = 112;
+			 $this->loteConsumo[37] = 112;
+			 $this->loteConsumo[38] = 112;
+			 $this->loteConsumo[39] = 112;
+			 $this->loteConsumo[40] = 112;
+			 $this->loteConsumo[41] = 112;
+			 $this->loteConsumo[42] = 112;
+			 $this->loteConsumo[43] = 112;
+			 $this->loteConsumo[44] = 111;
+			 $this->loteConsumo[45] = 111;
+			 $this->loteConsumo[46] = 111;
+			 $this->loteConsumo[47] = 111;
+			 $this->loteConsumo[48] = 111;
+			 $this->loteConsumo[49] = 111;
+			 $this->loteConsumo[50] = 111;
+			 $this->loteConsumo[51] = 111;
+			 $this->loteConsumo[52] = 110;
+			 $this->loteConsumo[53] = 110;
+			 $this->loteConsumo[54] = 110;
+			 $this->loteConsumo[55] = 110;
+			 $this->loteConsumo[56] = 110;
+			 $this->loteConsumo[57] = 110;
+			 $this->loteConsumo[58] = 110;
+			 $this->loteConsumo[59] = 110;
+			 $this->loteConsumo[60] = 110;
+			 $this->loteConsumo[61] = 110;
+			 $this->loteConsumo[62] = 110;
+			 $this->loteConsumo[63] = 110;
+			 $this->loteConsumo[64] = 110;
+			 $this->loteConsumo[65] = 110;
+			 $this->loteConsumo[66] = 110;
+			 $this->loteConsumo[67] = 110;
+			 $this->loteConsumo[68] = 110;
+			 $this->loteConsumo[69] = 110;
+			 $this->loteConsumo[70] = 110;
+			 $this->loteConsumo[71] = 110;
+			 $this->loteConsumo[72] = 110;
+			 $this->loteConsumo[73] = 110;
+			 $this->loteConsumo[74] = 110;
+			 $this->loteConsumo[75] = 110;
+			 $this->loteConsumo[76] = 110;
+			 $this->loteConsumo[77] = 110;
+			 $this->loteConsumo[78] = 110;
+			 $this->loteConsumo[79] = 110;
+			 $this->loteConsumo[80] = 110;
+			 $this->loteConsumo[81] = 110;
+			 $this->loteConsumo[82] = 110;
+			 $this->loteConsumo[83] = 110;
+			 $this->loteConsumo[84] = 110;
+			 $this->loteConsumo[85] = 110;
+			 $this->loteConsumo[86] = 110;
+			 $this->loteConsumo[87] = 110;
+			 $this->loteConsumo[88] = 110;
+			 $this->loteConsumo[89] = 110;
+			 
+			 //---------------------------------------------------------------
+			 $this->loteConsumoAcumulado = array();
+			 $this->loteConsumoAcumulado[0] = 98;
+			$this->loteConsumoAcumulado[1] = 231;
+			$this->loteConsumoAcumulado[2] = 399;
+			$this->loteConsumoAcumulado[3] = 595;
+			$this->loteConsumoAcumulado[4] = 840;
+			$this->loteConsumoAcumulado[5] = 1113;
+			$this->loteConsumoAcumulado[6] = 1407;
+			$this->loteConsumoAcumulado[7] = 1729;
+			$this->loteConsumoAcumulado[8] = 2079;
+			$this->loteConsumoAcumulado[9] = 2457;
+			$this->loteConsumoAcumulado[10] = 2877;
+			$this->loteConsumoAcumulado[11] = 3325;
+			$this->loteConsumoAcumulado[12] = 3815;
+			$this->loteConsumoAcumulado[13] = 4326;
+			$this->loteConsumoAcumulado[14] = 4858;
+			$this->loteConsumoAcumulado[15] = 5411;
+			$this->loteConsumoAcumulado[16] = 5978;
+			$this->loteConsumoAcumulado[17] = 6573;
+			$this->loteConsumoAcumulado[18] = 7196;
+			$this->loteConsumoAcumulado[19] = 7847;
+			$this->loteConsumoAcumulado[20] = 8533;
+			$this->loteConsumoAcumulado[21] = 9247;
+			$this->loteConsumoAcumulado[22] = 9982;
+			$this->loteConsumoAcumulado[23] = 10738;
+			$this->loteConsumoAcumulado[24] = 11508;
+			$this->loteConsumoAcumulado[25] = 12285;
+			$this->loteConsumoAcumulado[26] = 13062;
+			$this->loteConsumoAcumulado[27] = 13839;
+			$this->loteConsumoAcumulado[28] = 14616;
+			$this->loteConsumoAcumulado[29] = 15393;
+			$this->loteConsumoAcumulado[30] = 16177;
+			$this->loteConsumoAcumulado[31] = 16961;
+			$this->loteConsumoAcumulado[32] = 17745;
+			$this->loteConsumoAcumulado[33] = 18529;
+			$this->loteConsumoAcumulado[34] = 19313;
+			$this->loteConsumoAcumulado[35] = 20097;
+			$this->loteConsumoAcumulado[36] = 20881;
+			$this->loteConsumoAcumulado[37] = 21665;
+			$this->loteConsumoAcumulado[38] = 22449;
+			$this->loteConsumoAcumulado[39] = 23233;
+			$this->loteConsumoAcumulado[40] = 24017;
+			$this->loteConsumoAcumulado[41] = 24801;
+			$this->loteConsumoAcumulado[42] = 25585;
+			$this->loteConsumoAcumulado[43] = 26369;
+			$this->loteConsumoAcumulado[44] = 27146;
+			$this->loteConsumoAcumulado[45] = 27923;
+			$this->loteConsumoAcumulado[46] = 28700;
+			$this->loteConsumoAcumulado[47] = 29477;
+			$this->loteConsumoAcumulado[48] = 30254;
+			$this->loteConsumoAcumulado[49] = 31031;
+			$this->loteConsumoAcumulado[50] = 31808;
+			$this->loteConsumoAcumulado[51] = 32585;
+			$this->loteConsumoAcumulado[52] = 33355;
+			$this->loteConsumoAcumulado[53] = 34125;
+			$this->loteConsumoAcumulado[54] = 34895;
+			$this->loteConsumoAcumulado[55] = 35665;
+			$this->loteConsumoAcumulado[56] = 36435;
+			$this->loteConsumoAcumulado[57] = 37205;
+			$this->loteConsumoAcumulado[58] = 37975;
+			$this->loteConsumoAcumulado[59] = 38745;
+			$this->loteConsumoAcumulado[60] = 39515;
+			$this->loteConsumoAcumulado[61] = 40285;
+			$this->loteConsumoAcumulado[62] = 41055;
+			$this->loteConsumoAcumulado[63] = 41825;
+			$this->loteConsumoAcumulado[64] = 42595;
+			$this->loteConsumoAcumulado[65] = 43365;
+			$this->loteConsumoAcumulado[66] = 44135;
+			$this->loteConsumoAcumulado[67] = 44905;
+			$this->loteConsumoAcumulado[68] = 45675;
+			$this->loteConsumoAcumulado[69] = 46445;
+			$this->loteConsumoAcumulado[70] = 47215;
+			$this->loteConsumoAcumulado[71] = 47985;
+			$this->loteConsumoAcumulado[72] = 48755;
+			$this->loteConsumoAcumulado[73] = 49525;
+			$this->loteConsumoAcumulado[74] = 50295;
+			$this->loteConsumoAcumulado[75] = 51065;
+			$this->loteConsumoAcumulado[76] = 51835;
+			$this->loteConsumoAcumulado[77] = 52605;
+			$this->loteConsumoAcumulado[78] = 53375;
+			$this->loteConsumoAcumulado[79] = 54145;
+			$this->loteConsumoAcumulado[80] = 54915;
+			$this->loteConsumoAcumulado[81] = 55685;
+			$this->loteConsumoAcumulado[82] = 56455;
+			$this->loteConsumoAcumulado[83] = 57225;
+			$this->loteConsumoAcumulado[84] = 57995;
+			$this->loteConsumoAcumulado[85] = 58765;
+			$this->loteConsumoAcumulado[86] = 59535;
+			$this->loteConsumoAcumulado[87] = 60305;
+			$this->loteConsumoAcumulado[88] = 61075;
+			$this->loteConsumoAcumulado[89] = 61845;
+		//---------------------------------------------------------------	
+
+	 
 		}
 		
-		public function Alojamento($dia, $loteProducao, $loteConsumo){
+		public function getProducao($numAves, $semana){
 			 
-			if(($this->semanaAlojado>0 && $this->semanaAlojado<$this->semanaDescarte)|| ($this->semanaAlojado == 0 && $this->mesAloja == date('m', $dia))){
+			 return ($this->loteProducao[$semana-1] * $numAves);
+			
+		}
+		public function getProducaoTotal($numAves, $semana){
 			 
-			 
-				 $ProducaoCXs = ($loteProducao[$this->semanaAlojado] * 7 * 2000)/360;
-				 echo" - ProducaoCXs=". number_format($ProducaoCXs, 2, ',', '.');
-				 $this->producaoTotal += $ProducaoCXs;
-				 
-				 
-				 $consumoKg = ($loteConsumo[$this->semanaAlojado] * 7 * 2000)/1000;
-				 echo" - ConsumoKg=". $consumoKg;
-				 $this->consumoTotal += $consumoKg;
-				 
-				if($ProducaoCXs>0){
-					 
-					 $KG_Caixa = ($consumoKg / $ProducaoCXs);
-					 echo" - KG_Caixa=".  number_format($KG_Caixa, 2, ',', '.');
-				 
-				}
-
-
-				
-				 
-				 $this->semanaAlojado++;
-				 echo"--- Alojado=". ($this->semanaAlojado);
-				 
-				 
-			}
-
+			 return ($this->loteProducaoAcumulado[$semana-1] * $numAves);
+			
 		}
 		
+		
+		public function getConsumoTotal($numAves, $semana){
+			 
+			 return ($this->loteConsumoAcumulado[$semana-1] * $numAves);
+			
+		}
+		
+		public function getConsumo($numAves, $semana){
+			 
+			 return ($this->loteConsumo[$semana-1] * $numAves);
+			
+		}
+		
+	
 		
 		 
 	}
 	 
 	 
-	 $lote1 = new LoteGalinhas(1,90);
+	 $custoAve = 3.5;
+	 $custoVacinasAve = 1.0;
+	 $custoInicial = 2.07;
+	 $custoCresc = 1.84;
+	 $custoPostura = 1.84;
 	 
+	 $lote1 = new LoteGalinhas($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
+	 $nAves = 2000;
+	 $semana = 18;
+	
+	 echo "<br>Acumulado ". $lote1->getProducaoTotal($nAves, $semana)/360 ." CXs";
+	 echo "<br>Na semana ". ($lote1->getProducao($nAves, $semana)/360)*7 ." CXs";
+	 echo "<br>Taxa Producao Dia ". ($lote1->loteProducao[$semana-1])*100 ."%";
+	 echo "<br>Acumulado ". $lote1->getConsumoTotal($nAves, $semana)/1000 ." KG";
+	 echo "<br>Na semana ". ($lote1->getConsumo($nAves, $semana)/1000)*7 ." KG";
+	 echo "<br>Consumo Dia ". ($lote1->loteConsumo[$semana-1])/1000*$nAves ." KG";
+	 echo "<br>Consumo/CX ". ($lote1->getConsumoTotal($nAves, $semana)/1000)/($lote1->getProducaoTotal($nAves, $semana)/360);
 	 
+	 echo"<br>";
+	 echo "<br>Consumo Inicial ". ($lote1->getConsumoTotal($nAves, $semana)/1000) ." KG";
+	 echo "<br>Consumo Postura ". ($lote1->getConsumoTotal($nAves, $semana)/1000) ." KG";
+	 echo "<br>Consumo Postura ". ($lote1->getConsumoTotal($nAves, $semana)/1000) ." KG";
 	 
-	 $lote1AlojaMes = 1;
-	 $lote1DescarteSemana = 90;
-	 $lote1Alojado = 0;
-	 $lote1TotalProducao = 0;
-	 $lote1TotalConsumo = 0;
+	 echo"<br>";
 	 
 	for($i=0; $i<140; $i++){
 		
@@ -275,93 +489,11 @@
 		 
 		 
 		 echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
-		 
-		 $lote1->Alojamento($dia, $loteProducao, $loteConsumo);
-
-		 echo" - ProducaoCXs=".  number_format($lote1->producaoTotal, 2, ',', '.'); 
-		 echo" - ConsumoKg=". number_format($lote1->consumoTotal, 2, ',', '.');
-		 echo" - KG_Caixa=".  number_format($lote1->consumoTotal / $lote1->producaoTotal, 2, ',', '.');
 				 
 		
 	}
 		 
-	 echo"<br><br>RESULTADO LOTE1";
-	 echo"<br>lote1TotalProducaoCXs = ".  number_format($lote1->producaoTotal, 2, ',', '.'); 
-	 echo"<br>lote1TotalConsumoKG = ". number_format($lote1->consumoTotal, 2, ',', '.');
-	 echo"<br>Media KG Por Caixa = ".  number_format($lote1->consumoTotal / $lote1->producaoTotal, 2, ',', '.');
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 /*
-	 $lote1AlojaMes = 1;
-	 $lote1DescarteSemana = 90;
-	 $lote1Alojado = 0;
-	 $lote1TotalProducao = 0;
-	 $lote1TotalConsumo = 0;
-	 
-	for($i=0; $i<140; $i++){
-		
-		 $dia = strtotime('+'. $i .' weeks', strtotime(date("d-m-Y")));
-		 
-		 echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
-
-		if(($lote1Alojado>0 && $lote1Alojado<$lote1DescarteSemana)|| ($lote1Alojado == 0 && $lote1AlojaMes == date('m', $dia))){
-			 
-			 
-			 
-			 
-			 $ProducaoCXs = ($loteProducao[$lote1Alojado] * 7 * 2000)/360;
-			 echo" - ProducaoCXs=". number_format($ProducaoCXs, 2, ',', '.');
-			 $lote1TotalProducao += $ProducaoCXs;
-			 
-			 
-			 $consumoKg = ($loteConsumo[$lote1Alojado] * 7 * 2000)/1000;
-			 echo" - ConsumoKg=". $consumoKg;
-			 $lote1TotalConsumo += $consumoKg;
-			 
-			if($ProducaoCXs>0){
-				 
-				 $KG_Caixa = ($consumoKg / $ProducaoCXs);
-				 echo" - KG_Caixa=".  number_format($KG_Caixa, 2, ',', '.');
-			 
-			}
-
-
-			
-			 
-			 $lote1Alojado++;
-			 echo"--- Alojado=". ($lote1Alojado);
-			 
-			 
-		}
-
-			 
-		
-	}
-		 
-	 echo"<br><br>RESULTADO LOTE1";
-	 echo"<br>lote1TotalProducaoCXs = ".  number_format($lote1TotalProducao, 2, ',', '.'); 
-	 echo" <br>lote1TotalConsumoKG = ". number_format($lote1TotalConsumo, 2, ',', '.');
-	 echo"<br>Media KG Por Caixa = ".  number_format($lote1TotalConsumo / $lote1TotalProducao, 2, ',', '.');
-	 
-	 
-	 */
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	
+ 
 	
 	
 	
