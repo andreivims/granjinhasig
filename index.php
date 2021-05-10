@@ -46,9 +46,7 @@
 			 $this->precoKgCrescimento = $custoCresc;
 			 $this->precoKgPostura = $custoPostura;
 			 
-			 
-			 $this->consumoTotalInicial = 1.9;
-			 $this->consumoTotalCrescimento = 6.0;
+			
 			 
 			 $this->loteProducao = array();
 			 $this->loteProducao[0] = 0.0;
@@ -465,9 +463,14 @@
 	 
 	 $lote1 = new LoteGalinhas($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
 	 $nAves = 2000;
-	 $semana = 18;
-	
-	 echo "<br>Acumulado ". $lote1->getProducaoTotal($nAves, $semana)/360 ." CXs";
+	 $semana = 88;
+	 
+	 echo "<br>Qtde Aves =  ". $nAves;
+	 echo "<br>SEMANA =  ". $semana;
+	 echo"<Br>";
+	 
+	 $producaoCXTotal = $lote1->getProducaoTotal($nAves, $semana)/360;
+	 echo "<br>Acumulado ". $producaoCXTotal ." CXs";
 	 echo "<br>Na semana ". ($lote1->getProducao($nAves, $semana)/360)*7 ." CXs";
 	 echo "<br>Taxa Producao Dia ". ($lote1->loteProducao[$semana-1])*100 ."%";
 	 echo "<br>Acumulado ". $lote1->getConsumoTotal($nAves, $semana)/1000 ." KG";
@@ -475,23 +478,55 @@
 	 echo "<br>Consumo Dia ". ($lote1->loteConsumo[$semana-1])/1000*$nAves ." KG";
 	 echo "<br>Consumo/CX ". ($lote1->getConsumoTotal($nAves, $semana)/1000)/($lote1->getProducaoTotal($nAves, $semana)/360);
 	 
+	 
+	 
+			
 	 echo"<br>";
-	 echo "<br>Consumo Inicial ". ($lote1->getConsumoTotal($nAves, $semana)/1000) ." KG";
-	 echo "<br>Consumo Postura ". ($lote1->getConsumoTotal($nAves, $semana)/1000) ." KG";
-	 echo "<br>Consumo Postura ". ($lote1->getConsumoTotal($nAves, $semana)/1000) ." KG";
+	 $consumoInicial = ($lote1->getConsumoTotal($nAves, 8)/1000);
+	 $consumoCrescimento = ($lote1->getConsumoTotal($nAves, 17)/1000)-$consumoInicial;
+	 $consumoPostura = (($lote1->getConsumoTotal($nAves, $semana)/1000) - $consumoInicial - $consumoCrescimento);
+	 
+	 echo "<br>Consumo Inicial ". $consumoInicial ." KG";
+	 echo "<br>Consumo Crescimento ". $consumoCrescimento ." KG";
+	 echo "<br>Consumo Postura ". $consumoPostura ." KG";
 	 
 	 echo"<br>";
+	 $custoAveTotal = $custoAve * $nAves;
+	 $custoVacinasTotal = $custoVacinasAve * $nAves;
+	 $custoInicialTotal = $custoInicial * $consumoInicial;
+	 $custoCrescimentoTotal = $custoCresc * $consumoCrescimento ;
+	 $custoPosturaTotal = $custoPostura * $consumoPostura;
 	 
-	for($i=0; $i<140; $i++){
-		
-		 $dia = strtotime('+'. $i .' weeks', strtotime(date("d/m/Y")));
+	 echo "<br>Custo Pintinhas = R$ ". $custoAveTotal ."";
+	 echo "<br>Custo Vacinas = R$ ". $custoVacinasTotal ."";
+	 echo "<br>Custo Inicial = R$ ". $custoInicialTotal ."";
+	 echo "<br>Custo Crescimento = R$ ". $custoCrescimentoTotal ."";
+	 echo "<br>Custo Postura = R$ ". $custoPosturaTotal ."";
+	 
+	 echo"<br>";
+	 $custoTotalLote = $custoAveTotal + $custoVacinasTotal + $custoVacinasTotal + $custoInicialTotal + $custoCrescimentoTotal +$custoPosturaTotal;
+	 echo "<br>Custo Total Lote = R$ ". $custoTotalLote;
+
+	 echo"<br>";
+	 echo "<br>Custo/CX = R$ ". $custoTotalLote / $producaoCXTotal ;
+	 echo"<br>";
+	 echo"<br>";
+	 echo"<br>/////////////////////////////////////////////////////////";
+	 echo"<br>";
+	 
+	
+	$alojamento = "2021-02-23";
+	$descarte = date('Y-m-d', strtotime($alojamento. ' + '. 88 .' weeks'));
 		 
 		 
 		 
-		 echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
+	 echo "<br> Lote1 Alojamento [". date('d/m/Y', strtotime($alojamento)) ."] === Descarte [". date('d/m/Y', strtotime($descarte)) ."]";	
+	 
+	 
+		 //echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
 				 
 		
-	}
+	
 		 
  
 	
