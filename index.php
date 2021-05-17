@@ -18,7 +18,22 @@
 	
 	
 	
-	 
+	  
+	class Aviario{
+	
+		public $dataAlojamento;
+		public $vazio;
+		public $dataDesalojamento;
+		
+		public function __construct($dataAloja, $vazi, $dataDesaloja){
+		
+			$this->dataAlojamento = $dataAloja;
+			$this->vazio = $vazi;
+			$this->dataDesalojamento = $dataDesaloja;
+		
+		}
+		
+	}
 	 
 	class LoteGalinhas{
 		
@@ -454,16 +469,17 @@
 		 
 	}
 	 
-	 
-	 $custoAve = 3.5;
-	 $custoVacinasAve = 1.0;
-	 $custoInicial = 2.07;
-	 $custoCresc = 1.84;
-	 $custoPostura = 1.84;
+	
+		
+	 $custoAve = 3.1;
+	 $custoVacinasAve = 1.35;
+	 $custoInicial = 2.17;
+	 $custoCresc = 1.91;
+	 $custoPostura = 2.06;
 	 
 	 $lote1 = new LoteGalinhas($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
 	 $nAves = 2000;
-	 $semana = 88;
+	 $semana = 80;
 	 
 	 echo "<br>Qtde Aves =  ". $nAves;
 	 echo "<br>SEMANA =  ". $semana;
@@ -514,16 +530,122 @@
 	 echo"<br>/////////////////////////////////////////////////////////";
 	 echo"<br>";
 	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+	 $pinteiro = new Aviario("2000-02-23", true, "2000-02-23");
+	 $recria = new Aviario("2000-02-23", true, "2000-02-23");
+	 
+	 $aviarios = array();
+	 $aviarios[0] = new Aviario("2000-02-23", true, "2000-02-23");
+	 $aviarios[1] = new Aviario("2000-02-23", true, "2000-02-23");
+	 $aviarios[2] = new Aviario("2000-02-23", true, "2000-02-23");
+	 $aviarios[3] = new Aviario("2000-02-23", true, "2000-02-23");
+	 $aviarios[4] = new Aviario("2000-02-23", true, "2000-02-23");
+	 $aviarios[5] = new Aviario("2000-02-23", true, "2000-02-23");
+	 
+	 
+	$diadia = "2021-05-15";
+	$mudou = false;
+	for($i=0;$i<365;$i++){
+		 
+		 
+		if($pinteiro->vazio){//aloja?
+			
+			if($pinteiro->dataDesalojamento <= date('Y-m-d', strtotime($diadia . ' - '. 10 .' days'))){//10 dias de vazio sanitario
+				 $pinteiro->dataAlojamento = $diadia;
+				 $pinteiro->vazio = false;
+				 $mudou = true;
+			}
+		}else if(!$pinteiro->vazio && $pinteiro->dataAlojamento == date('Y-m-d', strtotime($diadia . ' - '. 51 .' days'))){	//desaloja
+			$pinteiro->dataDesalojamento = $diadia;
+			$pinteiro->vazio = true;
+			$mudou = true;
+			
+			
+		}
+		
+		
+		if($recria->vazio && $pinteiro->dataDesalojamento > $pinteiro->dataAlojamento){
+		 
+			$recria->dataAlojamento = $diadia;
+			$recria->vazio = false;
+			
+		}else if(!$recria->vazio && $recria->dataAlojamento <= date('Y-m-d', strtotime($diadia . ' - '. 55 .' days'))){	//desaloja recria
+			$recria->dataDesalojamento = $diadia;
+			$recria->vazio = true;
+			$mudou = true;
+			
+			
+			$alojou = false;
+			for($j=0;$j<count($aviarios);$j++){
+			 
+				if($aviarios[$j]->vazio){
+					if($aviarios[$j]->dataDesalojamento <= date('Y-m-d', strtotime($diadia . ' - '. 10 .' days'))){//10 dias de vazio sanitario
+						 $aviarios[$j]->dataAlojamento = $diadia;
+						 $aviarios[$j]->vazio = false;
+						 $alojou = true;
+						 break;
+					}
+				}
+			
+			} 
+			if(!$alojou){
+				echo"<br>ERROOOOOOOOOOOO<br>";
+				exit;
+			}
+			
+		}
+		 
+		
+		for($j=0;$j<count($aviarios);$j++){
+				 
+			if(!$aviarios[$j]->vazio && $aviarios[$j]->dataAlojamento == date('Y-m-d', strtotime($diadia . ' - '. 560 .' days'))){	//desaloja aviario
+				$aviarios[$j]->dataDesalojamento = $diadia;
+				$aviarios[$j]->vazio = true;
+				$mudou = true;
+			}	
+		
+		} 
+		
+		
+		if($mudou)
+		{
+			echo"<br><br>" . date('d/m/Y', strtotime($diadia));
+			if($pinteiro->vazio){
+				echo" - Pinteiro Vazio (". date('d/m/Y', strtotime($pinteiro->dataDesalojamento)) .")";
+			}else {
+				echo" - Pinteiro Alojado (". date('d/m/Y', strtotime($pinteiro->dataAlojamento)) .")";
+			}
+			
+			if($recria->vazio){
+				echo" - Recria Vazio (". date('d/m/Y', strtotime($recria->dataDesalojamento)) .")";
+			}else {
+				echo" - Recria Alojado (". date('d/m/Y', strtotime($recria->dataAlojamento)) .")";
+			}
+		}
+
+		$mudou = false;
+		$diadia = date('Y-m-d', strtotime($diadia . ' + '. 1 .' days'));
+	}
+		 
+	 
+	 
+	 
+	 
+	 
+	 
 	
-	$alojamento = "2021-02-23";
-	$descarte = date('Y-m-d', strtotime($alojamento. ' + '. 88 .' weeks'));
+	 //$alojamento = "2021-02-23";
+	 //$descarte = date('Y-m-d', strtotime($alojamento. ' + '. 88 .' weeks'));
 		 
-		 
-		 
-	 echo "<br> Lote1 Alojamento [". date('d/m/Y', strtotime($alojamento)) ."] === Descarte [". date('d/m/Y', strtotime($descarte)) ."]";	
-	 
-	 
-		 //echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
+	 //echo "<br> Lote1 Alojamento [". date('d/m/Y', strtotime($alojamento)) ."] === Descarte [". date('d/m/Y', strtotime($descarte)) ."]";	
+	 //echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
 				 
 		
 	
