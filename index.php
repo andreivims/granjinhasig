@@ -552,17 +552,35 @@
 	 
 	$diadia = "2021-05-15";
 	$mudou = false;
-	for($i=0;$i<365;$i++){
+
+	for($i=0;$i<1500;$i++){
+		
 		 
 		 
 		if($pinteiro->vazio){//aloja?
+		
+			$podeAlojar = false;
+			for($j=0;$j<count($aviarios);$j++){
+			 
+				if($aviarios[$j]->vazio){
+					$podeAlojar = true;
+				}else{
+					
+					if($aviarios[$j]->dataAlojamento <= date('Y-m-d', strtotime($diadia . ' - '. ((80*7)) .' days'))){//50dias pinteiro, 55 dias recria e 10 dias de vazio sanitario
+						 $podeAlojar = true;
+					}
+				}
 			
-			if($pinteiro->dataDesalojamento <= date('Y-m-d', strtotime($diadia . ' - '. 10 .' days'))){//10 dias de vazio sanitario
-				 $pinteiro->dataAlojamento = $diadia;
-				 $pinteiro->vazio = false;
-				 $mudou = true;
+			} 
+			if($podeAlojar){
+				if($pinteiro->dataDesalojamento <= date('Y-m-d', strtotime($diadia . ' - '. 10 .' days'))){//10 dias de vazio sanitario
+					 $pinteiro->dataAlojamento = $diadia;
+					 $pinteiro->vazio = false;
+					 $mudou = true;
+				}
 			}
-		}else if(!$pinteiro->vazio && $pinteiro->dataAlojamento == date('Y-m-d', strtotime($diadia . ' - '. 51 .' days'))){	//desaloja
+			
+		}else if(!$pinteiro->vazio && $pinteiro->dataAlojamento == date('Y-m-d', strtotime($diadia . ' - '. 50 .' days'))){	//desaloja
 			$pinteiro->dataDesalojamento = $diadia;
 			$pinteiro->vazio = true;
 			$mudou = true;
@@ -605,7 +623,7 @@
 		
 		for($j=0;$j<count($aviarios);$j++){
 				 
-			if(!$aviarios[$j]->vazio && $aviarios[$j]->dataAlojamento == date('Y-m-d', strtotime($diadia . ' - '. 560 .' days'))){	//desaloja aviario
+			if(!$aviarios[$j]->vazio && $aviarios[$j]->dataAlojamento <= date('Y-m-d', strtotime($diadia . ' - '. ((80*7)-105) .' days'))){	//desaloja aviario
 				$aviarios[$j]->dataDesalojamento = $diadia;
 				$aviarios[$j]->vazio = true;
 				$mudou = true;
@@ -628,6 +646,17 @@
 			}else {
 				echo" - Recria Alojado (". date('d/m/Y', strtotime($recria->dataAlojamento)) .")";
 			}
+			
+			for($j=0;$j<count($aviarios);$j++){
+				 
+				if($aviarios[$j]->vazio){
+					echo" - Aviário".($j+1)." Vazio (". date('d/m/Y', strtotime($aviarios[$j]->dataDesalojamento)) .")";
+				}else {
+					echo" - Aviário".($j+1)." Alojado (". date('d/m/Y', strtotime($aviarios[$j]->dataAlojamento)) .")";
+				}
+			
+			} 
+		
 		}
 
 		$mudou = false;
