@@ -25,6 +25,7 @@
 					table.comBordaSimples {
 						border-collapse: collapse; /* CSS2 */
 						 text-align: center;
+						 font-size: 22px;
 					}
 					 
 					table.comBordaSimples td {
@@ -40,7 +41,7 @@
 			
 echo"<table class='comBordaSimples'>";
 
-	 $LINHA = 25;
+	 $LINHA = 32;
 	for($xx=0;$xx<$LINHA; $xx++)
 	{	
 		 echo"<tr>";

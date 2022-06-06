@@ -40,7 +40,7 @@
 					float: left;
 					position: relative;
 					
-					height: 50px;
+					height: 48px;
 					width: 840px;
 					
 					text-align: center;
@@ -129,7 +129,7 @@
 					float: left;
 					position: relative;
 					
-					height: 100px;
+					height: 95px;
 					width: 840px;
 					
 					text-align: center;
@@ -217,7 +217,7 @@
 					float: left;
 					position: relative;
 					
-					height: 30px;
+					height: 27px;
 					width: 840px;
 					
 					text-align: center;
@@ -390,7 +390,7 @@
 			
 			
 			//////////////////////////////////////////////////
-				 $height = 60;
+				 $height = 55;
 				 $widths[0] = 80;
 				 $widths[1] = 500;
 				 $widths[2] = 270;

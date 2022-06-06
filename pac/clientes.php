@@ -133,10 +133,10 @@
 			
 			
 				 $descricao="LISTA DE CLIENTES DE OVOS <br>(anexo ao PAC 16 - FML 19)";
-				 $info="Revisão dia 09";
+				 $info="Revisão dia 01";
 				
 				 
-				 cabecalho($descricao, $info, "Janeiro", "2020");
+				 cabecalho($descricao, $info, "Novembro", "2021");
 			
 			
 						

@@ -207,7 +207,7 @@
 		 <div class="imppac2 b_all"><a href="pac10.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 10</a> </div>
 		 <div class="imppac2 b_all"><a href="pac.php?CONTROLE=pac12&ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 12 (NEW)</a> </div>
 		 <div class="imppac2 b_all"><a href="pac.php?CONTROLE=pac13&ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 13 (NEW)</a> </div>
-		 <div class="imppac2 b_all"><a href="pac16.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&lote=475" target="_blank">Pac 16</a> </div>
+		 <div class="imppac2 b_all"><a href="pac16.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&lote=986" target="_blank">Pac 16</a> </div>
 		 
 		 
 		 
@@ -217,17 +217,19 @@
 		 
 		 <div class="imppac2 b_all"><a href="racao.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Ração</a> </div>
 		 
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=6-6-2020&naves=1000&lote=14&barracao=Aviário 01" target="_blank">Aviário 01</a> </div>
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=6-6-2020&naves=1000&lote=14&barracao=Aviário 02" target="_blank">Aviário 02</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=15-10-2021&naves=1000&lote=19&barracao=Aviário 01" target="_blank">Aviário 01</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=15-10-2021&naves=1000&lote=19&barracao=Aviário 02" target="_blank">Aviário 02</a> </div>
 		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=6-11-2019&naves=1000&lote=12&barracao=Aviário 03" target="_blank">Aviário 03</a> </div>
 		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=6-11-2019&naves=1000&lote=12&barracao=Aviário 04" target="_blank">Aviário 04</a> </div>
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=18-3-2020&naves=2000&lote=13&barracao=Aviário 05" target="_blank">Aviário 05</a> </div>
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=13-2-2019&naves=2000&lote=10&barracao=Aviário 06" target="_blank">Aviário 06</a> </div>
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=22-6-2019&naves=2000&lote=11&barracao=Aviário 07" target="_blank">Aviário 07</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=20-08-2021&naves=2000&lote=18&barracao=Aviário 05" target="_blank">Aviário 05</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=02-10-2020&naves=2000&lote=15&barracao=Aviário 06" target="_blank">Aviário 06</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=23-2-2021&naves=2200&lote=16&barracao=Aviário 07" target="_blank">Aviário 07</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=07-05-2021&naves=2040&lote=17&barracao=Aviário 08" target="_blank">Aviário 08</a> </div>
 		 
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=02-10-2020&naves=1000&lote=15&barracao=Recria 01" target="_blank">Recria 01</a> </div>
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=02-10-2020&naves=1000&lote=15&barracao=Recria 02" target="_blank">Recria 02</a> </div>
-		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=02-10-2020&naves=2080&lote=15&barracao=Pinteiro" target="_blank">Pinteiro</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=15-10-2021&naves=1000&lote=19&barracao=Recria 01" target="_blank">Recria 01</a> </div>
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=15-10-2021&naves=1000&lote=19&barracao=Recria 02" target="_blank">Recria 02</a> </div>
+		 
+		 <div class="imppac2 b_all"><a href="aviarios.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&nascimento=15-10-2021&naves=2040&lote=19&barracao=Pinteiro" target="_blank">Pinteiro</a> </div>
 		 
 		
 <?PHP

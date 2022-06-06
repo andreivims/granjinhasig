@@ -195,7 +195,7 @@
 							
 							top: 0px;
 							left: 0px;
-							height: 17px;
+							height: 34px;
 							width: 420px;
 
 							 
@@ -227,8 +227,8 @@
 							 top: 3px;
 							 left: 0px;
 							
-							 width:8px;
-							 height:8px;
+							 width:10px;
+							 height:14px;
 							 border: 2px solid;
 							 
 							 margin-left:13px;

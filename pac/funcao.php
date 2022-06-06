@@ -1569,21 +1569,13 @@
 								  
 								  
 							 </div>
-							 
+							 <!--
 							 <div class="teste62    " style="line-height: 12px;" > 
 								 <div class=" checkB"></div><div class=" contentcheckB">12</div> 
 								 <div class=" checkB"></div><div class=" contentcheckB">13</div>
-								 <div class=" checkB"></div><div class=" contentcheckB">14</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">15</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">16</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">17</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">18</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">19</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">20</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">21</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">22</div> 
+								 <div class=" checkB"></div><div class=" contentcheckB">14</div>
 							 </div>
-						
+							 -->
 						 </div>
 					
 					
@@ -2318,56 +2310,34 @@
 	///////////////////// LISTA CLIENTES ///////////////////////////////////////////////////////	
 	
 	$nomeClientes = array(
-				 "Mercado Alvorada Bairro Itapoã", 
-				 "Mercado Alvorada Bairro Vitória",
-				 "Mercearia Granjinha",
-				 "Mercado Amigão Bairro Itapoã",
-				 "Mercado Amigão Bairro Água Azul",
-				 "Conveniência do Messias",
+				 "Granjinha Mercado",
+				 "Supermercado Pequeno Mundo",
+				 "Mercado Alvorada",
+				 "Mercado Amigão",
 				 "Mercado Jotta",
 				 "Mercado RodaViva",
-				 "Mercearia e Açougue Independência",
 				 "Mercado do Báu",
 				 "Mercearia Água Azul - Adriano",
 				 "Mercado Zé Montanha",
-				 "Galeria Brasil",
-				 "Mercado Guiray",
-				 "Mercearia Batista",
-				 "Café Tropical",
-				 "Divinos Restaurante",
-				 "Restaurante Chico Bento",
-				 "Açougue do Eder",
 				 "Mercadinho Azul - Nenê",
-				 "Mercado Soldera",
-				 "Pizzaria Tarantela"
+				 "Mercado Soldera"
 		 
 		 );
 		 
 		 
 		 $ClienteCxPorVez = array
 		 (
-				10,
 				13,
+				10,
 				5,
-				2,
-				0.5,
-				0.2,
-				2,
 				4,
-				0.5,
-				2,
-				0.5,
-				2,
-				1.5,
-				1.5,
-				1,
-				0.5,
-				0.5,
-				1,
-				0.5,
 				2,
 				1,
-				0.5
+				1,
+				1,
+				1,
+				3,
+				1
 		 
 		 );
 		 
@@ -2384,18 +2354,7 @@
 				7,
 				8,
 				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16,
-				17,
-				18,
-				19,
-				20,
-				21
+				10
 		 
 		 );
 	///////////////////// LISTA CLIENTES ///////////////////////////////////////////////////////	

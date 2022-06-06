@@ -7,6 +7,10 @@
 	 $testecampos->setConteudoHTML("input", "", "teste");
 	 //$teste = new GenericaTabelaBD();
 	
+	
+	
+	
+	
 /////////////////////////////////////////////////////////////////	
 /////////////////////////////////////////////////////////////////	
 /////////////////////////////////////////////////////////////////	
@@ -213,12 +217,13 @@
 		 public $consumoTotal;
 		 
 		 
-		public function __construct($ma, $sd){
+		public function __construct($ma, $sd, $naves){
 			 $this->mesAloja = $ma;
 			 $this->semanaDescarte = $sd;
 			 $this->semanaAlojado = 0;
 			 $this->producaoTotal = 0;
 			 $this->consumoTotal = 0;
+			 $this->qtde_aves = $naves;
 		}
 		
 		public function Alojamento($dia, $loteProducao, $loteConsumo){
@@ -226,12 +231,12 @@
 			if(($this->semanaAlojado>0 && $this->semanaAlojado<$this->semanaDescarte)|| ($this->semanaAlojado == 0 && $this->mesAloja == date('m', $dia))){
 			 
 			 
-				 $ProducaoCXs = ($loteProducao[$this->semanaAlojado] * 7 * 2000)/360;
+				 $ProducaoCXs = ($loteProducao[$this->semanaAlojado] * 7 * $this->qtde_aves)/360;
 				 echo" - ProducaoCXs=". number_format($ProducaoCXs, 2, ',', '.');
 				 $this->producaoTotal += $ProducaoCXs;
 				 
 				 
-				 $consumoKg = ($loteConsumo[$this->semanaAlojado] * 7 * 2000)/1000;
+				 $consumoKg = ($loteConsumo[$this->semanaAlojado] * 7 * $this->qtde_aves)/1000;
 				 echo" - ConsumoKg=". $consumoKg;
 				 $this->consumoTotal += $consumoKg;
 				 
@@ -258,29 +263,27 @@
 	}
 	 
 	 
-	 $lote1 = new LoteGalinhas(1,90);
+	 $lote1 = new LoteGalinhas(1,90,1000);
 	 
 	 
-	 
-	 $lote1AlojaMes = 1;
-	 $lote1DescarteSemana = 90;
-	 $lote1Alojado = 0;
-	 $lote1TotalProducao = 0;
-	 $lote1TotalConsumo = 0;
-	 
-	for($i=0; $i<140; $i++){
+	
+	for($i=0; $i<$lote1->semanaDescarte; $i++){
 		
 		 $dia = strtotime('+'. $i .' weeks', strtotime(date("d/m/Y")));
 		 
 		 
 		 
-		 echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
+		 echo "<br> ". $i ." - ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
 		 
 		 $lote1->Alojamento($dia, $loteProducao, $loteConsumo);
 
 		 echo" - ProducaoCXs=".  number_format($lote1->producaoTotal, 2, ',', '.'); 
 		 echo" - ConsumoKg=". number_format($lote1->consumoTotal, 2, ',', '.');
-		 echo" - KG_Caixa=".  number_format($lote1->consumoTotal / $lote1->producaoTotal, 2, ',', '.');
+		 
+		 if($lote1->producaoTotal == 0) $kgcx = 1;
+		 else $kgcx = $lote1->consumoTotal / $lote1->producaoTotal;
+		 
+		 echo" - KG_Caixa=".  number_format($kgcx, 2, ',', '.');
 				 
 		
 	}
@@ -288,8 +291,12 @@
 	 echo"<br><br>RESULTADO LOTE1";
 	 echo"<br>lote1TotalProducaoCXs = ".  number_format($lote1->producaoTotal, 2, ',', '.'); 
 	 echo"<br>lote1TotalConsumoKG = ". number_format($lote1->consumoTotal, 2, ',', '.');
-	 echo"<br>Media KG Por Caixa = ".  number_format($lote1->consumoTotal / $lote1->producaoTotal, 2, ',', '.');
 	 
+	 if($lote1->producaoTotal == 0) $kgcx = 1;
+	 else $kgcx = $lote1->consumoTotal / $lote1->producaoTotal;
+	 echo"<br>Media KG Por Caixa = ".  number_format($kgcx, 2, ',', '.');
+	 echo"<br>Número de aves = ".  number_format($lote1->qtde_aves, 0, ',', '.');
+	
 	 
 	 
 	 
