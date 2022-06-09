@@ -359,8 +359,8 @@
 			 $this->loteConsumo[89] = 110;
 			 
 			 //---------------------------------------------------------------
-			 $this->loteConsumoAcumulado = array();
-			 $this->loteConsumoAcumulado[0] = 98;
+			$this->loteConsumoAcumulado = array();
+			$this->loteConsumoAcumulado[0] = 98;
 			$this->loteConsumoAcumulado[1] = 231;
 			$this->loteConsumoAcumulado[2] = 399;
 			$this->loteConsumoAcumulado[3] = 595;
@@ -461,46 +461,16 @@
 			 return ($this->loteProducao[$semana-1] * $numAves);
 			
 		}
+		
+		public function getProducaoSemana($numAves, $semana){
+			 
+			 
+			 
+		}
 		public function getProducaoTotal($numAves, $semana){
 			 
 			 return ($this->loteProducaoAcumulado[$semana-1] * $numAves);
 			
-		}
-		
-		
-		public function getConsumoTotal($numAves, $semana){
-/*			 
-//<<<<<<< HEAD
-				 $ProducaoCXs = ($loteProducao[$this->semanaAlojado] * 7 * $this->qtde_aves)/360;
-				 echo" - ProducaoCXs=". number_format($ProducaoCXs, 2, ',', '.');
-				 $this->producaoTotal += $ProducaoCXs;
-				 
-				 
-				 $consumoKg = ($loteConsumo[$this->semanaAlojado] * 7 * $this->qtde_aves)/1000;
-				 echo" - ConsumoKg=". $consumoKg;
-				 $this->consumoTotal += $consumoKg;
-				 
-				if($ProducaoCXs>0){
-					 
-					 $KG_Caixa = ($consumoKg / $ProducaoCXs);
-					 echo" - KG_Caixa=".  number_format($KG_Caixa, 2, ',', '.');
-				 
-				}
-
-
-				
-				 
-				 $this->semanaAlojado++;
-				 echo"--- Alojado=". ($this->semanaAlojado);
-				 
-				 
-			
-
-//=======
-*/
-			 return ($this->loteConsumoAcumulado[$semana-1] * $numAves);
-			
-//>>>>>>> 9839e05619c20885b63520b715ac611dc70cdcc8
 		}
 		
 		public function getConsumo($numAves, $semana){
@@ -509,6 +479,20 @@
 			
 		}
 		
+		public function getConsumoSemana($numAves, $semana){
+			 
+			 return ($this->getConsumo($numAves, $semana)/1000)*7;
+			 
+		}
+		
+		
+		public function getConsumoTotal($numAves, $semana){
+
+			 return ($this->loteConsumoAcumulado[$semana-1] * $numAves);
+			
+		}
+		
+		
 	
 		
 		 
@@ -516,62 +500,33 @@
 	 
 	
 		
-	 $custoAve = 3.1;
+	 $custoAve = 3.4;
 	 $custoVacinasAve = 1.35;
 	 $custoInicial = 2.17;
 	 $custoCresc = 1.91;
-	 $custoPostura = 2.06;
+	 $custoPostura = 1.95;
 	 
-//<<<<<<< HEAD
-	// $lote1 = new LoteGalinhas(1,90,1000);
-//=======
+
 	 $lote1 = new LoteGalinhas($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
 	 $nAves = 2000;
-	 $semana = 80;
+	 $semana = 3;
 	 
 	 echo "<br>Qtde Aves =  ". $nAves;
 	 echo "<br>SEMANA =  ". $semana;
 	 echo"<Br>";
-//>>>>>>> 9839e05619c20885b63520b715ac611dc70cdcc8
 	 
 	 $producaoCXTotal = $lote1->getProducaoTotal($nAves, $semana)/360;
-	 echo "<br>Acumulado ". $producaoCXTotal ." CXs";
-	 echo "<br>Na semana ". ($lote1->getProducao($nAves, $semana)/360)*7 ." CXs";
+	 //echo "<br>Acumulado ". $producaoCXTotal ." CXs";
+	 echo "<br>Produção na semana ". ($lote1->getProducao($nAves, $semana)/360)*7 ." CXs";
 	 echo "<br>Taxa Producao Dia ". ($lote1->loteProducao[$semana-1])*100 ."%";
-	 echo "<br>Acumulado ". $lote1->getConsumoTotal($nAves, $semana)/1000 ." KG";
-	 echo "<br>Na semana ". ($lote1->getConsumo($nAves, $semana)/1000)*7 ." KG";
-	 echo "<br>Consumo Dia ". ($lote1->loteConsumo[$semana-1])/1000*$nAves ." KG";
-	 echo "<br>Consumo/CX ". ($lote1->getConsumoTotal($nAves, $semana)/1000)/($lote1->getProducaoTotal($nAves, $semana)/360);
+	 //echo "<br>Acumulado ". $lote1->getConsumoTotal($nAves, $semana)/1000 ." KG";
+	 echo "<br>Consumo na semana ". $lote1->getConsumoSemana($nAves, $semana) ." KG";
+	 //echo "<br>Consumo Dia ". ($lote1->loteConsumo[$semana-1])/1000*$nAves ." KG";
 	 
-//<<<<<<< HEAD
-/*	
-	for($i=0; $i<$lote1->semanaDescarte; $i++){
-		
-		 $dia = strtotime('+'. $i .' weeks', strtotime(date("d/m/Y")));
-		 
-		 
-		 
-		 echo "<br> ". $i ." - ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
-		 
-		 $lote1->Alojamento($dia, $loteProducao, $loteConsumo);
+	 
+	 //if($producaoCXTotal<=0) echo "<br>Consumo/CX 0.0";
+	 //else echo "<br>Consumo/CX ". ($lote1->getConsumoTotal($nAves, $semana)/1000)/ $producaoCXTotal;
 
-		 echo" - ProducaoCXs=".  number_format($lote1->producaoTotal, 2, ',', '.'); 
-		 echo" - ConsumoKg=". number_format($lote1->consumoTotal, 2, ',', '.');
-		 
-		 if($lote1->producaoTotal == 0) $kgcx = 1;
-		 else $kgcx = $lote1->consumoTotal / $lote1->producaoTotal;
-		 
-		 echo" - KG_Caixa=".  number_format($kgcx, 2, ',', '.');
-				 
-		
-	}
-		 
-	 echo"<br><br>RESULTADO LOTE1";
-	 echo"<br>lote1TotalProducaoCXs = ".  number_format($lote1->producaoTotal, 2, ',', '.'); 
-	 echo"<br>lote1TotalConsumoKG = ". number_format($lote1->consumoTotal, 2, ',', '.');
-//=======
-*/	 
-	 
 			
 	 echo"<br>";
 	 $consumoInicial = ($lote1->getConsumoTotal($nAves, 8)/1000);
@@ -600,26 +555,23 @@
 	 echo "<br>Custo Total Lote = R$ ". $custoTotalLote;
 
 	 echo"<br>";
-	 echo "<br>Custo/CX = R$ ". $custoTotalLote / $producaoCXTotal ;
+	 if($producaoCXTotal<=0) echo "<br>Custo/CX = R$ 0.00";
+	 else echo "<br>Custo/CX = R$ ". $custoTotalLote / $producaoCXTotal ;
 	 echo"<br>";
 	 echo"<br>";
 	 echo"<br>/////////////////////////////////////////////////////////";
 	 echo"<br>";
-	 
-//>>>>>>> 9839e05619c20885b63520b715ac611dc70cdcc8
-/*	 
-	 if($lote1->producaoTotal == 0) $kgcx = 1;
-	 else $kgcx = $lote1->consumoTotal / $lote1->producaoTotal;
-	 echo"<br>Media KG Por Caixa = ".  number_format($kgcx, 2, ',', '.');
-	 echo"<br>Número de aves = ".  number_format($lote1->qtde_aves, 0, ',', '.');
-*/	
-	 
-	 
-	 
-	 
-	 
-	 
 
+
+
+
+
+ 
+	 
+	 
+	 
+	 
+/*
 	 $pinteiro = new Aviario("2000-02-23", true, "2000-02-23");
 	 $recria = new Aviario("2000-02-23", true, "2000-02-23");
 	 
@@ -760,7 +712,7 @@
 				 
 		
 	
-		 
+	*/	 
  
 	
 	
