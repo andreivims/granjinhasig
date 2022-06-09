@@ -1,0 +1,12 @@
+--------------iniciar------
+git init
+git status
+git pull
+---------------------------
+
+--------------alterar------
+git add .
+git status
+git commit -m "nome"
+git push
+---------------------------
