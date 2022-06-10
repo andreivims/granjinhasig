@@ -456,7 +456,7 @@
 //>>>>>>> 9839e05619c20885b63520b715ac611dc70cdcc8
 		}
 		
-		public function getProducao($numAves, $semana){
+		public function getProducaoDia($numAves, $semana){
 			 
 			 return ($this->loteProducao[$semana-1] * $numAves);
 			
@@ -464,7 +464,7 @@
 		
 		public function getProducaoSemana($numAves, $semana){
 			 
-			 
+			return $this->getProducaoDia($numAves, $semana)*7 ;
 			 
 		}
 		public function getProducaoTotal($numAves, $semana){
@@ -473,15 +473,103 @@
 			
 		}
 		
-		public function getConsumo($numAves, $semana){
+		
+		//------------------------------------
+		public function getConsumoInicialDia($numAves, $semana){
+			 if($semana<=8)
+				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
+			 else return 0;
+			
+		}
+		
+		public function getConsumoInicialSemana($numAves, $semana){
+			 return $this->getConsumoInicialDia($numAves, $semana)*7;
+			
+		}
+		
+		public function getConsumoInicialTotal($numAves, $semana){
+			 if($semana<=8)
+				 return ($this->getConsumoTotal($numAves, $semana)/1000);
+			 else return ($this->getConsumoTotal($numAves, 8)/1000);
+		}
+		//-------------------------------------------
+		
+		//------------------------------------
+		public function getConsumoCrescimentoDia($numAves, $semana){
+			 if($semana>8 && $semana <=15)
+				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
+			 else return 0;
+			
+		}
+		
+		public function getConsumoCrescimentoSemana($numAves, $semana){
+			 return $this->getConsumoCrescimentoDia($numAves, $semana)*7;
+			
+		}
+		
+		public function getConsumoCrescimentoTotal($numAves, $semana){
+			 if($semana<=8)
+				 return 0;
+			 else if($semana>8 && $semana <=15)
+				 return ($this->getConsumoTotal($numAves, $semana)/1000) - $this->getConsumoInicialTotal($numAves, $semana);
+			 else return ($this->getConsumoTotal($numAves, 15)/1000) - $this->getConsumoInicialTotal($numAves, $semana);
+		}
+		//-------------------------------------------
+		
+		
+		//------------------------------------
+		public function getConsumoPrePosturaDia($numAves, $semana){
+			 if($semana>15 && $semana <=17)
+				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
+			 else return 0;
+			
+		}
+		
+		public function getConsumoPrePosturaSemana($numAves, $semana){
+			 return $this->getConsumoPrePosturaDia($numAves, $semana)*7;
+			
+		}
+		
+		public function getConsumoPrePosturaTotal($numAves, $semana){
+			 if($semana<=15)
+				 return 0;
+			 else if($semana>15 && $semana <=17)
+				 return ($this->getConsumoTotal($numAves, $semana)/1000) - $this->getConsumoInicialTotal($numAves, $semana) - $this->getConsumoCrescimentoTotal($numAves, $semana);
+			 else return ($this->getConsumoTotal($numAves, 17)/1000) - $this->getConsumoInicialTotal($numAves, $semana) - $this->getConsumoCrescimentoTotal($numAves, $semana);
+		}
+		//-------------------------------------------
+		
+		//------------------------------------
+		public function getConsumoPosturaDia($numAves, $semana){
+			 if($semana>17)
+				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
+			 else return 0;
+			
+		}
+		
+		public function getConsumoPosturaSemana($numAves, $semana){
+			 return $this->getConsumoPosturaDia($numAves, $semana)*7;
+			
+		}
+		
+		public function getConsumoPosturaTotal($numAves, $semana){
+			 if($semana>17)
+				 return ($this->getConsumoTotal($numAves, $semana)/1000) - $this->getConsumoInicialTotal($numAves, $semana) - $this->getConsumoCrescimentoTotal($numAves, $semana) - $this->getConsumoPrePosturaTotal($numAves, $semana);
+			 else return 0;
+		}
+		//-------------------------------------------
+		
+		
+		
+		public function getConsumoDia($numAves, $semana){
 			 
-			 return ($this->loteConsumo[$semana-1] * $numAves);
+			 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
 			
 		}
 		
 		public function getConsumoSemana($numAves, $semana){
 			 
-			 return ($this->getConsumo($numAves, $semana)/1000)*7;
+			 return $this->getConsumoDia($numAves, $semana)*7;
 			 
 		}
 		
@@ -504,38 +592,71 @@
 	 $custoVacinasAve = 1.35;
 	 $custoInicial = 2.17;
 	 $custoCresc = 1.91;
+	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
 	 
 
 	 $lote1 = new LoteGalinhas($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
 	 $nAves = 2000;
-	 $semana = 3;
+	 $semana = 30;
 	 
 	 echo "<br>Qtde Aves =  ". $nAves;
 	 echo "<br>SEMANA =  ". $semana;
 	 echo"<Br>";
 	 
-	 $producaoCXTotal = $lote1->getProducaoTotal($nAves, $semana)/360;
 	 //echo "<br>Acumulado ". $producaoCXTotal ." CXs";
-	 echo "<br>Produção na semana ". ($lote1->getProducao($nAves, $semana)/360)*7 ." CXs";
-	 echo "<br>Taxa Producao Dia ". ($lote1->loteProducao[$semana-1])*100 ."%";
 	 //echo "<br>Acumulado ". $lote1->getConsumoTotal($nAves, $semana)/1000 ." KG";
-	 echo "<br>Consumo na semana ". $lote1->getConsumoSemana($nAves, $semana) ." KG";
 	 //echo "<br>Consumo Dia ". ($lote1->loteConsumo[$semana-1])/1000*$nAves ." KG";
-	 
-	 
 	 //if($producaoCXTotal<=0) echo "<br>Consumo/CX 0.0";
 	 //else echo "<br>Consumo/CX ". ($lote1->getConsumoTotal($nAves, $semana)/1000)/ $producaoCXTotal;
 
+
+	 $producaoCXTotal = $lote1->getProducaoTotal($nAves, $semana)/360;
+	 
+	 echo "<br>Produção/Dia ". ($lote1->getProducaoDia($nAves, $semana)/360) ." CXs";
+	 echo "<br>Produção/Semana ". ($lote1->getProducaoSemana($nAves, $semana)/360) ." CXs";
+	 echo "<br>Taxa Producao Dia ". ($lote1->loteProducao[$semana-1])*100 ."%";
+	 echo"<Br>";
+	 //echo "<br>Consumo/Dia ". $lote1->getConsumoDia($nAves, $semana) ." KG";
+	 //echo "<br>Consumo/Semana ". $lote1->getConsumoSemana($nAves, $semana) ." KG";
+	 echo "<br>Consumo Inicial/Dia ". $lote1->getConsumoInicialDia($nAves, $semana) ." KG";
+	 echo "<br>Consumo Inicial/Semana ". $lote1->getConsumoInicialSemana($nAves, $semana) ." KG";
+	 echo "<br>Consumo Total Inicial ". $lote1->getConsumoInicialTotal($nAves, $semana) ." KG";
+	 echo "<bR>";
+	 echo "<br>Consumo Crescimento/Dia ". $lote1->getConsumoCrescimentoDia($nAves, $semana) ." KG";
+	 echo "<br>Consumo Crescimento/Semana ". $lote1->getConsumoCrescimentoSemana($nAves, $semana) ." KG";
+	 echo "<br>Consumo Total Crescimento ". $lote1->getConsumoCrescimentoTotal($nAves, $semana) ." KG";
+	 echo "<bR>";
+	 echo "<br>Consumo Pré-Postura/Dia ". $lote1->getConsumoPrePosturaDia($nAves, $semana) ." KG";
+	 echo "<br>Consumo Pré-Postura/Semana ". $lote1->getConsumoPrePosturaSemana($nAves, $semana) ." KG";
+	 echo "<br>Consumo Total Pré-Postura ". $lote1->getConsumoPrePosturaTotal($nAves, $semana) ." KG";
+	 echo "<bR>";
+	 echo "<br>Consumo Postura/Dia ". $lote1->getConsumoPosturaDia($nAves, $semana) ." KG";
+	 echo "<br>Consumo Postura/Semana ". $lote1->getConsumoPosturaSemana($nAves, $semana) ." KG";
+	 echo "<br>Consumo Total Postura ". $lote1->getConsumoPosturaTotal($nAves, $semana) ." KG";
+	 
+	 
+	 
+////////////////////////////////////////////////////////////////////////
 			
 	 echo"<br>";
 	 $consumoInicial = ($lote1->getConsumoTotal($nAves, 8)/1000);
-	 $consumoCrescimento = ($lote1->getConsumoTotal($nAves, 17)/1000)-$consumoInicial;
-	 $consumoPostura = (($lote1->getConsumoTotal($nAves, $semana)/1000) - $consumoInicial - $consumoCrescimento);
-	 
+	 $consumoCrescimento = ($lote1->getConsumoTotal($nAves, 15)/1000) - $consumoInicial;
+	 $consumoPrePostura = ($lote1->getConsumoTotal($nAves, 17)/1000) - $consumoInicial - $consumoCrescimento;
+	 $consumoPostura = (($lote1->getConsumoTotal($nAves, $semana)/1000) - $consumoInicial - $consumoCrescimento - $consumoPrePostura);
+ 
+ 
+ 
+ 
+ /*
+ echo"<Br>-------------------------<Br>";
 	 echo "<br>Consumo Inicial ". $consumoInicial ." KG";
 	 echo "<br>Consumo Crescimento ". $consumoCrescimento ." KG";
+	 echo "<br>Consumo Pré-Postura ". $consumoPrePostura ." KG";
 	 echo "<br>Consumo Postura ". $consumoPostura ." KG";
+
+
+
 	 
 	 echo"<br>";
 	 $custoAveTotal = $custoAve * $nAves;
@@ -562,7 +683,7 @@
 	 echo"<br>/////////////////////////////////////////////////////////";
 	 echo"<br>";
 
-
+*/
 
 
 
