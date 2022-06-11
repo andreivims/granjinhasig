@@ -56,18 +56,7 @@
 		 public $loteConsumo;
 		 public $loteConsumoAcumulado;
 		 
-		 
-/* <<<<<<< HEAD
-		public function __construct($ma, $sd, $naves){
-			 $this->mesAloja = $ma;
-			 $this->semanaDescarte = $sd;
-			 $this->semanaAlojado = 0;
-			 $this->producaoTotal = 0;
-			 $this->consumoTotal = 0;
-			 $this->qtde_aves = $naves;
-		}
-=======
-*/
+
 			public function __construct($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura){
 			
 			 $this->precoAve = $custoAve;
@@ -638,7 +627,31 @@
 	 
 	 
 ////////////////////////////////////////////////////////////////////////
+	 $AlojamentoDia = "2022-06-04";
+	 $totalDias = 630;
+	 $semanaNumero = 0;
+	 for($i=0;$i<$totalDias;$i++)
+	{	 
+		 $diadiadia = strtotime($AlojamentoDia . ' + '. ($i+1) .' days');
+		 
+		 $diaSemana = date('w', $diadiadia);
+		 if($i==0 && $diaSemana!=0)
+			 echo"<Br> [ " . date('Y-m-d', $diadiadia);
+		 
+		 if($diaSemana==0)
+			 echo"<Br> [ " . date('Y-m-d', $diadiadia);
+		 else if($diaSemana==6)
+		 {	$semanaNumero++; echo" - " . date('Y-m-d', $diadiadia). " ] - $semanaNumero"; }
 			
+		 if($i==$totalDias-1 && $diaSemana!=6)
+		 {	$semanaNumero++; echo" - " . date('Y-m-d', $diadiadia). " ] - $semanaNumero"; }
+		 
+	}
+
+////////////////////////////////////////////////////////////////////////
+
+
+		
 	 echo"<br>";
 	 $consumoInicial = ($lote1->getConsumoTotal($nAves, 8)/1000);
 	 $consumoCrescimento = ($lote1->getConsumoTotal($nAves, 15)/1000) - $consumoInicial;
