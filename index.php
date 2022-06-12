@@ -56,8 +56,10 @@
 		 public $loteConsumo;
 		 public $loteConsumoAcumulado;
 		 
+		 public $loteDataAlojamento;
+		 
 
-			public function __construct($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura){
+			public function __construct($dataAlojamento, $custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura){
 			
 			 $this->precoAve = $custoAve;
 			 $this->precoVacinasAve = $custoVacinasAve;
@@ -65,7 +67,7 @@
 			 $this->precoKgCrescimento = $custoCresc;
 			 $this->precoKgPostura = $custoPostura;
 			 
-			
+			 $this->loteDataAlojamento = $dataAlojamento;
 			 
 			 $this->loteProducao = array();
 			 $this->loteProducao[0] = 0.0;
@@ -439,10 +441,8 @@
 			$this->loteConsumoAcumulado[87] = 60305;
 			$this->loteConsumoAcumulado[88] = 61075;
 			$this->loteConsumoAcumulado[89] = 61845;
-		//---------------------------------------------------------------	
+		  //---------------------------------------------------------------	
 
-	 
-//>>>>>>> 9839e05619c20885b63520b715ac611dc70cdcc8
 		}
 		
 		public function getProducaoDia($numAves, $semana){
@@ -570,6 +570,24 @@
 		}
 		
 		
+		
+		
+		public function getSemanaLote($dataAtual){
+
+			 $firstDate  = new DateTime($this->loteDataAlojamento);
+			 $secondDate = new DateTime($dataAtual);
+			 $intvl = $firstDate->diff($secondDate);
+			 //echo $intvl->y . " year, " . $intvl->m." months and ".$intvl->d." day " . $intvl->days . " days "; 
+			 
+			 
+			 return intval($intvl->days / 7); 
+			 
+			 
+			 
+			
+		}
+		
+		
 	
 		
 		 
@@ -583,11 +601,12 @@
 	 $custoCresc = 1.91;
 	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
-	 
+	 $dataAlojamento = "2021-08-20";
 
-	 $lote1 = new LoteGalinhas($custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
+	 $lote1 = new LoteGalinhas($dataAlojamento, $custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPostura);
 	 $nAves = 2000;
 	 $semana = 30;
+	 $semana = $lote1->getSemanaLote(date("Y-m-d"));
 	 
 	 echo "<br>Qtde Aves =  ". $nAves;
 	 echo "<br>SEMANA =  ". $semana;
@@ -624,12 +643,16 @@
 	 echo "<br>Consumo Postura/Semana ". $lote1->getConsumoPosturaSemana($nAves, $semana) ." KG";
 	 echo "<br>Consumo Total Postura ". $lote1->getConsumoPosturaTotal($nAves, $semana) ." KG";
 	 
+	 echo"<Br><Br>";
+	 echo $lote1->getSemanaLote(date("Y-m-d"));
+	 echo"<Br><Br>";
 	 
 	 
 ////////////////////////////////////////////////////////////////////////
 	 $AlojamentoDia = "2022-06-04";
 	 $totalDias = 630;
 	 $semanaNumero = 0;
+	 
 	 for($i=0;$i<$totalDias;$i++)
 	{	 
 		 $diadiadia = strtotime($AlojamentoDia . ' + '. ($i+1) .' days');
