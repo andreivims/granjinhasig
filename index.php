@@ -23,17 +23,13 @@
 	
 	
 	  
-	class Aviario{
+	class NucleoGranja{
 	
-		public $dataAlojamento;
-		public $vazio;
-		public $dataDesalojamento;
+		public $lotes;
 		
-		public function __construct($dataAloja, $vazi, $dataDesaloja){
+		public function __construct($lts){
 		
-			$this->dataAlojamento = $dataAloja;
-			$this->vazio = $vazi;
-			$this->dataDesalojamento = $dataDesaloja;
+			 $this->lotes = $lts;	 
 		
 		}
 		
@@ -45,17 +41,7 @@
 		 public $loteDataAlojamento;
 		 public $loteNumeroAves;
 		 
-		 
-		 public $precoAve;
-		 public $precoVacinasAve;
-		 public $precoKgInicial;
-		 public $consumoTotalInicial;
-		 
-		 public $precoKgCrescimento;
-		 public $consumoTotalCrescimento;
-		 
-		 public $precoKgPostura;
-		 
+		
 		 public $loteProducao;
 		 public $loteProducaoAcumulado;
 		 public $loteConsumo;
@@ -64,19 +50,12 @@
 		 
 		 
 
-		public function __construct($dataAlojamento, $nAves, $custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPre, $custoPostura){
+		public function __construct($dataAlojamento, $nAves){
 		
 			 $this->loteDataAlojamento = $dataAlojamento;
 			 $this->loteNumeroAves = $nAves;
 			 
-			 $this->precoAve = $custoAve;
-			 $this->precoVacinasAve = $custoVacinasAve;
-			 $this->precoKgInicial = $custoInicial;
-			 $this->precoKgCrescimento = $custoCresc;
-			 $this->precoKgPrePostura = $custoPre;
-			 $this->precoKgPostura = $custoPostura;
-			 
-			 
+			
 			 
 			 $this->loteProducao = array();
 			 $this->loteProducao[0] = 0.0;
@@ -457,7 +436,9 @@
 		public function getProducaoDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
-			 return ($this->loteProducao[$semana-1] * $numAves);
+			 if($semana<90)
+				 return ($this->loteProducao[$semana-1] * $numAves);
+			 else return 0;
 			
 		}
 		
@@ -578,7 +559,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana>17)
+			 if($semana>17 && $semana <=90)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
 			 else return 0;
 			
@@ -634,7 +615,8 @@
 		}
 		
 		
-		
+//---------------------------------------------------------------------------		
+//---------------------------------------------------------------------------
 		
 		public function getSemanaLote($dataAtual){
 
@@ -643,44 +625,97 @@
 			 $intvl = $firstDate->diff($secondDate);
 			 //echo $intvl->y . " year, " . $intvl->m." months and ".$intvl->d." day " . $intvl->days . " days "; 
 			 
-			 return intval($intvl->days / 7); 
+			 return intval($intvl->days / 7)+1; 
 			 
 			
 		}
 		
-	
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------	
 
 		
-		 
-	}
-	 
-	
+		public function getConsumoInicialMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 $qtde += $this->getConsumoInicialDia($ano . "-" . $mes . "-" . ($i+1));
+			}
+			
+			 return $qtde; 
+			 
+		}
 		
-	 $custoAve = 3.4;
-	 $custoVacinasAve = 1.35;
-	 $custoInicial = 2.17;
-	 $custoCresc = 1.91;
-	 $custoPre = 1.96;
-	 $custoPostura = 1.95;
-	 
-	 $HOJE = date("Y-m-d");
-	 $HOJE = date("2022-01-20");
-	 
-	 
-	 $lote1 = new LoteGalinhas("2021-08-20", 2000, $custoAve, $custoVacinasAve, $custoInicial, $custoCresc, $custoPre, $custoPostura);
-	 
-	 $nAves = 2000;
-	 $nAves = $lote1->loteNumeroAves;
-	 
-	 $semana = 30;
-	 $semana = $lote1->getSemanaLote($HOJE);
-	 
-	 echo "<br>Qtde Aves =  ". $nAves;
-	 echo "<br>SEMANA =  ". $semana;
-	 echo"<Br>";
-	 
-
-
+		
+		public function getConsumoCrescimentoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 $qtde += $this->getConsumoCrescimentoDia($ano . "-" . $mes . "-" . ($i+1));
+			}
+			
+			 return $qtde; 
+			 
+		}
+		
+		public function getConsumoPrePosturaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 $qtde += $this->getConsumoPrePosturaDia($ano . "-" . $mes . "-" . ($i+1));
+			}
+			
+			 return $qtde; 
+			 
+		}
+		
+		public function getConsumoPosturaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 $qtde += $this->getConsumoPosturaDia($ano . "-" . $mes . "-" . ($i+1));
+			}
+			
+			 return $qtde; 
+			 
+		}
+		
+		public function getProducaoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 $qtde += $this->getProducaoDia($ano . "-" . $mes . "-" . ($i+1));
+			}
+			
+			 return $qtde; 
+			 
+		}
+		
+		
+		
+		
+		
+		
+	 /*
 	 //$producaoCXTotal = $lote1->getProducaoTotal($HOJE)/360;
 	 
 	 echo "<br>Produção/Dia ". ($lote1->getProducaoDia($HOJE)/360) ." CXs";
@@ -705,232 +740,62 @@
 	 echo "<br>Consumo Postura/Semana ". $lote1->getConsumoPosturaSemana($HOJE) ." KG";
 	 echo "<br>Consumo Total Postura ". $lote1->getConsumoPosturaTotal($HOJE) ." KG";
 	 
-	 
-	 
-	 
-	 
 	 echo"<Br>-------------<br>";
 	
-////////////////////////////////////////////////////////////////////////
-	 $AlojamentoDia = "2022-06-04";
-	 $totalDias = 630;
-	 $semanaNumero = 0;
-	 
-	 for($i=0;$i<$totalDias;$i++)
-	{	 
-		 $diadiadia = strtotime($AlojamentoDia . ' + '. ($i+1) .' days');
-		 
-		 $diaSemana = date('w', $diadiadia);
-		 if($i==0 && $diaSemana!=0)
-			 echo"<Br> [ " . date('Y-m-d', $diadiadia);
-		 
-		 if($diaSemana==0)
-			 echo"<Br> [ " . date('Y-m-d', $diadiadia);
-		 else if($diaSemana==6)
-		 {	$semanaNumero++; echo" - " . date('Y-m-d', $diadiadia). " ] - $semanaNumero"; }
-			
-		 if($i==$totalDias-1 && $diaSemana!=6)
-		 {	$semanaNumero++; echo" - " . date('Y-m-d', $diadiadia). " ] - $semanaNumero"; }
+	 */
+		
 		 
 	}
-
-////////////////////////////////////////////////////////////////////////
-
-
-		
-	 echo"<br>";
-	
- 
- 
- /*
- echo"<Br>-------------------------<Br>";
-	 echo "<br>Consumo Inicial ". $consumoInicial ." KG";
-	 echo "<br>Consumo Crescimento ". $consumoCrescimento ." KG";
-	 echo "<br>Consumo Pré-Postura ". $consumoPrePostura ." KG";
-	 echo "<br>Consumo Postura ". $consumoPostura ." KG";
-
-
-
-	 
-	 echo"<br>";
-	 $custoAveTotal = $custoAve * $nAves;
-	 $custoVacinasTotal = $custoVacinasAve * $nAves;
-	 $custoInicialTotal = $custoInicial * $consumoInicial;
-	 $custoCrescimentoTotal = $custoCresc * $consumoCrescimento ;
-	 $custoPosturaTotal = $custoPostura * $consumoPostura;
-	 
-	 echo "<br>Custo Pintinhas = R$ ". $custoAveTotal ."";
-	 echo "<br>Custo Vacinas = R$ ". $custoVacinasTotal ."";
-	 echo "<br>Custo Inicial = R$ ". $custoInicialTotal ."";
-	 echo "<br>Custo Crescimento = R$ ". $custoCrescimentoTotal ."";
-	 echo "<br>Custo Postura = R$ ". $custoPosturaTotal ."";
-	 
-	 echo"<br>";
-	 $custoTotalLote = $custoAveTotal + $custoVacinasTotal + $custoVacinasTotal + $custoInicialTotal + $custoCrescimentoTotal +$custoPosturaTotal;
-	 echo "<br>Custo Total Lote = R$ ". $custoTotalLote;
-
-	 echo"<br>";
-	 if($producaoCXTotal<=0) echo "<br>Custo/CX = R$ 0.00";
-	 else echo "<br>Custo/CX = R$ ". $custoTotalLote / $producaoCXTotal ;
-	 echo"<br>";
-	 echo"<br>";
-	 echo"<br>/////////////////////////////////////////////////////////";
-	 echo"<br>";
-
-*/
-
-
-
- 
-	 
-	 
-	 
-	 
-/*
-	 $pinteiro = new Aviario("2000-02-23", true, "2000-02-23");
-	 $recria = new Aviario("2000-02-23", true, "2000-02-23");
-	 
-	 $aviarios = array();
-	 $aviarios[0] = new Aviario("2000-02-23", true, "2000-02-23");
-	 $aviarios[1] = new Aviario("2000-02-23", true, "2000-02-23");
-	 $aviarios[2] = new Aviario("2000-02-23", true, "2000-02-23");
-	 $aviarios[3] = new Aviario("2000-02-23", true, "2000-02-23");
-	 $aviarios[4] = new Aviario("2000-02-23", true, "2000-02-23");
-	 $aviarios[5] = new Aviario("2000-02-23", true, "2000-02-23");
-	 
-	 
-	$diadia = "2021-05-15";
-	$mudou = false;
-
-	for($i=0;$i<1500;$i++){
-		
-		 
-		 
-		if($pinteiro->vazio){//aloja?
-		
-			$podeAlojar = false;
-			for($j=0;$j<count($aviarios);$j++){
-			 
-				if($aviarios[$j]->vazio){
-					$podeAlojar = true;
-				}else{
-					
-					if($aviarios[$j]->dataAlojamento <= date('Y-m-d', strtotime($diadia . ' - '. ((80*7)) .' days'))){//50dias pinteiro, 55 dias recria e 10 dias de vazio sanitario
-						 $podeAlojar = true;
-					}
-				}
-			
-			} 
-			if($podeAlojar){
-				if($pinteiro->dataDesalojamento <= date('Y-m-d', strtotime($diadia . ' - '. 10 .' days'))){//10 dias de vazio sanitario
-					 $pinteiro->dataAlojamento = $diadia;
-					 $pinteiro->vazio = false;
-					 $mudou = true;
-				}
-			}
-			
-		}else if(!$pinteiro->vazio && $pinteiro->dataAlojamento == date('Y-m-d', strtotime($diadia . ' - '. 50 .' days'))){	//desaloja
-			$pinteiro->dataDesalojamento = $diadia;
-			$pinteiro->vazio = true;
-			$mudou = true;
-			
-			
-		}
-		
-		
-		if($recria->vazio && $pinteiro->dataDesalojamento > $pinteiro->dataAlojamento){
-		 
-			$recria->dataAlojamento = $diadia;
-			$recria->vazio = false;
-			
-		}else if(!$recria->vazio && $recria->dataAlojamento <= date('Y-m-d', strtotime($diadia . ' - '. 55 .' days'))){	//desaloja recria
-			$recria->dataDesalojamento = $diadia;
-			$recria->vazio = true;
-			$mudou = true;
-			
-			
-			$alojou = false;
-			for($j=0;$j<count($aviarios);$j++){
-			 
-				if($aviarios[$j]->vazio){
-					if($aviarios[$j]->dataDesalojamento <= date('Y-m-d', strtotime($diadia . ' - '. 10 .' days'))){//10 dias de vazio sanitario
-						 $aviarios[$j]->dataAlojamento = $diadia;
-						 $aviarios[$j]->vazio = false;
-						 $alojou = true;
-						 break;
-					}
-				}
-			
-			} 
-			if(!$alojou){
-				echo"<br>ERROOOOOOOOOOOO<br>";
-				exit;
-			}
-			
-		}
-		 
-		
-		for($j=0;$j<count($aviarios);$j++){
-				 
-			if(!$aviarios[$j]->vazio && $aviarios[$j]->dataAlojamento <= date('Y-m-d', strtotime($diadia . ' - '. ((80*7)-105) .' days'))){	//desaloja aviario
-				$aviarios[$j]->dataDesalojamento = $diadia;
-				$aviarios[$j]->vazio = true;
-				$mudou = true;
-			}	
-		
-		} 
-		
-		
-		if($mudou)
-		{
-			echo"<br><br>" . date('d/m/Y', strtotime($diadia));
-			if($pinteiro->vazio){
-				echo" - Pinteiro Vazio (". date('d/m/Y', strtotime($pinteiro->dataDesalojamento)) .")";
-			}else {
-				echo" - Pinteiro Alojado (". date('d/m/Y', strtotime($pinteiro->dataAlojamento)) .")";
-			}
-			
-			if($recria->vazio){
-				echo" - Recria Vazio (". date('d/m/Y', strtotime($recria->dataDesalojamento)) .")";
-			}else {
-				echo" - Recria Alojado (". date('d/m/Y', strtotime($recria->dataAlojamento)) .")";
-			}
-			
-			for($j=0;$j<count($aviarios);$j++){
-				 
-				if($aviarios[$j]->vazio){
-					echo" - Aviário".($j+1)." Vazio (". date('d/m/Y', strtotime($aviarios[$j]->dataDesalojamento)) .")";
-				}else {
-					echo" - Aviário".($j+1)." Alojado (". date('d/m/Y', strtotime($aviarios[$j]->dataAlojamento)) .")";
-				}
-			
-			} 
-		
-		}
-
-		$mudou = false;
-		$diadia = date('Y-m-d', strtotime($diadia . ' + '. 1 .' days'));
-	}
-		 
-	 
-	 
-	 
-	 
-	 
 	 
 	
-	 //$alojamento = "2021-02-23";
-	 //$descarte = date('Y-m-d', strtotime($alojamento. ' + '. 88 .' weeks'));
-		 
-	 //echo "<br> Lote1 Alojamento [". date('d/m/Y', strtotime($alojamento)) ."] === Descarte [". date('d/m/Y', strtotime($descarte)) ."]";	
-	 //echo "<br> ". date('d/m/Y', $dia) ." - ". date('m', $dia);	
-				 
 		
+	 $custoAve = 3.4;
+	 $custoVacinasAve = 1.35;
+	 $custoInicial = 2.17;
+	 $custoCresc = 1.91;
+	 $custoPre = 1.96;
+	 $custoPostura = 1.95;
+	 
+	 $HOJE = date("Y-m-d");
+	 $HOJE = date("2022-01-20");
+	 
+	 
+	 
+	 $lote1 = new LoteGalinhas("2021-08-20", 2000);
+	 
 	
-	*/	 
- 
-	
-	
+	 
+	 
+	 
+	 $nAves = 2000;
+	 $nAves = $lote1->loteNumeroAves;
+	 
+	 $semana = 30;
+	 $semana = $lote1->getSemanaLote($HOJE);
+	 
+	 echo "<br>Qtde Aves =  ". $nAves;
+	 echo "<br>SEMANA =  ". $semana;
+	 echo"<Br>";
+	 
+	 
+	 echo"------------". $lote1->getConsumoInicialMes(2021, 11);
+	 echo"<br>------------". $lote1->getConsumoCrescimentoMes(2021, 10);
+	 echo"<br>------------". $lote1->getConsumoPrePosturaMes(2023, 12);
+	 echo"<br>------------". $lote1->getConsumoPosturaMes(2023, 6);
+	 echo"<br>------------". ($lote1->getProducaoMes(2022, 3)/360) . " CXs";
+
+
+
+	 $lotes = array();
+	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000);
+	 $lotes[1] = new LoteGalinhas("2021-02-23", 2000);
+	 $lotes[2] = new LoteGalinhas("2021-05-07", 2000);
+	 $lotes[3] = new LoteGalinhas("2021-08-20", 2000);
+	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000);
+	 
+	 $nucleo = new NucleoGranja($lotes);
+	 
+	 
 	
 	
 
