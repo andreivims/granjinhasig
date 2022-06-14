@@ -33,6 +33,97 @@
 		
 		}
 		
+		public function getConsumoInicialNucleoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					$qtde += $this->lotes[$j]->getConsumoInicialDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		public function getConsumoCrescimentoNucleoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					$qtde += $this->lotes[$j]->getConsumoCrescimentoDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		public function getConsumoPrePosturaNucleoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					$qtde += $this->lotes[$j]->getConsumoPrePosturaDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		public function getConsumoPosturaNucleoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde += $this->lotes[$j]->getConsumoPosturaDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		public function getProducaoNucleoMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = 0;
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde += $this->lotes[$j]->getProducaoDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		
 	}
 	 
 	class LoteGalinhas{
@@ -436,7 +527,7 @@
 		public function getProducaoDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
-			 if($semana<90)
+			 if($semana>=1 && $semana<90)
 				 return ($this->loteProducao[$semana-1] * $numAves);
 			 else return 0;
 			
@@ -469,7 +560,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana<=8)
+			 if($semana>= 1 && $semana<=8)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
 			 else return 0;
 			
@@ -486,7 +577,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana<=8)
+			 if($semana>= 1 && $semana<=8)
 				 return ($this->getConsumoTotal($dataAtual)/1000);
 			 else return ($this->getConsumoTotalSemana(8)/1000);
 		}
@@ -514,7 +605,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana<=8)
+			 if($semana>= 1 && $semana<=8)
 				 return 0;
 			 else if($semana>8 && $semana <=15)
 				 return ($this->getConsumoTotal($dataAtual)/1000) - $this->getConsumoInicialTotal($dataAtual);
@@ -546,7 +637,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana<=15)
+			 if($semana>= 1 && $semana<=15)
 				 return 0;
 			 else if($semana>15 && $semana <=17)
 				 return ($this->getConsumoTotal($dataAtual)/1000) - $this->getConsumoInicialTotal($dataAtual) - $this->getConsumoCrescimentoTotal($dataAtual);
@@ -558,7 +649,7 @@
 		public function getConsumoPosturaDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
-			 
+			 //echo"<Br>|||$semana|||";
 			 if($semana>17 && $semana <=90)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
 			 else return 0;
@@ -577,7 +668,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana>17)
+			 if($semana>17 && $semana <= 90)
 				 return ($this->getConsumoTotal($dataAtual)/1000) - $this->getConsumoInicialTotal($dataAtual) - $this->getConsumoCrescimentoTotal($dataAtual) - $this->getConsumoPrePosturaTotal($dataAtual);
 			 else return 0;
 		}
@@ -622,11 +713,18 @@
 
 			 $firstDate  = new DateTime($this->loteDataAlojamento);
 			 $secondDate = new DateTime($dataAtual);
-			 $intvl = $firstDate->diff($secondDate);
-			 //echo $intvl->y . " year, " . $intvl->m." months and ".$intvl->d." day " . $intvl->days . " days "; 
 			 
-			 return intval($intvl->days / 7)+1; 
+			 if($firstDate>$secondDate)
+			{
+				return -1;
+			}else
+			{
 			 
+				 $intvl = $firstDate->diff($secondDate);
+				 //echo $intvl->y . " year, " . $intvl->m." months and ".$intvl->d." day " . $intvl->days . " days "; 
+				 
+				 return intval($intvl->days / 7)+1; 
+			}
 			
 		}
 		
@@ -772,6 +870,9 @@
 	 
 	 $semana = 30;
 	 $semana = $lote1->getSemanaLote($HOJE);
+	 $semana = $lote1->getSemanaLote("2019-10-20");
+	 
+	
 	 
 	 echo "<br>Qtde Aves =  ". $nAves;
 	 echo "<br>SEMANA =  ". $semana;
@@ -796,7 +897,13 @@
 	 $nucleo = new NucleoGranja($lotes);
 	 
 	 
-	
+	 
+	 echo"<br><br><br><br><Br>";
+	 echo"------------". $nucleo->getConsumoInicialNucleoMes(2022, 1);
+	 echo"<br>------------". $nucleo->getConsumoCrescimentoNucleoMes(2022, 3);
+	 echo"<br>------------". $nucleo->getConsumoPrePosturaNucleoMes(2022, 1);
+	 echo"<br>------------". $nucleo->getConsumoPosturaNucleoMes(2022, 5);
+	 echo"<br>------------". ($nucleo->getProducaoNucleoMes(2021, 12)/360) . " CXs";
 	
 
 
