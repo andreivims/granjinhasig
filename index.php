@@ -26,14 +26,22 @@
 	class NucleoGranja{
 	
 		public $lotes;
+		public $custoInicial;
+		public $custoCrescimento;
+		public $custoPrePostura;
+		public $custoPostura;
 		
-		public function __construct($lts){
+		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost){
 		
 			 $this->lotes = $lts;	 
+			 $this->custoInicial = $custIni;	 
+			 $this->custoCrescimento = $custCresc;	 
+			 $this->custoPrePostura = $custPre;	 
+			 $this->custoPostura = $custPost;	 
 		
 		}
 		
-		public function getConsumoInicialNucleoMes($ano, $mes){
+		public function getConsumoInicialGranjaMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -51,7 +59,7 @@
 			 
 		}
 		
-		public function getConsumoInicialNucleoMesArray($ano, $mes){
+		public function getConsumoInicialGranjaMesArray($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -72,7 +80,67 @@
 			 
 		}
 		
-		public function getConsumoCrescimentoNucleoMes($ano, $mes){
+		
+		public function showInicialGranjaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoInicialDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			
+			 echo"<table border=1>";
+			 echo"<th>Inicial</th>";
+			 for($i=0;$i<count($qtde);$i++)
+				 echo"<th>Lote ". ($i+1) ."</th>";
+			 echo"<th>TOTAL</th>";
+		     
+			 echo"<tr>";
+			 echo"<td>Quantidade</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i]) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoInicialGranjaMes($ano, $mes)) ."</td>";
+			 echo"</tr>";
+			 
+			 echo"<tr>";
+			 echo"<td>Custo</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i] * $this->custoInicial) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoInicialGranjaMes($ano, $mes) * $this->custoInicial) ."</td>";
+			 echo"</tr>";
+
+			 
+			 echo"</table>";		
+			
+			 //return $qtde; 
+			 
+		}
+		
+	
+	 
+		
+		//======================================================
+		
+		
+		public function getConsumoCrescimentoGranjaMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -90,7 +158,7 @@
 			 
 		}
 		
-		public function getConsumoCrescimentoNucleoMesArray($ano, $mes){
+		public function getConsumoCrescimentoGranjaMesArray($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -112,7 +180,7 @@
 		}
 		
 		
-		public function getConsumoPrePosturaNucleoMes($ano, $mes){
+		public function getConsumoPrePosturaGranjaMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -130,7 +198,7 @@
 			 
 		}
 		
-		public function getConsumoPrePosturaNucleoMesArray($ano, $mes){
+		public function getConsumoPrePosturaGranjaMesArray($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -151,7 +219,7 @@
 			 
 		}
 		
-		public function getConsumoPosturaNucleoMes($ano, $mes){
+		public function getConsumoPosturaGranjaMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -169,7 +237,7 @@
 			 
 		}
 		
-		public function getConsumoPosturaNucleoMesArray($ano, $mes){
+		public function getConsumoPosturaGranjaMesArray($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -190,7 +258,7 @@
 			 
 		}
 		
-		public function getProducaoNucleoMes($ano, $mes){
+		public function getProducaoGranjaMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -208,7 +276,7 @@
 			 
 		}
 		
-		public function getProducaoNucleoMesArray($ano, $mes){
+		public function getProducaoGranjaMesArray($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
 			 $numDias = $funcao->format('t');
@@ -1001,20 +1069,21 @@
 	 $lotes[3] = new LoteGalinhas("2021-08-20", 2000);
 	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000);
 	 
-	 $nucleo = new NucleoGranja($lotes);
+
+	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura);
 	 
 	 
 	 
 	 echo"<br><br><br><br><Br>";
-	 echo"------------". $nucleo->getConsumoInicialNucleoMes(2022, 1);
-	 echo"<br>------------". $nucleo->getConsumoCrescimentoNucleoMes(2022, 3);
-	 echo"<br>------------". $nucleo->getConsumoPrePosturaNucleoMes(2022, 1);
-	 echo"<br>------------". $nucleo->getConsumoPosturaNucleoMes(2022, 5);
-	 echo"<br>------------". ($nucleo->getProducaoNucleoMes(2022, 5)/360) . " CXs";
+	 echo"------------". $nucleo->getConsumoInicialGranjaMes(2022, 1);
+	 echo"<br>------------". $nucleo->getConsumoCrescimentoGranjaMes(2022, 3);
+	 echo"<br>------------". $nucleo->getConsumoPrePosturaGranjaMes(2022, 1);
+	 echo"<br>------------". $nucleo->getConsumoPosturaGranjaMes(2022, 5);
+	 echo"<br>------------". ($nucleo->getProducaoGranjaMes(2022, 5)/360) . " CXs";
 	 
 	 
 	 echo"<br>";
-	 $consIni = $nucleo->getConsumoInicialNucleoMesArray(2022, 5);
+	 $consIni = $nucleo->getConsumoInicialGranjaMesArray(2022, 5);
 	 
 	 for($i=0;$i<count($consIni);$i++)
 	{
@@ -1022,8 +1091,11 @@
 		
 	}
 	 
+	 $nucleo->showInicialGranjaMes(2021, 3);
+	
+	 
 	 echo"<br>";
-	 $consCresc = $nucleo->getConsumoCrescimentoNucleoMesArray(2022, 5);
+	 $consCresc = $nucleo->getConsumoCrescimentoGranjaMesArray(2022, 5);
 	 
 	 for($i=0;$i<count($consCresc);$i++)
 	{
@@ -1032,7 +1104,7 @@
 	}
 	
 	 echo"<br>";
-	 $consPrePos = $nucleo->getConsumoPrePosturaNucleoMesArray(2022, 5);
+	 $consPrePos = $nucleo->getConsumoPrePosturaGranjaMesArray(2022, 5);
 	 
 	 for($i=0;$i<count($consPrePos);$i++)
 	{
@@ -1041,7 +1113,7 @@
 	}
 	 
 	 echo"<br>";
-	 $consPos = $nucleo->getConsumoPosturaNucleoMesArray(2022, 5);
+	 $consPos = $nucleo->getConsumoPosturaGranjaMesArray(2022, 5);
 	 
 	 for($i=0;$i<count($consPos);$i++)
 	{
@@ -1050,7 +1122,7 @@
 	}
 	
 	echo"<br>";
-	 $producao = $nucleo->getProducaoNucleoMesArray(2022, 5);
+	 $producao = $nucleo->getProducaoGranjaMesArray(2022, 5);
 	 
 	 for($i=0;$i<count($producao);$i++)
 	{
