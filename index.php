@@ -30,14 +30,16 @@
 		public $custoCrescimento;
 		public $custoPrePostura;
 		public $custoPostura;
+		public $precoCxOvo;
 		
-		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost){
+		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost, $precoOvo){
 		
 			 $this->lotes = $lts;	 
 			 $this->custoInicial = $custIni;	 
 			 $this->custoCrescimento = $custCresc;	 
 			 $this->custoPrePostura = $custPre;	 
 			 $this->custoPostura = $custPost;	 
+			 $this->precoCxOvo = $precoOvo;	 
 		
 		}
 		
@@ -77,6 +79,15 @@
 				}
 			}
 			 return $qtde; 
+			 
+			 /*echo"<br>";
+			 $consIni = $nucleo->getConsumoInicialGranjaMesArray(2022, 5);
+			 
+			 for($i=0;$i<count($consIni);$i++)
+			{
+				 echo" |" . ($consIni[$i]) ;
+				
+			}*/
 			 
 		}
 		
@@ -127,15 +138,9 @@
 				 echo"<td>". ($this->getConsumoInicialGranjaMes($ano, $mes) * $this->custoInicial) ."</td>";
 			 echo"</tr>";
 
-			 
 			 echo"</table>";		
-			
-			 //return $qtde; 
-			 
-		}
 		
-	
-	 
+		}
 		
 		//======================================================
 		
@@ -175,9 +180,70 @@
 					 $qtde[$j] += $this->lotes[$j]->getConsumoCrescimentoDia($ano . "-" . $mes . "-" . ($i+1));
 				}
 			}
-			 return $qtde; 
+			 return $qtde;
+				/*
+				 echo"<br>";
+				 $consCresc = $nucleo->getConsumoCrescimentoGranjaMesArray(2022, 5);
+				 
+				 for($i=0;$i<count($consCresc);$i++)
+				{
+					 echo" |" . ($consCresc[$i]) ;
+					
+				}*/			 
 			 
 		}
+		
+		public function showCrescimentoGranjaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoCrescimentoDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			
+			 echo"<table border=1>";
+			 echo"<th>Crescimento</th>";
+			 for($i=0;$i<count($qtde);$i++)
+				 echo"<th>Lote ". ($i+1) ."</th>";
+			 echo"<th>TOTAL</th>";
+		     
+			 echo"<tr>";
+			 echo"<td>Quantidade</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i]) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoCrescimentoGranjaMes($ano, $mes)) ."</td>";
+			 echo"</tr>";
+			 
+			 echo"<tr>";
+			 echo"<td>Custo</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i] * $this->custoCrescimento) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoCrescimentoGranjaMes($ano, $mes) * $this->custoCrescimento) ."</td>";
+			 echo"</tr>";
+
+			 echo"</table>";		
+		
+		}
+		
+		//======================================================
 		
 		
 		public function getConsumoPrePosturaGranjaMes($ano, $mes){
@@ -216,8 +282,71 @@
 				}
 			}
 			 return $qtde; 
+			 /*echo"<br>";
+			 $consPrePos = $nucleo->getConsumoPrePosturaGranjaMesArray(2022, 5);
 			 
+			 for($i=0;$i<count($consPrePos);$i++)
+			{
+				 echo" |" . ($consPrePos[$i]) ;
+				
+			}*/
 		}
+		
+		public function showPrePosturaGranjaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoPrePosturaDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			
+			 echo"<table border=1>";
+			 echo"<th>Pré-Postura</th>";
+			 for($i=0;$i<count($qtde);$i++)
+				 echo"<th>Lote ". ($i+1) ."</th>";
+			 echo"<th>TOTAL</th>";
+		     
+			 echo"<tr>";
+			 echo"<td>Quantidade</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i]) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoPrePosturaGranjaMes($ano, $mes)) ."</td>";
+			 echo"</tr>";
+			 
+			 echo"<tr>";
+			 echo"<td>Custo</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i] * $this->custoPrePostura) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoPrePosturaGranjaMes($ano, $mes) * $this->custoPrePostura) ."</td>";
+			 echo"</tr>";
+
+			 echo"</table>";		
+		
+		}
+		
+		//======================================================
+		
+		
+		
+		
 		
 		public function getConsumoPosturaGranjaMes($ano, $mes){
 			
@@ -255,8 +384,71 @@
 				}
 			}
 			 return $qtde; 
+			 /* echo"<br>";
+			 $consPos = $nucleo->getConsumoPosturaGranjaMesArray(2022, 5);
+			 
+			 for($i=0;$i<count($consPos);$i++)
+			{
+				 echo" |" . ($consPos[$i]) ;
+				
+			}*/
 			 
 		}
+		
+		public function showPosturaGranjaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoPosturaDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			
+			 echo"<table border=1>";
+			 echo"<th>Postura</th>";
+			 for($i=0;$i<count($qtde);$i++)
+				 echo"<th>Lote ". ($i+1) ."</th>";
+			 echo"<th>TOTAL</th>";
+		     
+			 echo"<tr>";
+			 echo"<td>Quantidade</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i]) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoPosturaGranjaMes($ano, $mes)) ."</td>";
+			 echo"</tr>";
+			 
+			 echo"<tr>";
+			 echo"<td>Custo</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . ($qtde[$i] * $this->custoPostura) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getConsumoPosturaGranjaMes($ano, $mes) * $this->custoPostura) ."</td>";
+			 echo"</tr>";
+
+			 echo"</table>";		
+		
+		}
+		
+		//======================================================
+		
+		
+		
 		
 		public function getProducaoGranjaMes($ano, $mes){
 			
@@ -295,7 +487,69 @@
 			}
 			 return $qtde; 
 			 
+			 /*echo"<br>";
+			 $producao = $nucleo->getProducaoGranjaMesArray(2022, 5);
+			 
+			 for($i=0;$i<count($producao);$i++)
+			{
+				 echo" |" . ($producao[$i])/360 ." CXs";
+				
+			}*/
+			 
 		}
+		
+		public function showProducaoGranjaMes($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getProducaoDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			
+			 echo"<table border=1>";
+			 echo"<th>Produção</th>";
+			 for($i=0;$i<count($qtde);$i++)
+				 echo"<th>Lote ". ($i+1) ."</th>";
+			 echo"<th>TOTAL</th>";
+		     
+			 echo"<tr>";
+			 echo"<td>Quantidade</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . (($qtde[$i])/360) ."</td>" ;
+				
+			}
+				 echo"<td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ."</td>";
+			 echo"</tr>";
+			 
+			 echo"<tr>";
+			 echo"<td>Custo</td>";
+			 for($i=0;$i<count($qtde);$i++)
+			{
+				 
+				 echo"<td>" . (($qtde[$i]/360) * $this->precoCxOvo) ."</td>" ;
+				
+			}
+				 echo"<td>". (($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvo) ."</td>";
+			 echo"</tr>";
+
+			 echo"</table>";		
+		
+		}
+		
+		//======================================================
+		
 		
 		
 	}
@@ -1028,6 +1282,7 @@
 	 $custoCresc = 1.91;
 	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
+	 $precoOvo = 172;
 	 
 	 $HOJE = date("Y-m-d");
 	 $HOJE = date("2022-01-20");
@@ -1070,7 +1325,7 @@
 	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000);
 	 
 
-	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura);
+	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo);
 	 
 	 
 	 
@@ -1082,56 +1337,24 @@
 	 echo"<br>------------". ($nucleo->getProducaoGranjaMes(2022, 5)/360) . " CXs";
 	 
 	 
-	 echo"<br>";
-	 $consIni = $nucleo->getConsumoInicialGranjaMesArray(2022, 5);
 	 
-	 for($i=0;$i<count($consIni);$i++)
-	{
-		 echo" |" . ($consIni[$i]) ;
-		
-	}
 	 
-	 $nucleo->showInicialGranjaMes(2021, 3);
+	 
+	 $ano = 2022;
+	 $mes = 5;
+	 
+	 $nucleo->showInicialGranjaMes($ano, $mes);
 	
 	 
-	 echo"<br>";
-	 $consCresc = $nucleo->getConsumoCrescimentoGranjaMesArray(2022, 5);
+	 $nucleo->showCrescimentoGranjaMes($ano, $mes);
+		 
+	 $nucleo->showPrePosturaGranjaMes($ano, $mes);
 	 
-	 for($i=0;$i<count($consCresc);$i++)
-	{
-		 echo" |" . ($consCresc[$i]) ;
-		
-	}
+	 $nucleo->showPosturaGranjaMes($ano, $mes);
 	
-	 echo"<br>";
-	 $consPrePos = $nucleo->getConsumoPrePosturaGranjaMesArray(2022, 5);
+	 $nucleo->showProducaoGranjaMes($ano, $mes);
 	 
-	 for($i=0;$i<count($consPrePos);$i++)
-	{
-		 echo" |" . ($consPrePos[$i]) ;
-		
-	}
 	 
-	 echo"<br>";
-	 $consPos = $nucleo->getConsumoPosturaGranjaMesArray(2022, 5);
-	 
-	 for($i=0;$i<count($consPos);$i++)
-	{
-		 echo" |" . ($consPos[$i]) ;
-		
-	}
-	
-	echo"<br>";
-	 $producao = $nucleo->getProducaoGranjaMesArray(2022, 5);
-	 
-	 for($i=0;$i<count($producao);$i++)
-	{
-		 echo" |" . ($producao[$i])/360 ." CXs";
-		
-	}
-	
-
-
 ?>
 
 
