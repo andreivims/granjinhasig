@@ -51,6 +51,27 @@
 			 
 		}
 		
+		public function getConsumoInicialNucleoMesArray($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoInicialDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
 		public function getConsumoCrescimentoNucleoMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
@@ -69,6 +90,28 @@
 			 
 		}
 		
+		public function getConsumoCrescimentoNucleoMesArray($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoCrescimentoDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		
 		public function getConsumoPrePosturaNucleoMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
@@ -81,6 +124,27 @@
 				{
 					 
 					$qtde += $this->lotes[$j]->getConsumoPrePosturaDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
+		public function getConsumoPrePosturaNucleoMesArray($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoPrePosturaDia($ano . "-" . $mes . "-" . ($i+1));
 				}
 			}
 			 return $qtde; 
@@ -105,6 +169,27 @@
 			 
 		}
 		
+		public function getConsumoPosturaNucleoMesArray($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getConsumoPosturaDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
 		public function getProducaoNucleoMes($ano, $mes){
 			
 			 $funcao = new DateTime($ano . "-" . $mes);
@@ -123,8 +208,30 @@
 			 
 		}
 		
+		public function getProducaoNucleoMesArray($ano, $mes){
+			
+			 $funcao = new DateTime($ano . "-" . $mes);
+			 $numDias = $funcao->format('t');
+			 
+			 $qtde = array();
+			 for($j=0;$j<count($this->lotes);$j++)
+				 $qtde[$j] = 0;
+			
+			 for($i=0;$i<$numDias;$i++)
+			{
+				 for($j=0;$j<count($this->lotes);$j++)
+				{
+					 
+					 $qtde[$j] += $this->lotes[$j]->getProducaoDia($ano . "-" . $mes . "-" . ($i+1));
+				}
+			}
+			 return $qtde; 
+			 
+		}
+		
 		
 	}
+	 
 	 
 	class LoteGalinhas{
 		
@@ -903,8 +1010,57 @@
 	 echo"<br>------------". $nucleo->getConsumoCrescimentoNucleoMes(2022, 3);
 	 echo"<br>------------". $nucleo->getConsumoPrePosturaNucleoMes(2022, 1);
 	 echo"<br>------------". $nucleo->getConsumoPosturaNucleoMes(2022, 5);
-	 echo"<br>------------". ($nucleo->getProducaoNucleoMes(2021, 12)/360) . " CXs";
+	 echo"<br>------------". ($nucleo->getProducaoNucleoMes(2022, 5)/360) . " CXs";
+	 
+	 
+	 echo"<br>";
+	 $consIni = $nucleo->getConsumoInicialNucleoMesArray(2022, 5);
+	 
+	 for($i=0;$i<count($consIni);$i++)
+	{
+		 echo" |" . ($consIni[$i]) ;
+		
+	}
+	 
+	 echo"<br>";
+	 $consCresc = $nucleo->getConsumoCrescimentoNucleoMesArray(2022, 5);
+	 
+	 for($i=0;$i<count($consCresc);$i++)
+	{
+		 echo" |" . ($consCresc[$i]) ;
+		
+	}
+	
+	 echo"<br>";
+	 $consPrePos = $nucleo->getConsumoPrePosturaNucleoMesArray(2022, 5);
+	 
+	 for($i=0;$i<count($consPrePos);$i++)
+	{
+		 echo" |" . ($consPrePos[$i]) ;
+		
+	}
+	 
+	 echo"<br>";
+	 $consPos = $nucleo->getConsumoPosturaNucleoMesArray(2022, 5);
+	 
+	 for($i=0;$i<count($consPos);$i++)
+	{
+		 echo" |" . ($consPos[$i]) ;
+		
+	}
+	
+	echo"<br>";
+	 $producao = $nucleo->getProducaoNucleoMesArray(2022, 5);
+	 
+	 for($i=0;$i<count($producao);$i++)
+	{
+		 echo" |" . ($producao[$i])/360 ." CXs";
+		
+	}
 	
 
 
 ?>
+
+
+
