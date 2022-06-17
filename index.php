@@ -31,11 +31,17 @@
 		public $custoPrePostura;
 		public $custoPostura;
 		public $precoCxOvo;
+		public $custoEmbalagem;
 		
 		public $custoAves;
 		public $custovacinasAves;
 		
-		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost, $precoOvo, $custAve, $custVacAve){
+		public $custooperacional;
+		public $custoFinancientosJuros;
+		
+		
+		
+		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost, $precoOvo, $custEmb, $custAve, $custVacAve, $op, $finan){
 		
 			 $this->lotes = $lts;	 
 			 $this->custoInicial = $custIni;	 
@@ -43,9 +49,13 @@
 			 $this->custoPrePostura = $custPre;	 
 			 $this->custoPostura = $custPost;	 
 			 $this->precoCxOvo = $precoOvo;	 
+			 $this->custoEmbalagem = $custEmb;	 
 			 
 			 $this->custoAves = $custAve;	 
 			 $this->custovacinasAves = $custVacAve;	 
+		
+			 $this->custooperacional = $op;	 
+			 $this->custoFinancientosJuros = $finan;	 
 		
 		}
 		
@@ -625,6 +635,87 @@
 		public function custoAlojamentosVacinasAvesGranjaMes($ano, $mes){
 			 return $this->quantidadeAvesAlojadasGranjaMes($ano, $mes) * $this->custovacinasAves;
 		}
+		
+		
+		
+		public function showBalancoGranjaMes($ano, $mes){
+			
+			 $DIAMES = array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
+			 $totalDespesas = 0;
+			 $totalReceitas = 0;
+	 
+			 echo "<table border=1><th class='bbgrey'>". $DIAMES[$mes-1] ."/". $ano ." - Balanço</th></table>";
+			 
+		
+			 echo"<table border=1> <th>Nome</th> <th>Quantidade</th> <th>Unitário</th> <th>Despesa</th> <th>Receita</th>";
+				
+					 //echo"<td>". $this->quantidadeAlojamentosGranjaMes($ano, $mes);
+					if($this->quantidadeAlojamentosGranjaMes($ano, $mes) > 0 ){
+					 
+						 echo"<tr> <td>Pintinhas</td> <td>". $this->quantidadeAvesAlojadasGranjaMes($ano, $mes) ."</td> <td>R$ ". $this->custoAves ."</td> <td>R$ ". $this->custoAlojamentosAvesGranjaMes($ano, $mes) ."</td> <td></td> </tr>";
+						 $totalDespesas += $this->custoAlojamentosAvesGranjaMes($ano, $mes);
+						 
+						 echo"<tr> <td>Vacinas</td> <td>". $this->quantidadeAvesAlojadasGranjaMes($ano, $mes) ."</td> <td>R$ ". $this->custovacinasAves ."</td> <td>R$ ". $this->custoAlojamentosVacinasAvesGranjaMes($ano, $mes) ."</td> <td></td> </tr>";
+						 $totalDespesas += $this->custoAlojamentosVacinasAvesGranjaMes($ano, $mes);
+						 
+					}	 
+						 
+					if($this->getConsumoInicialGranjaMes($ano, $mes) > 0 ){
+					 
+						 echo"<tr> <td>Inicial</td> <td>". $this->getConsumoInicialGranjaMes($ano, $mes) ." Kg</td> <td>R$ ". $this->custoInicial ."</td> <td>R$ ". $this->getCustoInicialGranjaMes($ano, $mes) ."</td> <td></td> </tr>";
+						 $totalDespesas += $this->getCustoInicialGranjaMes($ano, $mes);
+					}
+					
+					if($this->getConsumoCrescimentoGranjaMes($ano, $mes) > 0 ){
+					 
+						 echo"<tr> <td>Crescimento</td> <td>". $this->getConsumoCrescimentoGranjaMes($ano, $mes) ." Kg</td> <td>R$ ". $this->custoCrescimento ."</td> <td>R$ ". $this->getCustoCrescimentoGranjaMes($ano, $mes) ."</td> <td></td> </tr>";
+						 $totalDespesas += $this->getCustoCrescimentoGranjaMes($ano, $mes);
+					}
+					
+					if($this->getConsumoPrePosturaGranjaMes($ano, $mes) > 0 ){
+					 
+						 echo"<tr> <td>Pré-Postura</td> <td>". $this->getConsumoPrePosturaGranjaMes($ano, $mes) ." Kg</td> <td>R$ ". $this->custoPrePostura ."</td> <td>R$ ". $this->getCustoPrePosturaGranjaMes($ano, $mes) ."</td> <td></td> </tr>";
+						 $totalDespesas += $this->getCustoPrePosturaGranjaMes($ano, $mes);
+					} 
+					
+					if($this->getConsumoPosturaGranjaMes($ano, $mes) > 0 ){
+					 
+						 echo"<tr> <td>Postura</td> <td>". $this->getConsumoPosturaGranjaMes($ano, $mes) ." Kg</td> <td>R$ ". $this->custoPostura ."</td> <td>R$ ". $this->getCustoPosturaGranjaMes($ano, $mes) ."</td> <td></td> </tr>";
+						 $totalDespesas += $this->getCustoPosturaGranjaMes($ano, $mes);
+					}	
+					
+					 echo"<tr> <td>Operacional</td> <td></td> <td></td> <td>R$ ". $this->custooperacional ."</td> <td></td> </tr>";
+					 $totalDespesas += $this->custooperacional;
+					 
+					 echo"<tr> <td>Financiamentos e Juros</td> <td></td> <td></td> <td>R$ ". $this->custoFinancientosJuros ."</td> <td></td> </tr>";
+					 $totalDespesas += $this->custoFinancientosJuros;
+					 
+					if($this->getProducaoGranjaMes($ano, $mes) > 0 ){
+					 
+						 echo"<tr> <td>Embalagens</td> <td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ." CXs</td> <td>R$ ". $this->custoEmbalagem ."</td> <td>R$ ". ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->custoEmbalagem ."</td> <td></td> </tr>";
+						 $totalDespesas += ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->custoEmbalagem;
+						 
+						 echo"<tr> <td>Vendas Ovos</td> <td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ." CXs</td> <td>R$ ". $this->precoCxOvo ."</td> <td></td> <td>R$ ". $this->getPrecoProducaoGranjaMes($ano, $mes) ."</td> </tr>";
+						 $totalReceitas += $this->getPrecoProducaoGranjaMes($ano, $mes);
+						 
+					}	 
+					 echo"<tr class='bbgrey'> <td>TOTAL</td> <td></td> <td></td> <td>R$ ". $totalDespesas ."</td> <td>R$ ". $totalReceitas ."</td> </tr>";
+					  
+					 if($totalDespesas > $totalReceitas){
+						 $resultado = $totalDespesas - $totalReceitas;
+						 echo"<tr class='bbgrey'> <td>RESULTADO</td> <td></td> <td></td> <td>R$ ". $resultado ."</td> <td></td> </tr>";
+					 }else {
+						 $resultado = $totalReceitas - $totalDespesas;
+						 echo"<tr class='bbgrey'> <td>RESULTADO</td> <td></td> <td></td> <td></td> <td>R$ ". $resultado ."</td> </tr>";
+					 }
+				
+			 echo"</table>";
+					
+			 return $totalReceitas - $totalDespesas;
+		}
+		
+		
+		
 		
 		
 		
@@ -1408,7 +1499,7 @@
 	 $custoCresc = 1.91;
 	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
-	 $precoOvo = 172;
+	 $precoOvo = 162;
 	 $custoEmbalagem = 20;
 	 
 	 $custoAve = 3.4;
@@ -1418,7 +1509,7 @@
 	 $finanejuros = 5000;
 	 
 	 $HOJE = date("Y-m-d");
-	 $HOJE = date("2022-05-20");
+	 $HOJE = date("2020-09-20");
 	 
 	 $mes = 5;
 	 $mes = intval(date("m", strtotime($HOJE)));
@@ -1426,9 +1517,7 @@
 	 $ano = 2022;
 	 $ano = intval(date("Y", strtotime($HOJE)));
 	 
-	 echo $DIAMES[$mes-1] ." - ". $ano;
 	 
-
 	 $lotes = array();
 	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000);
 	 $lotes[1] = new LoteGalinhas("2021-02-23", 2000);
@@ -1436,44 +1525,51 @@
 	 $lotes[3] = new LoteGalinhas("2021-08-20", 2000);
 	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000);
 	 
+	 $lotes[5] = new LoteGalinhas("2022-08-10", 3000);
+	 $lotes[6] = new LoteGalinhas("2022-10-10", 3000);
+	  
+	 $lotes[7] = new LoteGalinhas("2023-08-10", 3000);
+	 $lotes[8] = new LoteGalinhas("2023-10-10", 3000);
+	  
+	 $lotes[9] = new LoteGalinhas("2024-08-10", 3000);
+	 $lotes[10] = new LoteGalinhas("2024-10-10", 3000);
+	  
+	 $lotes[11] = new LoteGalinhas("2025-08-10", 3000);
+	 $lotes[12] = new LoteGalinhas("2025-10-10", 3000);
+	 
 
-	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo, $custoAve, $custoVacinasAve);
-	 
-	 
-	 
-	 echo"<br><br>";
-	 echo"Quantos Alojamentos = ". $nucleo->quantidadeAlojamentosGranjaMes($ano, $mes);
-	 echo"<br>Quantidade Aves = ". $nucleo->quantidadeAvesAlojadasGranjaMes($ano, $mes);
-	 echo"<br>Custo das Aves = R$ ". $nucleo->custoAlojamentosAvesGranjaMes($ano, $mes);
-	 echo"<br>Custo Vacinas = R$ ". $nucleo->custoAlojamentosVacinasAvesGranjaMes($ano, $mes);
-	 
-	
-			
-	 echo"<br><br><Br>";
-	 echo"Inicial = ". $nucleo->getConsumoInicialGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoInicialGranjaMes($ano, $mes);
-	 
-	 echo"<br>Crescimento = ". $nucleo->getConsumoCrescimentoGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoCrescimentoGranjaMes($ano, $mes);
-	 
-	 echo"<br>Pré-Postura = ". $nucleo->getConsumoPrePosturaGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoPrePosturaGranjaMes($ano, $mes);
-	 
-	 echo"<br>Postura = ". $nucleo->getConsumoPosturaGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoPosturaGranjaMes($ano, $mes);
-	
-	 echo"<br>Operacional = R$ ". $operacional;
-	 
-	 echo"<br>Financiamentos e Juros = ". $finanejuros; 
-	 
-	 echo"<br>Caixas = ". ($nucleo->getProducaoGranjaMes($ano, $mes)/360) ." = R$ ". $nucleo->getPrecoProducaoGranjaMes($ano, $mes);
-	 echo"<br>Custo Embalagens = R$ ". ($nucleo->getProducaoGranjaMes($ano, $mes)/360) * $custoEmbalagem;
+	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo, $custoEmbalagem, $custoAve, $custoVacinasAve, $operacional, $finanejuros);
 	 
 	
 	
 	 
+	$anos = array(2020,2021,2022,2023,2024,2025);
 	 
+	for($i=0;$i<count($anos);$i++){
+		
+		 $resultadoano = 0;
+		for($j=1;$j<=12;$j++){
+			 
+			 $resultadoano += $nucleo->showBalancoGranjaMes($anos[$i], $j);
+			 
+		}
+		 echo"<br>RESULTADO ANO ". $anos[$i] ." = R$ ". $resultadoano . "<Br><br>";
+		 
+	}
+	
+	
+	 echo"<Br><br>";
+	 //echo $nucleo->showBalancoGranjaMes($ano, $mes);
+	 echo"<Br><br>";
+	
+	
+	/*
+	
 	 echo"<Br><br>";
 	 $nucleo->showdDetalhesGranjaMes($ano, $mes);
 	 echo"<Br><br>";
 	
-	 
+	 //*/
 	 
 ?>
 
