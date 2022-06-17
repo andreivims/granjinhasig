@@ -32,7 +32,10 @@
 		public $custoPostura;
 		public $precoCxOvo;
 		
-		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost, $precoOvo){
+		public $custoAves;
+		public $custovacinasAves;
+		
+		public function __construct($lts, $custIni, $custCresc, $custPre, $custPost, $precoOvo, $custAve, $custVacAve){
 		
 			 $this->lotes = $lts;	 
 			 $this->custoInicial = $custIni;	 
@@ -40,6 +43,9 @@
 			 $this->custoPrePostura = $custPre;	 
 			 $this->custoPostura = $custPost;	 
 			 $this->precoCxOvo = $precoOvo;	 
+			 
+			 $this->custoAves = $custAve;	 
+			 $this->custovacinasAves = $custVacAve;	 
 		
 		}
 		
@@ -59,6 +65,10 @@
 			}
 			 return $qtde; 
 			 
+		}	
+		
+		public function getCustoInicialGranjaMes($ano, $mes){
+			 return $this->getConsumoInicialGranjaMes($ano, $mes) * $this->custoInicial; 
 		}
 		
 		public function getConsumoInicialGranjaMesArray($ano, $mes){
@@ -114,7 +124,7 @@
 			 echo"<th>Inicial</th>";
 			 for($i=0;$i<count($qtde);$i++)
 				 echo"<th>Lote ". ($i+1) ."</th>";
-			 echo"<th>TOTAL</th>";
+			 echo"<th class='bbgrey'>TOTAL</th>";
 		     
 			 echo"<tr>";
 			 echo"<td>Quantidade</td>";
@@ -124,7 +134,7 @@
 				 echo"<td>" . ($qtde[$i]) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoInicialGranjaMes($ano, $mes)) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoInicialGranjaMes($ano, $mes)) ."</td>";
 			 echo"</tr>";
 			 
 			 echo"<tr>";
@@ -135,7 +145,7 @@
 				 echo"<td>" . ($qtde[$i] * $this->custoInicial) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoInicialGranjaMes($ano, $mes) * $this->custoInicial) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoInicialGranjaMes($ano, $mes) * $this->custoInicial) ."</td>";
 			 echo"</tr>";
 
 			 echo"</table>";		
@@ -161,6 +171,10 @@
 			}
 			 return $qtde; 
 			 
+		}
+		
+		public function getCustoCrescimentoGranjaMes($ano, $mes){
+			 return $this->getConsumoCrescimentoGranjaMes($ano, $mes) * $this->custoCrescimento; 
 		}
 		
 		public function getConsumoCrescimentoGranjaMesArray($ano, $mes){
@@ -215,7 +229,7 @@
 			 echo"<th>Crescimento</th>";
 			 for($i=0;$i<count($qtde);$i++)
 				 echo"<th>Lote ". ($i+1) ."</th>";
-			 echo"<th>TOTAL</th>";
+			 echo"<th class='bbgrey'>TOTAL</th>";
 		     
 			 echo"<tr>";
 			 echo"<td>Quantidade</td>";
@@ -225,7 +239,7 @@
 				 echo"<td>" . ($qtde[$i]) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoCrescimentoGranjaMes($ano, $mes)) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoCrescimentoGranjaMes($ano, $mes)) ."</td>";
 			 echo"</tr>";
 			 
 			 echo"<tr>";
@@ -236,7 +250,7 @@
 				 echo"<td>" . ($qtde[$i] * $this->custoCrescimento) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoCrescimentoGranjaMes($ano, $mes) * $this->custoCrescimento) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoCrescimentoGranjaMes($ano, $mes) * $this->custoCrescimento) ."</td>";
 			 echo"</tr>";
 
 			 echo"</table>";		
@@ -263,6 +277,11 @@
 			 return $qtde; 
 			 
 		}
+		
+		public function getCustoPrePosturaGranjaMes($ano, $mes){
+			 return $this->getConsumoPrePosturaGranjaMes($ano, $mes) * $this->custoPrePostura; 
+		}
+		
 		
 		public function getConsumoPrePosturaGranjaMesArray($ano, $mes){
 			
@@ -314,7 +333,7 @@
 			 echo"<th>Pré-Postura</th>";
 			 for($i=0;$i<count($qtde);$i++)
 				 echo"<th>Lote ". ($i+1) ."</th>";
-			 echo"<th>TOTAL</th>";
+			 echo"<th class='bbgrey'>TOTAL</th>";
 		     
 			 echo"<tr>";
 			 echo"<td>Quantidade</td>";
@@ -324,7 +343,7 @@
 				 echo"<td>" . ($qtde[$i]) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoPrePosturaGranjaMes($ano, $mes)) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoPrePosturaGranjaMes($ano, $mes)) ."</td>";
 			 echo"</tr>";
 			 
 			 echo"<tr>";
@@ -335,7 +354,7 @@
 				 echo"<td>" . ($qtde[$i] * $this->custoPrePostura) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoPrePosturaGranjaMes($ano, $mes) * $this->custoPrePostura) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoPrePosturaGranjaMes($ano, $mes) * $this->custoPrePostura) ."</td>";
 			 echo"</tr>";
 
 			 echo"</table>";		
@@ -364,6 +383,10 @@
 			}
 			 return $qtde; 
 			 
+		}
+		
+		public function getCustoPosturaGranjaMes($ano, $mes){
+			 return $this->getConsumoPosturaGranjaMes($ano, $mes) * $this->custoPostura; 
 		}
 		
 		public function getConsumoPosturaGranjaMesArray($ano, $mes){
@@ -417,7 +440,7 @@
 			 echo"<th>Postura</th>";
 			 for($i=0;$i<count($qtde);$i++)
 				 echo"<th>Lote ". ($i+1) ."</th>";
-			 echo"<th>TOTAL</th>";
+			 echo"<th class='bbgrey'>TOTAL</th>";
 		     
 			 echo"<tr>";
 			 echo"<td>Quantidade</td>";
@@ -427,7 +450,7 @@
 				 echo"<td>" . ($qtde[$i]) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoPosturaGranjaMes($ano, $mes)) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoPosturaGranjaMes($ano, $mes)) ."</td>";
 			 echo"</tr>";
 			 
 			 echo"<tr>";
@@ -438,7 +461,7 @@
 				 echo"<td>" . ($qtde[$i] * $this->custoPostura) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getConsumoPosturaGranjaMes($ano, $mes) * $this->custoPostura) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getConsumoPosturaGranjaMes($ano, $mes) * $this->custoPostura) ."</td>";
 			 echo"</tr>";
 
 			 echo"</table>";		
@@ -466,6 +489,10 @@
 			}
 			 return $qtde; 
 			 
+		}
+		
+		public function getPrecoProducaoGranjaMes($ano, $mes){
+			 return ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvo; 
 		}
 		
 		public function getProducaoGranjaMesArray($ano, $mes){
@@ -520,7 +547,7 @@
 			 echo"<th>Produção</th>";
 			 for($i=0;$i<count($qtde);$i++)
 				 echo"<th>Lote ". ($i+1) ."</th>";
-			 echo"<th>TOTAL</th>";
+			 echo"<th class='bbgrey'>TOTAL</th>";
 		     
 			 echo"<tr>";
 			 echo"<td>Quantidade</td>";
@@ -530,7 +557,7 @@
 				 echo"<td>" . (($qtde[$i])/360) ."</td>" ;
 				
 			}
-				 echo"<td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ."</td>";
+				 echo"<td class='bbgrey'>". ($this->getProducaoGranjaMes($ano, $mes)/360) ."</td>";
 			 echo"</tr>";
 			 
 			 echo"<tr>";
@@ -541,7 +568,7 @@
 				 echo"<td>" . (($qtde[$i]/360) * $this->precoCxOvo) ."</td>" ;
 				
 			}
-				 echo"<td>". (($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvo) ."</td>";
+				 echo"<td class='bbgrey'>". (($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvo) ."</td>";
 			 echo"</tr>";
 
 			 echo"</table>";		
@@ -549,6 +576,77 @@
 		}
 		
 		//======================================================
+		
+		public function quantidadeAlojamentosGranjaMes($ano, $mes){
+			
+			 $qtde = 0;
+			 
+			 for($j=0;$j<count($this->lotes);$j++)
+			{
+				 $alojadata = $this->lotes[$j]->loteDataAlojamento;
+
+				 $alojames = intval(date("m", strtotime($alojadata)));
+
+				 $alojaano = intval(date("Y", strtotime($alojadata)));
+				 
+				 if($ano == $alojaano && $mes == $alojames)
+					 $qtde++;
+				 
+			}
+			
+			 return $qtde;
+		}
+		
+		public function quantidadeAvesAlojadasGranjaMes($ano, $mes){
+			
+			 $qtdeaves = 0;
+			 
+			 for($j=0;$j<count($this->lotes);$j++)
+			{
+				 $alojadata = $this->lotes[$j]->loteDataAlojamento;
+				
+				 $alojames = intval(date("m", strtotime($alojadata)));
+
+				 $alojaano = intval(date("Y", strtotime($alojadata)));
+				 
+				 if($ano == $alojaano && $mes == $alojames)
+					 $qtdeaves += $this->lotes[$j]->loteNumeroAves;
+				 
+			}
+	
+			 return $qtdeaves;
+		}
+		
+		
+		public function custoAlojamentosAvesGranjaMes($ano, $mes){
+			return $this->quantidadeAvesAlojadasGranjaMes($ano, $mes) * $this->custoAves;
+		}
+		
+		public function custoAlojamentosVacinasAvesGranjaMes($ano, $mes){
+			 return $this->quantidadeAvesAlojadasGranjaMes($ano, $mes) * $this->custovacinasAves;
+		}
+		
+		
+		
+		public function showdDetalhesGranjaMes($ano, $mes){
+			
+			 $DIAMES = array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
+
+	 
+			 echo "<table border=1><th class='bbgrey'>Detalhamento -  ". $DIAMES[$mes-1] ."/". $ano ."</th></table>";
+			 
+			 $this->showInicialGranjaMes($ano, $mes);
+	 
+			 $this->showCrescimentoGranjaMes($ano, $mes);
+				 
+			 $this->showPrePosturaGranjaMes($ano, $mes);
+			 
+			 $this->showPosturaGranjaMes($ano, $mes);
+			
+			 $this->showProducaoGranjaMes($ano, $mes);
+					
+		
+		}
 		
 		
 		
@@ -1275,47 +1373,61 @@
 	}
 	 
 	
+	 
+	 echo"<style>
+		table {
+			 width: 100%;
+		}
+		td{
+			 border: 1px solid #000;
+		}
+		.mobile {
+			 display: none;
+		}
+		@media (max-width: 800px) {
+			.mobile {
+				display: table;
+			}
+			.desktop {
+				display: none;
+			}
+		}
 		
-	 $custoAve = 3.4;
-	 $custoVacinasAve = 1.35;
+		.bbgrey{
+			 background-color: #BBB;
+		}
+		
+		</style>
+	";
+	
+		
+	 $DIAMES = array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
+		
+	
 	 $custoInicial = 2.17;
 	 $custoCresc = 1.91;
 	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
 	 $precoOvo = 172;
+	 $custoEmbalagem = 20;
+	 
+	 $custoAve = 3.4;
+	 $custoVacinasAve = 1.35;
+	 
+	 $operacional = 12500;
+	 $finanejuros = 5000;
 	 
 	 $HOJE = date("Y-m-d");
-	 $HOJE = date("2022-01-20");
+	 $HOJE = date("2022-05-20");
 	 
-	 
-	 
-	 $lote1 = new LoteGalinhas("2021-08-20", 2000);
-	 
+	 $mes = 5;
+	 $mes = intval(date("m", strtotime($HOJE)));
 	
+	 $ano = 2022;
+	 $ano = intval(date("Y", strtotime($HOJE)));
 	 
+	 echo $DIAMES[$mes-1] ." - ". $ano;
 	 
-	 
-	 $nAves = 2000;
-	 $nAves = $lote1->loteNumeroAves;
-	 
-	 $semana = 30;
-	 $semana = $lote1->getSemanaLote($HOJE);
-	 $semana = $lote1->getSemanaLote("2019-10-20");
-	 
-	
-	 
-	 echo "<br>Qtde Aves =  ". $nAves;
-	 echo "<br>SEMANA =  ". $semana;
-	 echo"<Br>";
-	 
-	 
-	 echo"------------". $lote1->getConsumoInicialMes(2021, 11);
-	 echo"<br>------------". $lote1->getConsumoCrescimentoMes(2021, 10);
-	 echo"<br>------------". $lote1->getConsumoPrePosturaMes(2023, 12);
-	 echo"<br>------------". $lote1->getConsumoPosturaMes(2023, 6);
-	 echo"<br>------------". ($lote1->getProducaoMes(2022, 3)/360) . " CXs";
-
-
 
 	 $lotes = array();
 	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000);
@@ -1325,34 +1437,42 @@
 	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000);
 	 
 
-	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo);
+	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo, $custoAve, $custoVacinasAve);
 	 
 	 
 	 
-	 echo"<br><br><br><br><Br>";
-	 echo"------------". $nucleo->getConsumoInicialGranjaMes(2022, 1);
-	 echo"<br>------------". $nucleo->getConsumoCrescimentoGranjaMes(2022, 3);
-	 echo"<br>------------". $nucleo->getConsumoPrePosturaGranjaMes(2022, 1);
-	 echo"<br>------------". $nucleo->getConsumoPosturaGranjaMes(2022, 5);
-	 echo"<br>------------". ($nucleo->getProducaoGranjaMes(2022, 5)/360) . " CXs";
+	 echo"<br><br>";
+	 echo"Quantos Alojamentos = ". $nucleo->quantidadeAlojamentosGranjaMes($ano, $mes);
+	 echo"<br>Quantidade Aves = ". $nucleo->quantidadeAvesAlojadasGranjaMes($ano, $mes);
+	 echo"<br>Custo das Aves = R$ ". $nucleo->custoAlojamentosAvesGranjaMes($ano, $mes);
+	 echo"<br>Custo Vacinas = R$ ". $nucleo->custoAlojamentosVacinasAvesGranjaMes($ano, $mes);
 	 
+	
+			
+	 echo"<br><br><Br>";
+	 echo"Inicial = ". $nucleo->getConsumoInicialGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoInicialGranjaMes($ano, $mes);
 	 
+	 echo"<br>Crescimento = ". $nucleo->getConsumoCrescimentoGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoCrescimentoGranjaMes($ano, $mes);
 	 
+	 echo"<br>Pré-Postura = ". $nucleo->getConsumoPrePosturaGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoPrePosturaGranjaMes($ano, $mes);
 	 
+	 echo"<br>Postura = ". $nucleo->getConsumoPosturaGranjaMes($ano, $mes) ." KG = R$ ". $nucleo->getCustoPosturaGranjaMes($ano, $mes);
+	
+	 echo"<br>Operacional = R$ ". $operacional;
 	 
-	 $ano = 2022;
-	 $mes = 5;
+	 echo"<br>Financiamentos e Juros = ". $finanejuros; 
 	 
-	 $nucleo->showInicialGranjaMes($ano, $mes);
+	 echo"<br>Caixas = ". ($nucleo->getProducaoGranjaMes($ano, $mes)/360) ." = R$ ". $nucleo->getPrecoProducaoGranjaMes($ano, $mes);
+	 echo"<br>Custo Embalagens = R$ ". ($nucleo->getProducaoGranjaMes($ano, $mes)/360) * $custoEmbalagem;
+	 
+	
 	
 	 
-	 $nucleo->showCrescimentoGranjaMes($ano, $mes);
-		 
-	 $nucleo->showPrePosturaGranjaMes($ano, $mes);
 	 
-	 $nucleo->showPosturaGranjaMes($ano, $mes);
+	 echo"<Br><br>";
+	 $nucleo->showdDetalhesGranjaMes($ano, $mes);
+	 echo"<Br><br>";
 	
-	 $nucleo->showProducaoGranjaMes($ano, $mes);
 	 
 	 
 ?>
