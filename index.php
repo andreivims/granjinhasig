@@ -571,7 +571,7 @@
 			 echo"</tr>";
 			 
 			 echo"<tr>";
-			 echo"<td>Custo</td>";
+			 echo"<td>Receita</td>";
 			 for($i=0;$i<count($qtde);$i++)
 			{
 				 
@@ -1758,14 +1758,18 @@
 	 echo $nucleo->showBalancoGranjaAno($ano);
 	 echo"<Br><br>";
 	 
-	 
+	 //*/
+	 /*
 	 echo"<Br><br>";
 	 echo $nucleo->showBalancoGranjaMes($ano, $mes);
 	 echo"<Br><br>";
-	
+	 
+	//*/
+	 /*
 	
 	 echo"<Br><br>";
-	 $nucleo->showdDetalhesGranjaMes($ano, $mes);
+	 //$nucleo->showdDetalhesGranjaMes($ano, $mes);
+	 $nucleo->showdDetalhesGranjaMes(2022, 6);
 	 echo"<Br><br>";
 	
 	 //*/
