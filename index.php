@@ -715,6 +715,187 @@
 		}
 		
 		
+		public function showBalancoGranjaAno($ano){
+			
+			
+			 
+	 
+			 $qtdePintinhas = 0;
+			 $custoPintinhas = 0;
+			 $totalcustoPintinhas = 0;
+			 $custoVacinas = 0;
+			 $totalcustovacinas = 0;
+			 
+			 $totalInicial = 0;
+			 $custoInicial = 0;
+			 $totalCustoInicial = 0;
+			 
+			 $totalCrescimento = 0;
+			 $custoCrescimento = 0;
+			 $totalCustoCrescimento = 0;
+			 
+			 $totalPrePostura = 0;
+			 $custoPrePostura = 0;
+			 $totalCustoPrePostura = 0;
+			 
+			 $totalPostura = 0;
+			 $custoPostura = 0;
+			 $totalCustoPostura = 0;
+			 
+			 $totalOperacional = 0;
+			 $totalFinanJuros = 0;
+			 
+			 
+			 $totalOvos = 0;
+			 $custoEmbalagens = 0;
+			 $precoOvos = 0;
+			 $totalCustoEmbalagem = 0;
+			 $totalPrecoOvos = 0;
+			 
+			 
+			 $qtdeAloja = 0;
+			 $qtdeIni = 0;
+			 $qtdeCresc = 0;
+			 $qtdePre = 0;
+			 $qtdePost = 0;
+			 $qtdeOv = 0;
+			 
+			for($j=1;$j<=12;$j++){
+				
+				if($this->quantidadeAlojamentosGranjaMes($ano, $j) > 0 ){
+					 $qtdeAloja++;
+					 $qtdePintinhas += $this->quantidadeAvesAlojadasGranjaMes($ano, $j);
+					 $custoPintinhas += $this->custoAves;
+					 $totalcustoPintinhas += $this->custoAlojamentosAvesGranjaMes($ano, $j);
+					 $custoVacinas += $this->custovacinasAves;
+					 $totalcustovacinas += $this->custoAlojamentosVacinasAvesGranjaMes($ano, $j);
+					 
+				}
+
+				if($this->getConsumoInicialGranjaMes($ano, $j) > 0 ){
+					 $qtdeIni++;
+					 $totalInicial += $this->getConsumoInicialGranjaMes($ano, $j);
+					 $custoInicial += $this->custoInicial;
+					 $totalCustoInicial += $this->getCustoInicialGranjaMes($ano, $j);
+				}
+				
+				if($this->getConsumoCrescimentoGranjaMes($ano, $j) > 0 ){
+					 $qtdeCresc++;
+					 $totalCrescimento += $this->getConsumoCrescimentoGranjaMes($ano, $j);
+					 $custoCrescimento += $this->custoCrescimento;
+					 $totalCustoCrescimento += $this->getCustoCrescimentoGranjaMes($ano, $j);
+				}
+					
+				if($this->getConsumoPrePosturaGranjaMes($ano, $j) > 0 ){
+					 $qtdePre++;
+					 $totalPrePostura += $this->getConsumoPrePosturaGranjaMes($ano, $j);
+					 $custoPrePostura += $this->custoPrePostura;
+					 $totalCustoPrePostura += $this->getCustoPrePosturaGranjaMes($ano, $j);
+				}
+						
+				if($this->getConsumoPosturaGranjaMes($ano, $j) > 0 ){
+					 $qtdePost++;
+					 $totalPostura += $this->getConsumoPosturaGranjaMes($ano, $j);
+					 $custoPostura += $this->custoPostura;
+					 $totalCustoPostura += $this->getCustoPosturaGranjaMes($ano, $j);
+				}
+					
+					
+			
+				 $totalOperacional += $this->custooperacional;
+				 $totalFinanJuros += $this->custoFinancientosJuros;
+				 
+				if($this->getProducaoGranjaMes($ano, $j) > 0 ){
+					 $qtdeOv++;
+					 $totalOvos += $this->getProducaoGranjaMes($ano, $j);
+					 $custoEmbalagens += $this->custoEmbalagem;
+					 $precoOvos += $this->precoCxOvo;
+					 $totalCustoEmbalagem += ($this->getProducaoGranjaMes($ano, $j)/360) * $this->custoEmbalagem;
+					 $totalPrecoOvos += $this->getPrecoProducaoGranjaMes($ano, $j);
+				}
+					
+			
+				
+			}	
+			
+			
+			 $totalDespesas = 0;
+			 $totalReceitas = 0;
+			 
+			 
+			 echo "<table border=1><th class='bbgrey'>". $ano ." - Balanço Anual</th></table>";
+			 
+		
+			 echo"<table border=1> <th>Nome</th> <th>Quantidade</th> <th>Unitário</th> <th>Despesa</th> <th>Receita</th>";
+				
+					 //echo"<td>". $this->quantidadeAlojamentosGranjaMes($ano, $j);
+					if($qtdePintinhas > 0 ){
+					 
+						 echo"<tr> <td>Pintinhas</td> <td>". $qtdePintinhas ."</td> <td>R$ ". ($custoPintinhas/$qtdeAloja) ."</td> <td>R$ ". $totalcustoPintinhas ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalcustoPintinhas;
+						 
+						 echo"<tr> <td>Vacinas</td> <td>". $qtdePintinhas ."</td> <td>R$ ". $custoVacinas/$qtdeAloja ."</td> <td>R$ ". $totalcustovacinas ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalcustovacinas;
+						 
+					}	 
+						 
+					if($totalInicial > 0 ){
+					 
+						 echo"<tr> <td>Inicial</td> <td>". $totalInicial ." Kg</td> <td>R$ ". $custoInicial/$qtdeIni ."</td> <td>R$ ". $totalCustoInicial ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalCustoInicial;
+					}	
+					
+					if($totalCrescimento > 0 ){
+					 
+						 echo"<tr> <td>Crescimento</td> <td>". $totalCrescimento ." Kg</td> <td>R$ ". $custoCrescimento/$qtdeCresc ."</td> <td>R$ ". $totalCustoCrescimento ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalCustoCrescimento;
+					}
+					
+					if($totalPrePostura > 0 ){
+					 
+						 echo"<tr> <td>Pré-Postura</td> <td>". $totalPrePostura ." Kg</td> <td>R$ ". $custoPrePostura/$qtdePre ."</td> <td>R$ ". $totalCustoPrePostura ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalCustoPrePostura;
+					}
+					
+					if($totalPostura > 0 ){
+					 
+						 echo"<tr> <td>Postura</td> <td>". $totalPostura ." Kg</td> <td>R$ ". $custoPostura/$qtdePost ."</td> <td>R$ ". $totalCustoPostura ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalCustoPostura;
+					}
+				
+					 echo"<tr> <td>Operacional</td> <td></td> <td></td> <td>R$ ". $totalOperacional."</td> <td></td> </tr>";
+					 $totalDespesas += $totalOperacional;
+					 
+					 echo"<tr> <td>Financiamentos e Juros</td> <td></td> <td></td> <td>R$ ". $totalFinanJuros ."</td> <td></td> </tr>";
+					 $totalDespesas += $totalFinanJuros;
+					 
+			
+					if($totalOvos > 0 ){
+					 
+						 echo"<tr> <td>Embalagens</td> <td>". ($totalOvos/360) ." CXs</td> <td>R$ ". $custoEmbalagens/$qtdeOv ."</td> <td>R$ ". $totalCustoEmbalagem ."</td> <td></td> </tr>";
+						 $totalDespesas += $totalCustoEmbalagem;
+						 
+						 echo"<tr> <td>Vendas Ovos</td> <td>". ($totalOvos/360) ." CXs</td> <td>R$ ". $precoOvos/$qtdeOv ."</td> <td></td> <td>R$ ". $totalPrecoOvos ."</td> </tr>";
+						 $totalReceitas += $totalPrecoOvos;
+						 
+					}	
+					
+					 echo"<tr class='bbgrey'> <td>TOTAL</td> <td></td> <td></td> <td>R$ ". $totalDespesas ."</td> <td>R$ ". $totalReceitas ."</td> </tr>";
+					  
+					 if($totalDespesas > $totalReceitas){
+						 $resultado = $totalDespesas - $totalReceitas;
+						 echo"<tr class='bbgrey'> <td>RESULTADO</td> <td></td> <td></td> <td>R$ ". $resultado ."</td> <td></td> </tr>";
+					 }else {
+						 $resultado = $totalReceitas - $totalDespesas;
+						 echo"<tr class='bbgrey'> <td>RESULTADO</td> <td></td> <td></td> <td></td> <td>R$ ". $resultado ."</td> </tr>";
+					 }
+				
+			 echo"</table>";
+			
+			 return $totalReceitas - $totalDespesas;
+		}
+		
+		
 		
 		
 		
@@ -1499,7 +1680,7 @@
 	 $custoCresc = 1.91;
 	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
-	 $precoOvo = 162;
+	 $precoOvo = 170;
 	 $custoEmbalagem = 20;
 	 
 	 $custoAve = 3.4;
@@ -1544,10 +1725,11 @@
 	
 	 
 	$anos = array(2020,2021,2022,2023,2024,2025);
-	 
+	
+	/* 
 	for($i=0;$i<count($anos);$i++){
 		
-		 $resultadoano = 0;
+		$resultadoano = 0;
 		for($j=1;$j<=12;$j++){
 			 
 			 $resultadoano += $nucleo->showBalancoGranjaMes($anos[$i], $j);
@@ -1556,14 +1738,31 @@
 		 echo"<br>RESULTADO ANO ". $anos[$i] ." = R$ ". $resultadoano . "<Br><br>";
 		 
 	}
+	//*/
+	
+	for($i=0;$i<count($anos);$i++){
+		 
+		 echo"<br>RESULTADO ANO ". $anos[$i] ." = R$ ". $nucleo->showBalancoGranjaAno($anos[$i]) . "<Br><br>";
+		 
+	}
+	 
+	 
+	 
 	
 	
-	 echo"<Br><br>";
-	 //echo $nucleo->showBalancoGranjaMes($ano, $mes);
-	 echo"<Br><br>";
 	
 	
 	/*
+	
+	 echo"<Br><br>";
+	 echo $nucleo->showBalancoGranjaAno($ano);
+	 echo"<Br><br>";
+	 
+	 
+	 echo"<Br><br>";
+	 echo $nucleo->showBalancoGranjaMes($ano, $mes);
+	 echo"<Br><br>";
+	
 	
 	 echo"<Br><br>";
 	 $nucleo->showdDetalhesGranjaMes($ano, $mes);
