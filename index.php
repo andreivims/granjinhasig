@@ -938,6 +938,9 @@
 		 public $loteConsumoAcumulado;
 		 
 		 
+		 public $loteDescarteSemana;
+		 
+		 
 		 
 
 		public function __construct($dataAlojamento, $nAves){
@@ -945,7 +948,9 @@
 			 $this->loteDataAlojamento = $dataAlojamento;
 			 $this->loteNumeroAves = $nAves;
 			 
-			
+			 $this->loteDescarteSemana = 101;
+			 
+			 
 			 
 			 $this->loteProducao = array();
 			 $this->loteProducao[0] = 0.0;
@@ -1038,6 +1043,17 @@
 			 $this->loteProducao[87] = 0.71;
 			 $this->loteProducao[88] = 0.71;
 			 $this->loteProducao[89] = 0.7;
+			 $this->loteProducao[90] = 0.69;
+			 $this->loteProducao[91] = 0.69;
+			 $this->loteProducao[92] = 0.68;
+			 $this->loteProducao[93] = 0.68;
+			 $this->loteProducao[94] = 0.67;
+			 $this->loteProducao[95] = 0.66;
+			 $this->loteProducao[96] = 0.65;
+			 $this->loteProducao[97] = 0.63;
+			 $this->loteProducao[98] = 0.62;
+			 $this->loteProducao[99] = 0.61;
+			 $this->loteProducao[100] = 0.6;
 			 //---------------------------------------------------------------
 			 $this->loteProducaoAcumulado = array();//Aqui é acumulação de producao em porcentagem, basta multiplicar pelo numero de galinhas para saber quanto ovos já foram produzidos na semana tal.
 			 $this->loteProducaoAcumulado[0] = 0;
@@ -1130,6 +1146,17 @@
 			$this->loteProducaoAcumulado[87] = 413.98;
 			$this->loteProducaoAcumulado[88] = 418.95;
 			$this->loteProducaoAcumulado[89] = 423.85;
+			$this->loteProducaoAcumulado[90] = 428.68;
+			$this->loteProducaoAcumulado[91] = 433.51;
+			$this->loteProducaoAcumulado[92] = 438.27;
+			$this->loteProducaoAcumulado[93] = 443.03;
+			$this->loteProducaoAcumulado[94] = 447.72;
+			$this->loteProducaoAcumulado[95] = 452.34;
+			$this->loteProducaoAcumulado[96] = 456.89;
+			$this->loteProducaoAcumulado[97] = 461.3;
+			$this->loteProducaoAcumulado[98] = 465.64;
+			$this->loteProducaoAcumulado[99] = 469.91;
+			$this->loteProducaoAcumulado[100] = 474.11;
 			 
 			 //---------------------------------------------------------------
 			 //---------------------------------------------------------------
@@ -1226,6 +1253,17 @@
 			 $this->loteConsumo[87] = 110;
 			 $this->loteConsumo[88] = 110;
 			 $this->loteConsumo[89] = 110;
+			 $this->loteConsumo[90] = 110;
+			 $this->loteConsumo[91] = 110;
+			 $this->loteConsumo[92] = 110;
+			 $this->loteConsumo[93] = 110;
+			 $this->loteConsumo[94] = 110;
+			 $this->loteConsumo[95] = 110;
+			 $this->loteConsumo[96] = 110;
+			 $this->loteConsumo[97] = 110;
+			 $this->loteConsumo[98] = 110;
+			 $this->loteConsumo[99] = 110;
+			 $this->loteConsumo[100] = 110;
 			 
 			 //---------------------------------------------------------------
 			$this->loteConsumoAcumulado = array();
@@ -1319,6 +1357,17 @@
 			$this->loteConsumoAcumulado[87] = 60305;
 			$this->loteConsumoAcumulado[88] = 61075;
 			$this->loteConsumoAcumulado[89] = 61845;
+			$this->loteConsumoAcumulado[90] = 62615;
+			$this->loteConsumoAcumulado[91] = 63385;
+			$this->loteConsumoAcumulado[92] = 64155;
+			$this->loteConsumoAcumulado[93] = 64928;
+			$this->loteConsumoAcumulado[94] = 65695;
+			$this->loteConsumoAcumulado[95] = 66465;
+			$this->loteConsumoAcumulado[96] = 67235;
+			$this->loteConsumoAcumulado[97] = 68005;
+			$this->loteConsumoAcumulado[98] = 68775;
+			$this->loteConsumoAcumulado[99] = 69454;
+			$this->loteConsumoAcumulado[100] = 70315;
 		  //---------------------------------------------------------------	
 
 		}
@@ -1326,7 +1375,7 @@
 		public function getProducaoDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
-			 if($semana>=1 && $semana<90)
+			 if($semana>=1 && $semana<$this->loteDescarteSemana)
 				 return ($this->loteProducao[$semana-1] * $numAves);
 			 else return 0;
 			
@@ -1449,7 +1498,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 //echo"<Br>|||$semana|||";
-			 if($semana>17 && $semana <=90)
+			 if($semana>17 && $semana <=$this->loteDescarteSemana)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
 			 else return 0;
 			
@@ -1467,7 +1516,7 @@
 			 $semana = $this->getSemanaLote($dataAtual);
 			 $numAves = $this->loteNumeroAves;
 			 
-			 if($semana>17 && $semana <= 90)
+			 if($semana>17 && $semana <= $this->loteDescarteSemana)
 				 return ($this->getConsumoTotal($dataAtual)/1000) - $this->getConsumoInicialTotal($dataAtual) - $this->getConsumoCrescimentoTotal($dataAtual) - $this->getConsumoPrePosturaTotal($dataAtual);
 			 else return 0;
 		}
@@ -1708,7 +1757,7 @@
 	 
 	 $lotes[5] = new LoteGalinhas("2022-08-10", 3000);
 	 $lotes[6] = new LoteGalinhas("2022-10-10", 3000);
-	  
+	 /* 
 	 $lotes[7] = new LoteGalinhas("2023-08-10", 3000);
 	 $lotes[8] = new LoteGalinhas("2023-10-10", 3000);
 	  
@@ -1717,7 +1766,7 @@
 	  
 	 $lotes[11] = new LoteGalinhas("2025-08-10", 3000);
 	 $lotes[12] = new LoteGalinhas("2025-10-10", 3000);
-	 
+	 */
 
 	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo, $custoEmbalagem, $custoAve, $custoVacinasAve, $operacional, $finanejuros);
 	 
