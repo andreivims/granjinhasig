@@ -8,7 +8,7 @@
 	 //$teste = new GenericaTabelaBD();
 	
 	
-	
+	 echo"<Br>-------------------------<Br>Criar um array para preco dos ovos de cada 12 meses e alterar para ver preço por periodo<Br>-------------------------<br>";
 	
 	
 /////////////////////////////////////////////////////////////////	
@@ -943,12 +943,12 @@
 		 
 		 
 
-		public function __construct($dataAlojamento, $nAves){
+		public function __construct($dataAlojamento, $nAves, $descarteSem){
 		
 			 $this->loteDataAlojamento = $dataAlojamento;
 			 $this->loteNumeroAves = $nAves;
 			 
-			 $this->loteDescarteSemana = 101;
+			 $this->loteDescarteSemana = $descarteSem;
 			 
 			 
 			 
@@ -1738,6 +1738,8 @@
 	 $operacional = 12500;
 	 $finanejuros = 5000;
 	 
+	 $semanaDescarte = 96;
+	 
 	 $HOJE = date("Y-m-d");
 	 $HOJE = date("2020-09-20");
 	 
@@ -1749,23 +1751,23 @@
 	 
 	 
 	 $lotes = array();
-	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000);
-	 $lotes[1] = new LoteGalinhas("2021-02-23", 2000);
-	 $lotes[2] = new LoteGalinhas("2021-05-07", 2000);
-	 $lotes[3] = new LoteGalinhas("2021-08-20", 2000);
-	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000);
+	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000, $semanaDescarte);
+	 $lotes[1] = new LoteGalinhas("2021-02-23", 2000, $semanaDescarte);
+	 $lotes[2] = new LoteGalinhas("2021-05-07", 2000, $semanaDescarte);
+	 $lotes[3] = new LoteGalinhas("2021-08-20", 2000, $semanaDescarte);
+	 $lotes[4] = new LoteGalinhas("2021-10-21", 2000, $semanaDescarte);
 	 
-	 $lotes[5] = new LoteGalinhas("2022-08-10", 3000);
-	 $lotes[6] = new LoteGalinhas("2022-10-10", 3000);
+	 $lotes[5] = new LoteGalinhas("2022-08-10", 3000, $semanaDescarte);
+	 $lotes[6] = new LoteGalinhas("2022-10-10", 3000, $semanaDescarte);
+	 
+	 $lotes[7] = new LoteGalinhas("2023-08-10", 3000, $semanaDescarte);
+	 $lotes[8] = new LoteGalinhas("2023-10-10", 3000, $semanaDescarte);
+	 
+	 $lotes[9] = new LoteGalinhas("2024-08-10", 3000, $semanaDescarte);
+	 $lotes[10] = new LoteGalinhas("2024-10-10", 3000, $semanaDescarte);
 	 /* 
-	 $lotes[7] = new LoteGalinhas("2023-08-10", 3000);
-	 $lotes[8] = new LoteGalinhas("2023-10-10", 3000);
-	  
-	 $lotes[9] = new LoteGalinhas("2024-08-10", 3000);
-	 $lotes[10] = new LoteGalinhas("2024-10-10", 3000);
-	  
-	 $lotes[11] = new LoteGalinhas("2025-08-10", 3000);
-	 $lotes[12] = new LoteGalinhas("2025-10-10", 3000);
+	 $lotes[11] = new LoteGalinhas("2025-08-10", 3000, $semanaDescarte);
+	 $lotes[12] = new LoteGalinhas("2025-10-10", 3000, $semanaDescarte);
 	 */
 
 	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo, $custoEmbalagem, $custoAve, $custoVacinasAve, $operacional, $finanejuros);
@@ -1808,17 +1810,18 @@
 	 echo"<Br><br>";
 	 
 	 //*/
+	 
 	 /*
 	 echo"<Br><br>";
 	 echo $nucleo->showBalancoGranjaMes($ano, $mes);
 	 echo"<Br><br>";
 	 
-	//*/
-	 /*
+	 //*/
 	
+	 //*
 	 echo"<Br><br>";
 	 //$nucleo->showdDetalhesGranjaMes($ano, $mes);
-	 $nucleo->showdDetalhesGranjaMes(2022, 6);
+	 $nucleo->showdDetalhesGranjaMes(2022, 9);
 	 echo"<Br><br>";
 	
 	 //*/
