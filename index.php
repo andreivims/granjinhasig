@@ -8,7 +8,9 @@
 	 //$teste = new GenericaTabelaBD();
 	
 	
-	 echo"<Br>-------------------------<Br>Criar um array para preco dos ovos de cada 12 meses e alterar para ver preço por periodo<Br>-------------------------<br>";
+	 echo"<Br>-------------------------<Br>
+	 Mostrar quantas caixas trincados deu e multiplicar pelo preço do trincado pra melhorar receitas!
+	 <Br>-------------------------<br>";
 	
 	
 /////////////////////////////////////////////////////////////////	
@@ -30,7 +32,8 @@
 		public $custoCrescimento;
 		public $custoPrePostura;
 		public $custoPostura;
-		public $precoCxOvo;
+		//public $precoCxOvo;
+		public $precoCxOvoMes;
 		public $custoEmbalagem;
 		
 		public $custoAves;
@@ -48,7 +51,8 @@
 			 $this->custoCrescimento = $custCresc;	 
 			 $this->custoPrePostura = $custPre;	 
 			 $this->custoPostura = $custPost;	 
-			 $this->precoCxOvo = $precoOvo;	 
+			 //$this->precoCxOvo = $precoOvo;	 
+			 $this->precoCxOvoMes = $precoOvo;	 
 			 $this->custoEmbalagem = $custEmb;	 
 			 
 			 $this->custoAves = $custAve;	 
@@ -502,7 +506,7 @@
 		}
 		
 		public function getPrecoProducaoGranjaMes($ano, $mes){
-			 return ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvo; 
+			 return ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvoMes[$mes-1]; 
 		}
 		
 		public function getProducaoGranjaMesArray($ano, $mes){
@@ -575,10 +579,10 @@
 			 for($i=0;$i<count($qtde);$i++)
 			{
 				 
-				 echo"<td>" . (($qtde[$i]/360) * $this->precoCxOvo) ."</td>" ;
+				 echo"<td>" . (($qtde[$i]/360) * $this->precoCxOvoMes[$mes-1]) ."</td>" ;
 				
 			}
-				 echo"<td class='bbgrey'>". (($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvo) ."</td>";
+				 echo"<td class='bbgrey'>". (($this->getProducaoGranjaMes($ano, $mes)/360) * $this->precoCxOvoMes[$mes-1]) ."</td>";
 			 echo"</tr>";
 
 			 echo"</table>";		
@@ -620,8 +624,10 @@
 				 $alojaano = intval(date("Y", strtotime($alojadata)));
 				 
 				 if($ano == $alojaano && $mes == $alojames)
+				{
 					 $qtdeaves += $this->lotes[$j]->loteNumeroAves;
-				 
+				
+				}
 			}
 	
 			 return $qtdeaves;
@@ -695,7 +701,7 @@
 						 echo"<tr> <td>Embalagens</td> <td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ." CXs</td> <td>R$ ". $this->custoEmbalagem ."</td> <td>R$ ". ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->custoEmbalagem ."</td> <td></td> </tr>";
 						 $totalDespesas += ($this->getProducaoGranjaMes($ano, $mes)/360) * $this->custoEmbalagem;
 						 
-						 echo"<tr> <td>Vendas Ovos</td> <td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ." CXs</td> <td>R$ ". $this->precoCxOvo ."</td> <td></td> <td>R$ ". $this->getPrecoProducaoGranjaMes($ano, $mes) ."</td> </tr>";
+						 echo"<tr> <td>Vendas Ovos</td> <td>". ($this->getProducaoGranjaMes($ano, $mes)/360) ." CXs</td> <td>R$ ". $this->precoCxOvoMes[$mes-1] ."</td> <td></td> <td>R$ ". $this->getPrecoProducaoGranjaMes($ano, $mes) ."</td> </tr>";
 						 $totalReceitas += $this->getPrecoProducaoGranjaMes($ano, $mes);
 						 
 					}	 
@@ -809,7 +815,7 @@
 					 $qtdeOv++;
 					 $totalOvos += $this->getProducaoGranjaMes($ano, $j);
 					 $custoEmbalagens += $this->custoEmbalagem;
-					 $precoOvos += $this->precoCxOvo;
+					 $precoOvos += $this->precoCxOvoMes[$j-1];
 					 $totalCustoEmbalagem += ($this->getProducaoGranjaMes($ano, $j)/360) * $this->custoEmbalagem;
 					 $totalPrecoOvos += $this->getPrecoProducaoGranjaMes($ano, $j);
 				}
@@ -937,6 +943,9 @@
 		 public $loteConsumo;
 		 public $loteConsumoAcumulado;
 		 
+		 public $loteMortalidadeAcumulado;
+		 public $porcentagemTrincado;
+		 
 		 
 		 public $loteDescarteSemana;
 		 
@@ -949,6 +958,9 @@
 			 $this->loteNumeroAves = $nAves;
 			 
 			 $this->loteDescarteSemana = $descarteSem;
+			 
+			 $this->porcentagemTrincado = 0.035;
+			 //$this->porcentagemTrincado = 0.0;
 			 
 			 
 			 
@@ -1032,29 +1044,31 @@
 			 $this->loteProducao[76] = 0.76;
 			 $this->loteProducao[77] = 0.75;
 			 $this->loteProducao[78] = 0.74;
-			 $this->loteProducao[79] = 0.73;
-			 $this->loteProducao[80] = 0.72;
-			 $this->loteProducao[81] = 0.72;
-			 $this->loteProducao[82] = 0.72;
-			 $this->loteProducao[83] = 0.72;
-			 $this->loteProducao[84] = 0.72;
-			 $this->loteProducao[85] = 0.71;
-			 $this->loteProducao[86] = 0.71;
-			 $this->loteProducao[87] = 0.71;
-			 $this->loteProducao[88] = 0.71;
-			 $this->loteProducao[89] = 0.7;
-			 $this->loteProducao[90] = 0.69;
-			 $this->loteProducao[91] = 0.69;
-			 $this->loteProducao[92] = 0.68;
-			 $this->loteProducao[93] = 0.68;
-			 $this->loteProducao[94] = 0.67;
-			 $this->loteProducao[95] = 0.66;
-			 $this->loteProducao[96] = 0.65;
-			 $this->loteProducao[97] = 0.63;
-			 $this->loteProducao[98] = 0.62;
-			 $this->loteProducao[99] = 0.61;
-			 $this->loteProducao[100] = 0.6;
+			 $this->loteProducao[79] = 0.74;
+			 $this->loteProducao[80] = 0.74;
+			 $this->loteProducao[81] = 0.74;
+			 $this->loteProducao[82] = 0.73;
+			 $this->loteProducao[83] = 0.73;
+			 $this->loteProducao[84] = 0.73;
+			 $this->loteProducao[85] = 0.73;
+			 $this->loteProducao[86] = 0.72;
+			 $this->loteProducao[87] = 0.72;
+			 $this->loteProducao[88] = 0.72;
+			 $this->loteProducao[89] = 0.72;
+			 $this->loteProducao[90] = 0.71;
+			 $this->loteProducao[91] = 0.71;
+			 $this->loteProducao[92] = 0.71;
+			 $this->loteProducao[93] = 0.71;
+			 $this->loteProducao[94] = 0.7;
+			 $this->loteProducao[95] = 0.7;
+			 $this->loteProducao[96] = 0.7;
+			 $this->loteProducao[97] = 0.69;
+			 $this->loteProducao[98] = 0.69;
+			 $this->loteProducao[99] = 0.69;
+			 $this->loteProducao[100] = 0.69;
 			 //---------------------------------------------------------------
+			 
+			 
 			 $this->loteProducaoAcumulado = array();//Aqui é acumulação de producao em porcentagem, basta multiplicar pelo numero de galinhas para saber quanto ovos já foram produzidos na semana tal.
 			 $this->loteProducaoAcumulado[0] = 0;
 			$this->loteProducaoAcumulado[1] = 0;
@@ -1145,18 +1159,18 @@
 			$this->loteProducaoAcumulado[86] = 409.01;
 			$this->loteProducaoAcumulado[87] = 413.98;
 			$this->loteProducaoAcumulado[88] = 418.95;
-			$this->loteProducaoAcumulado[89] = 423.85;
-			$this->loteProducaoAcumulado[90] = 428.68;
-			$this->loteProducaoAcumulado[91] = 433.51;
-			$this->loteProducaoAcumulado[92] = 438.27;
-			$this->loteProducaoAcumulado[93] = 443.03;
-			$this->loteProducaoAcumulado[94] = 447.72;
-			$this->loteProducaoAcumulado[95] = 452.34;
-			$this->loteProducaoAcumulado[96] = 456.89;
-			$this->loteProducaoAcumulado[97] = 461.3;
-			$this->loteProducaoAcumulado[98] = 465.64;
-			$this->loteProducaoAcumulado[99] = 469.91;
-			$this->loteProducaoAcumulado[100] = 474.11;
+			$this->loteProducaoAcumulado[89] = 423.99;
+			$this->loteProducaoAcumulado[90] = 428.96;
+			$this->loteProducaoAcumulado[91] = 433.93;
+			$this->loteProducaoAcumulado[92] = 438.9;
+			$this->loteProducaoAcumulado[93] = 443.88;
+			$this->loteProducaoAcumulado[94] = 448.78;
+			$this->loteProducaoAcumulado[95] = 453.68;
+			$this->loteProducaoAcumulado[96] = 458.58;
+			$this->loteProducaoAcumulado[97] = 463.41;
+			$this->loteProducaoAcumulado[98] = 468.24;
+			$this->loteProducaoAcumulado[99] = 473.07;
+			$this->loteProducaoAcumulado[100] = 477.9;
 			 
 			 //---------------------------------------------------------------
 			 //---------------------------------------------------------------
@@ -1368,30 +1382,132 @@
 			$this->loteConsumoAcumulado[98] = 68775;
 			$this->loteConsumoAcumulado[99] = 69454;
 			$this->loteConsumoAcumulado[100] = 70315;
-		  //---------------------------------------------------------------	
-
+			//---------------------------------------------------------------	
+			$this->loteMortalidadeAcumulado = array();//ATENCAO: dividir por 100 para poder multiplicar pelo numero de aves
+			$this->loteMortalidadeAcumulado[0] = 0.5;
+			$this->loteMortalidadeAcumulado[1] = 0.7;
+			$this->loteMortalidadeAcumulado[2] = 0.8;
+			$this->loteMortalidadeAcumulado[3] = 0.9;
+			$this->loteMortalidadeAcumulado[4] = 1;
+			$this->loteMortalidadeAcumulado[5] = 1.1;
+			$this->loteMortalidadeAcumulado[6] = 1.2;
+			$this->loteMortalidadeAcumulado[7] = 1.2;
+			$this->loteMortalidadeAcumulado[8] = 1.3;
+			$this->loteMortalidadeAcumulado[9] = 1.3;
+			$this->loteMortalidadeAcumulado[10] = 1.4;
+			$this->loteMortalidadeAcumulado[11] = 1.5;
+			$this->loteMortalidadeAcumulado[12] = 1.6;
+			$this->loteMortalidadeAcumulado[13] = 1.7;
+			$this->loteMortalidadeAcumulado[14] = 1.8;
+			$this->loteMortalidadeAcumulado[15] = 1.9;
+			$this->loteMortalidadeAcumulado[16] = 2;
+			$this->loteMortalidadeAcumulado[17] = 2;
+			$this->loteMortalidadeAcumulado[18] = 2.1;
+			$this->loteMortalidadeAcumulado[19] = 2.1;
+			$this->loteMortalidadeAcumulado[20] = 2.2;
+			$this->loteMortalidadeAcumulado[21] = 2.3;
+			$this->loteMortalidadeAcumulado[22] = 2.3;
+			$this->loteMortalidadeAcumulado[23] = 2.4;
+			$this->loteMortalidadeAcumulado[24] = 2.4;
+			$this->loteMortalidadeAcumulado[25] = 2.5;
+			$this->loteMortalidadeAcumulado[26] = 2.6;
+			$this->loteMortalidadeAcumulado[27] = 2.6;
+			$this->loteMortalidadeAcumulado[28] = 2.7;
+			$this->loteMortalidadeAcumulado[29] = 2.7;
+			$this->loteMortalidadeAcumulado[30] = 2.8;
+			$this->loteMortalidadeAcumulado[31] = 2.9;
+			$this->loteMortalidadeAcumulado[32] = 2.9;
+			$this->loteMortalidadeAcumulado[33] = 3;
+			$this->loteMortalidadeAcumulado[34] = 3;
+			$this->loteMortalidadeAcumulado[35] = 3.1;
+			$this->loteMortalidadeAcumulado[36] = 3.2;
+			$this->loteMortalidadeAcumulado[37] = 3.2;
+			$this->loteMortalidadeAcumulado[38] = 3.3;
+			$this->loteMortalidadeAcumulado[39] = 3.4;
+			$this->loteMortalidadeAcumulado[40] = 3.4;
+			$this->loteMortalidadeAcumulado[41] = 3.5;
+			$this->loteMortalidadeAcumulado[42] = 3.6;
+			$this->loteMortalidadeAcumulado[43] = 3.6;
+			$this->loteMortalidadeAcumulado[44] = 3.7;
+			$this->loteMortalidadeAcumulado[45] = 3.8;
+			$this->loteMortalidadeAcumulado[46] = 3.9;
+			$this->loteMortalidadeAcumulado[47] = 3.9;
+			$this->loteMortalidadeAcumulado[48] = 4;
+			$this->loteMortalidadeAcumulado[49] = 4.1;
+			$this->loteMortalidadeAcumulado[50] = 4.1;
+			$this->loteMortalidadeAcumulado[51] = 4.2;
+			$this->loteMortalidadeAcumulado[52] = 4.3;
+			$this->loteMortalidadeAcumulado[53] = 4.3;
+			$this->loteMortalidadeAcumulado[54] = 4.4;
+			$this->loteMortalidadeAcumulado[55] = 4.5;
+			$this->loteMortalidadeAcumulado[56] = 4.6;
+			$this->loteMortalidadeAcumulado[57] = 4.6;
+			$this->loteMortalidadeAcumulado[58] = 4.7;
+			$this->loteMortalidadeAcumulado[59] = 4.8;
+			$this->loteMortalidadeAcumulado[60] = 4.9;
+			$this->loteMortalidadeAcumulado[61] = 4.9;
+			$this->loteMortalidadeAcumulado[62] = 5;
+			$this->loteMortalidadeAcumulado[63] = 5.1;
+			$this->loteMortalidadeAcumulado[64] = 5.2;
+			$this->loteMortalidadeAcumulado[65] = 5.3;
+			$this->loteMortalidadeAcumulado[66] = 5.4;
+			$this->loteMortalidadeAcumulado[67] = 5.5;
+			$this->loteMortalidadeAcumulado[68] = 5.7;
+			$this->loteMortalidadeAcumulado[69] = 5.8;
+			$this->loteMortalidadeAcumulado[70] = 5.9;
+			$this->loteMortalidadeAcumulado[71] = 6;
+			$this->loteMortalidadeAcumulado[72] = 6.1;
+			$this->loteMortalidadeAcumulado[73] = 6.3;
+			$this->loteMortalidadeAcumulado[74] = 6.4;
+			$this->loteMortalidadeAcumulado[75] = 6.5;
+			$this->loteMortalidadeAcumulado[76] = 6.7;
+			$this->loteMortalidadeAcumulado[77] = 6.8;
+			$this->loteMortalidadeAcumulado[78] = 7;
+			$this->loteMortalidadeAcumulado[79] = 7.1;
+			$this->loteMortalidadeAcumulado[80] = 7.3;
+			$this->loteMortalidadeAcumulado[81] = 7.4;
+			$this->loteMortalidadeAcumulado[82] = 7.6;
+			$this->loteMortalidadeAcumulado[83] = 7.7;
+			$this->loteMortalidadeAcumulado[84] = 7.9;
+			$this->loteMortalidadeAcumulado[85] = 8;
+			$this->loteMortalidadeAcumulado[86] = 8.2;
+			$this->loteMortalidadeAcumulado[87] = 8.3;
+			$this->loteMortalidadeAcumulado[88] = 8.5;
+			$this->loteMortalidadeAcumulado[89] = 8.6;
+			$this->loteMortalidadeAcumulado[90] = 8.8;
+			$this->loteMortalidadeAcumulado[91] = 9;
+			$this->loteMortalidadeAcumulado[92] = 9.1;
+			$this->loteMortalidadeAcumulado[93] = 9.3;
+			$this->loteMortalidadeAcumulado[94] = 9.5;
+			$this->loteMortalidadeAcumulado[95] = 9.6;
+			$this->loteMortalidadeAcumulado[96] = 9.8;
+			$this->loteMortalidadeAcumulado[97] = 10;
+			$this->loteMortalidadeAcumulado[98] = 10.2;
+			$this->loteMortalidadeAcumulado[99] = 10.4;
+			$this->loteMortalidadeAcumulado[100] = 10.6;
+		
+		   //---------------------------------------------------------------	
+		   
+		  
 		}
 	
 		public function getProducaoDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 if($semana>=1 && $semana<$this->loteDescarteSemana)
-				 return ($this->loteProducao[$semana-1] * $numAves);
+				 return ($this->loteProducao[$semana-1] * $numAves) * (1 - $this->porcentagemTrincado);
 			 else return 0;
 			
 		}
 		
 		public function getProducaoSemana($dataAtual){
-			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
-			 
+		
 			 return $this->getProducaoDia($dataAtual)*7 ;
-			 
 		}
 		public function getProducaoTotal($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
-			 return ($this->loteProducaoAcumulado[$semana-1] * $numAves);
+			 $numAves = $this->getNumeroAves($semana);
+			 return ($this->loteProducaoAcumulado[$semana-1] * $numAves) * (1 - $this->porcentagemTrincado);
 			
 		}
 		public function getTaxaProducao($dataAtual){
@@ -1406,7 +1522,7 @@
 		//------------------------------------
 		public function getConsumoInicialDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 
 			 if($semana>= 1 && $semana<=8)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
@@ -1415,15 +1531,12 @@
 		}
 		
 		public function getConsumoInicialSemana($dataAtual){
-			 $numAves = $this->loteNumeroAves;
-			 
 			 return $this->getConsumoInicialDia($dataAtual)*7;
 			
 		}
 		
 		public function getConsumoInicialTotal($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 
 			 if($semana>= 1 && $semana<=8)
 				 return ($this->getConsumoTotal($dataAtual)/1000);
@@ -1434,7 +1547,7 @@
 		//------------------------------------
 		public function getConsumoCrescimentoDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 
 			 if($semana>8 && $semana <=15)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
@@ -1443,15 +1556,12 @@
 		}
 		
 		public function getConsumoCrescimentoSemana($dataAtual){
-			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 return $this->getConsumoCrescimentoDia($dataAtual)*7;
 			
 		}
 		
 		public function getConsumoCrescimentoTotal($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 
 			 if($semana>= 1 && $semana<=8)
 				 return 0;
@@ -1465,7 +1575,7 @@
 		//------------------------------------
 		public function getConsumoPrePosturaDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 
 			 if($semana>15 && $semana <=17)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
@@ -1474,8 +1584,6 @@
 		}
 		
 		public function getConsumoPrePosturaSemana($dataAtual){
-			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 
 			 return $this->getConsumoPrePosturaDia($dataAtual)*7;
 			
@@ -1483,7 +1591,6 @@
 		
 		public function getConsumoPrePosturaTotal($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 
 			 if($semana>= 1 && $semana<=15)
 				 return 0;
@@ -1496,7 +1603,7 @@
 		//------------------------------------
 		public function getConsumoPosturaDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 //echo"<Br>|||$semana|||";
 			 if($semana>17 && $semana <=$this->loteDescarteSemana)
 				 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
@@ -1505,16 +1612,12 @@
 		}
 		
 		public function getConsumoPosturaSemana($dataAtual){
-			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
-			 
 			 return $this->getConsumoPosturaDia($dataAtual)*7;
 			
 		}
 		
 		public function getConsumoPosturaTotal($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 
 			 if($semana>17 && $semana <= $this->loteDescarteSemana)
 				 return ($this->getConsumoTotal($dataAtual)/1000) - $this->getConsumoInicialTotal($dataAtual) - $this->getConsumoCrescimentoTotal($dataAtual) - $this->getConsumoPrePosturaTotal($dataAtual);
@@ -1526,15 +1629,13 @@
 		
 		public function getConsumoDia($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 
 			 return ($this->loteConsumo[$semana-1] * $numAves)/1000;
 			
 		}
 		
 		public function getConsumoSemana($dataAtual){
-			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
 			 return $this->getConsumoDia($dataAtual)*7;
 			 
 		}
@@ -1542,13 +1643,13 @@
 		
 		public function getConsumoTotal($dataAtual){
 			 $semana = $this->getSemanaLote($dataAtual);
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 return ($this->loteConsumoAcumulado[$semana-1] * $numAves);
 			
 		}
 		
 		public function getConsumoTotalSemana($semana){
-			 $numAves = $this->loteNumeroAves;
+			 $numAves = $this->getNumeroAves($semana);
 			 return ($this->loteConsumoAcumulado[$semana-1] * $numAves);
 			
 		}
@@ -1574,6 +1675,14 @@
 				 return intval($intvl->days / 7)+1; 
 			}
 			
+		}
+		
+		
+		public function getNumeroAves($semana){
+			
+			 if($semana >= 1 && $semana < 101) return intval($this->loteNumeroAves - (( $this->loteNumeroAves * $this->loteMortalidadeAcumulado[$semana-1] )/100));
+			 
+			 //return $this->loteNumeroAves;
 		}
 		
 //---------------------------------------------------------------------------
@@ -1729,7 +1838,16 @@
 	 $custoCresc = 1.91;
 	 $custoPre = 1.96;
 	 $custoPostura = 1.95;
-	 $precoOvo = 170;
+	 
+	 
+	 //$precoOvo = array(152,183,202,202,188,178,168,152,132,122,122,142);
+	 $precoOvo = array(156,180,180,180,180,180,168,156,156,156,156,156);
+	 //$precoOvo = array(170,170,170,170,170,170,170,170,170,170,170,170);
+	 //$precoOvo = array(162,162,162,162,162,162,162,162,162,162,162,162);
+	 //$precoOvo = 170;
+	 
+	 
+	 
 	 $custoEmbalagem = 20;
 	 
 	 $custoAve = 3.4;
@@ -1777,7 +1895,7 @@
 	 
 	$anos = array(2020,2021,2022,2023,2024,2025);
 	
-	/* 
+	//* 
 	for($i=0;$i<count($anos);$i++){
 		
 		$resultadoano = 0;
