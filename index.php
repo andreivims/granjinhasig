@@ -1856,7 +1856,7 @@
 	 $operacional = 12500;
 	 $finanejuros = 5000;
 	 
-	 $semanaDescarte = 96;
+	 $semanaDescarte = 100;
 	 
 	 $HOJE = date("Y-m-d");
 	 $HOJE = date("2020-09-20");
@@ -1883,10 +1883,10 @@
 	 
 	 $lotes[9] = new LoteGalinhas("2024-08-10", 3000, $semanaDescarte);
 	 $lotes[10] = new LoteGalinhas("2024-10-10", 3000, $semanaDescarte);
-	 /* 
+	 //* 
 	 $lotes[11] = new LoteGalinhas("2025-08-10", 3000, $semanaDescarte);
 	 $lotes[12] = new LoteGalinhas("2025-10-10", 3000, $semanaDescarte);
-	 */
+	 //*/
 
 	 $nucleo = new NucleoGranja($lotes, $custoInicial, $custoCresc, $custoPre, $custoPostura, $precoOvo, $custoEmbalagem, $custoAve, $custoVacinasAve, $operacional, $finanejuros);
 	 
