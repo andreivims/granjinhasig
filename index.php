@@ -1834,10 +1834,10 @@
 	 $DIAMES = array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
 		
 	
-	 $custoInicial = 2.17;
-	 $custoCresc = 1.91;
-	 $custoPre = 1.96;
-	 $custoPostura = 1.95;
+	 $custoInicial = 2.11;
+	 $custoCresc = 1.99;
+	 $custoPre = 1.95;
+	 $custoPostura = 1.91;
 	 
 	 
 	 //$precoOvo = array(152,183,202,202,188,178,168,152,132,122,122,142);
