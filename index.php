@@ -1840,8 +1840,8 @@
 	 $custoPostura = 1.95;
 	 
 	 
-	 $precoOvo = array(152,183,202,202,188,178,168,152,132,122,122,142);
-	 //$precoOvo = array(156,180,180,180,180,180,168,156,156,156,156,156);
+	 //$precoOvo = array(152,183,202,202,188,178,168,152,132,122,122,142);
+	 $precoOvo = array(156,180,180,180,180,180,168,168,168,156,156,156);
 	 //$precoOvo = array(170,170,170,170,170,170,170,170,170,170,170,170);
 	 //$precoOvo = array(162,162,162,162,162,162,162,162,162,162,162,162);
 	 //$precoOvo = 170;
@@ -1853,7 +1853,7 @@
 	 $custoAve = 3.4;
 	 $custoVacinasAve = 1.35;
 	 
-	 $operacional = 14000;
+	 $operacional = 13000;
 	 $finanejuros = 5000;
 	 
 	 $semanaDescarte = 100;
@@ -1871,7 +1871,7 @@
 	 $lotes = array();
 	 
 	 
-	 /* 
+	 //* 
 	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000, $semanaDescarte);
 	 $lotes[1] = new LoteGalinhas("2021-02-23", 2000, $semanaDescarte);
 	 $lotes[2] = new LoteGalinhas("2021-05-07", 2000, $semanaDescarte);
@@ -1892,20 +1892,31 @@
 	 //*/
 	 
 	 
-	 //*
+	 /*
 	 $lotes[0] = new LoteGalinhas("2020-01-15", 3000, $semanaDescarte);
 	 $lotes[1] = new LoteGalinhas("2020-05-15", 3000, $semanaDescarte);
 	 $lotes[2] = new LoteGalinhas("2020-09-15", 3000, $semanaDescarte);
 	 $lotes[3] = new LoteGalinhas("2021-01-15", 3000, $semanaDescarte);
+	 
 	 $lotes[4] = new LoteGalinhas("2021-08-15", 3000, $semanaDescarte);
 	 $lotes[5] = new LoteGalinhas("2021-12-15", 3000, $semanaDescarte);
 	 $lotes[6] = new LoteGalinhas("2022-04-15", 3000, $semanaDescarte);
 	 $lotes[7] = new LoteGalinhas("2022-08-15", 3000, $semanaDescarte);
+	 
 	 $lotes[8] = new LoteGalinhas("2023-03-15", 3000, $semanaDescarte);
 	 $lotes[9] = new LoteGalinhas("2023-07-15", 3000, $semanaDescarte);
 	 $lotes[10] = new LoteGalinhas("2023-11-15", 3000, $semanaDescarte);
 	 $lotes[11] = new LoteGalinhas("2024-03-15", 3000, $semanaDescarte);
-	 $lotes[12] = new LoteGalinhas("2024-11-15", 3000, $semanaDescarte);
+	 
+	 $lotes[12] = new LoteGalinhas("2024-10-15", 3000, $semanaDescarte);
+	 $lotes[13] = new LoteGalinhas("2025-02-15", 3000, $semanaDescarte);
+	 $lotes[14] = new LoteGalinhas("2025-06-15", 3000, $semanaDescarte);
+	 $lotes[15] = new LoteGalinhas("2025-10-15", 3000, $semanaDescarte);
+	 
+	 $lotes[16] = new LoteGalinhas("2026-05-15", 3000, $semanaDescarte);
+	 $lotes[17] = new LoteGalinhas("2026-08-15", 3000, $semanaDescarte);
+	 $lotes[18] = new LoteGalinhas("2026-12-15", 3000, $semanaDescarte);
+	 $lotes[19] = new LoteGalinhas("2027-04-15", 3000, $semanaDescarte);
 	  //*/
 	  
 	  
@@ -1915,9 +1926,9 @@
 	
 	
 	 
-	$anos = array(2020,2021,2022,2023,2024,2025);
+	$anos = array(2020,2021,2022,2023,2024,2025,2026);
 	
-	//* 
+	/* 
 	for($i=0;$i<count($anos);$i++){
 		
 		$resultadoano = 0;
