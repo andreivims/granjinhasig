@@ -60,7 +60,7 @@
 						top: 0px;
 						left: 0px;
 						height: 35px;
-						width: 103px;
+						width: 60px;
 
 						 text-align: left;
 						 padding-left: 2px;
@@ -77,9 +77,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 105px;
+						left: 62px;
 						height: 35px;
-						width: 200px;	
+						width: 204px;	
 					}
 				
 					
@@ -89,9 +89,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 305px;
+						left: 266px;
 						height: 35px;
-						width: 120px;	
+						width: 144px;	
 					}
 				
 					
@@ -101,9 +101,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 425px;
+						left: 410px;
 						height: 35px;
-						width: 115px;	
+						width: 144px;	
 					}
 				
 					
@@ -113,9 +113,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 540px;
+						left: 554px;
 						height: 35px;
-						width: 100px;	
+						width: 144px;	
 					}
 				
 					
@@ -125,22 +125,13 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 640px;
+						left: 698px;
 						height: 35px;
-						width: 100px;	
+						width: 146px;	
 					}
 				
 					
-					 .teste8
-					{
-						float: left;
-						position: absolute;
-					
-						top: 0px;
-						left: 740px;
-						height: 35px;
-						width: 100px;	
-					}
+				
 				
 					
 					

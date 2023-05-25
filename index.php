@@ -1834,26 +1834,28 @@
 	 $DIAMES = array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
 		
 	
-	 $custoInicial = 2.11;
-	 $custoCresc = 1.99;
-	 $custoPre = 1.95;
-	 $custoPostura = 1.91;
+	 $custoInicial = 2.2;
+	 $custoCresc = 2.1;
+	 $custoPre = 2.05;
+	 $custoPostura = 1.95;
 	 
 	 
 	 //$precoOvo = array(152,183,202,202,188,178,168,152,132,122,122,142);
-	 $precoOvo = array(156,180,180,180,180,180,168,168,168,156,156,156);
+	 //$precoOvo = array(156,180,180,180,180,180,168,168,168,156,156,156);
 	 //$precoOvo = array(170,170,170,170,170,170,170,170,170,170,170,170);
+	 //$precoOvo = array(175,175,175,175,175,175,175,175,175,175,175,175);
+	 $precoOvo = array(220,220,220,220,220,220,220,220,220,220,220,220);
 	 //$precoOvo = array(162,162,162,162,162,162,162,162,162,162,162,162);
 	 //$precoOvo = 170;
 	 
 	 
 	 
-	 $custoEmbalagem = 20;
+	 $custoEmbalagem = 21;
 	 
-	 $custoAve = 3.4;
-	 $custoVacinasAve = 1.35;
+	 $custoAve = 5.1;
+	 $custoVacinasAve = 1.5;
 	 
-	 $operacional = 13000;
+	 $operacional = 15000;
 	 $finanejuros = 5000;
 	 
 	 $semanaDescarte = 100;
@@ -1871,7 +1873,7 @@
 	 $lotes = array();
 	 
 	 
-	 //* 
+	 //*
 	 $lotes[0] = new LoteGalinhas("2020-10-02", 2000, $semanaDescarte);
 	 $lotes[1] = new LoteGalinhas("2021-02-23", 2000, $semanaDescarte);
 	 $lotes[2] = new LoteGalinhas("2021-05-07", 2000, $semanaDescarte);

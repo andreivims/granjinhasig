@@ -1147,10 +1147,11 @@
 		 		 
 				 <div class="teste ">
 				 
-					 <div class="testeheader1 b_all brz bbz bggrey verticalText"><b>COLABORADOR (A):</b></div>
+					 <div class="testeheader1 b_all brz bbz bggrey verticalText"><b>Colaborador(a):</b></div>
 					 <div class="testeheader2 b_all brz bbz  verticalText"><b></b></div>
 					 <div class="testeheader3 b_all brz bbz  verticalText"><b></b></div>
 					 <div class="testeheader4 b_all  bbz  verticalText"><b></b></div>
+					 <div class="testeheader5 b_all  bbz  verticalText"><b></b></div>
 					
 					 
 					 
@@ -1160,11 +1161,11 @@
 				 
 				 <div class="teste ">
 				 
-					 <div class="teste1 b_all brz bbz bggrey verticalText"><b>Data</b></div>
+					 <div class="teste0 b_all brz bbz bggrey verticalText"><b>Data</b></div>
 					
-					 
-					 <div class="teste2 b_all brz bbz bggrey verticalText"><b>Horário</b></div>
-					 
+				
+					 <div class="teste1 b_all brz  bggrey verticalText"><b>C</b></div>
+					 <div class="teste2 b_all brz  bggrey verticalText"><b>NC</b></div>
 					 
 					 <div class="teste3 b_all brz  bggrey verticalText"><b>C</b></div>
 					 <div class="teste4 b_all brz  bggrey verticalText"><b>NC</b></div>
@@ -1197,11 +1198,12 @@
 				 
 					 <div class="teste ">
 				 
-						 <div class="teste1 b_all brz bbz verticalText bggrey"><?PHP if(($i+1)<10){echo"0";} echo ($i+1);  echo " - "; echo $diasemana[$diasemana_numero]  ?></div>
+						 <div class="teste0 b_all brz bbz verticalText bggrey"><?PHP if(($i+1)<10){echo"0";} echo ($i+1);  echo " - "; echo $diasemana[$diasemana_numero]  ?></div>
 						
+						
+						 <div class="teste1 b_all brz bbz  verticalText"><b></b></div>
+						 <div class="teste2 b_all  bbz  verticalText"><b></b></div>
 						 
-						 <div class="teste2 b_all  bbz verticalText ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-						
 						 <div class="teste3 b_all brz bbz  verticalText"><b></b></div>
 						 <div class="teste4 b_all  bbz  verticalText"><b></b></div>
 						 <div class="teste5 b_all brz bbz  verticalText"><b></b></div>
@@ -1234,7 +1236,10 @@
 					 <div class="testeobs7 b_all brz bbz bggrey verticalText"><b>SP</b></div>
 					 <div class="testeobs8 b_all brz bbz bggrey verticalText"><b>AV</b></div>
 					 <div class="testeobs9 b_all brz bbz bggrey verticalText"><b>AE</b></div>
-					 <div class="testeobs10 b_all bbz bggrey  verticalText"><b>SP</b></div>
+					 <div class="testeobs10 b_all brz bbz bggrey verticalText"><b>SP</b></div>
+					 <div class="testeobs11 b_all brz bbz bggrey verticalText"><b>AV</b></div>
+					 <div class="testeobs12 b_all brz bbz bggrey verticalText"><b>AE</b></div>
+					 <div class="testeobs13 b_all bbz bggrey  verticalText"><b>SP</b></div>
 					 
 					 
 					 
@@ -1255,7 +1260,10 @@
 					 <div class="testeobs7 b_all  bbz  verticalText"><b></b></div>
 					 <div class="testeobs8 b_all brz bbz  verticalText"><b></b></div>
 					 <div class="testeobs9 b_all brz bbz  verticalText"><b></b></div>
-					 <div class="testeobs10 b_all bbz   verticalText"><b></b></div>
+					 <div class="testeobs10 b_all brz bbz  verticalText"><b></b></div>
+					 <div class="testeobs11 b_all brz bbz  verticalText"><b></b></div>
+					 <div class="testeobs12 b_all brz bbz  verticalText"><b></b></div>
+					 <div class="testeobs13 b_all bbz   verticalText"><b></b></div>
 					
 				
 				
@@ -1479,7 +1487,7 @@
 				 <div class="teste ">
 				 
 					 <div class="teste1 b_all brz bbz bggrey verticalText"><b>Produção</b></div>
-					 <div class="teste2 b_all brz bbz bggrey verticalText"><b>Lote</b></div>
+					 <!--<div class="teste2 b_all brz bbz bggrey verticalText"><b>Lote</b></div>-->
 					 
 					 
 					 <div class="teste3header b_all brz bbz bggrey verticalText"><b>Vencimento</b></div>
@@ -1512,9 +1520,11 @@
 				 
 					 <div class="teste ">
 				 
-						 <div class="teste1 b_all brz bbz verticalText bggrey"><b><?PHP if(($i+1)<10){echo"0";} echo ($i+1) . " - " . $diasemana[$diasemana_numero]; ?></b></div>
-						 <div class="teste2 b_all brz bbz verticalText bggrey"><b>
+						 <div class="teste1 b_all brz bbz verticalText bggrey"><b><?PHP if(($i+1)<10){echo"0";} echo ($i+1) ."/". $mes . "/". $ano ." - " . $diasemana[$diasemana_numero]; ?></b></div>
+						 <!--<div class="teste1 b_all brz bbz verticalText bggrey"><b><?PHP //if(($i+1)<10){echo"0";} echo ($i+1) . " - " . $diasemana[$diasemana_numero]; ?></b></div>
+						 <div class="teste2 b_all brz bbz verticalText bggrey"><b>-->
 						 <?PHP 
+						 /*
 							 if($loteinicio<60)
 							{	
 								 echo "&nbsp;&nbsp;&nbsp;". ($loteinicio+$i) ."&nbsp;&nbsp;&nbsp;";
@@ -1526,8 +1536,9 @@
 								 echo ($loteinicio+$i) ;
 								
 							}
+						 */
 						 ?>
-						 </b></div>
+						 <!--</b></div>-->
 						 
 						 
 						 <div class="teste3 b_all brz  bbz verticalText bggrey"><b><?PHP echo date('d/m/Y', $datavencimento); ?></b></div>
@@ -1598,6 +1609,177 @@
 	}
 
 ?>
+
+
+
+
+
+<?PHP
+		
+	///////////////////// Mod.Dipoa 12 ///////////////////////////////////////////////////////	
+
+
+	 function moddipoa12content($vendas, $totalPrimeiraPagina, $totalOutrasPaginas)
+	{
+				
+					
+					
+?>			 
+
+
+
+
+			
+				 <div class="teste ">
+				 
+					 <div class="teste1 b_all brz bbz bggrey verticalText"><b>Data Produção</b></div>
+					 <div class="teste2 b_all brz bbz bggrey verticalText"><b>Nº Rótulo</b></div>
+					 
+					 
+					 <div class="teste3 b_all brz bbz bggrey verticalText"><b>Nota Fiscal</b></div>
+					 <div class="teste4 b_all brz bbz bggrey verticalText" ><b>Cliente</b></div>
+					 
+					 <div class="teste5 b_all brz bbz bggrey verticalText"><b>Município Destino</b></div>
+					 <div class="teste6 b_all bbz  bggrey verticalText"><b>Qtde / Uni. Medida</b></div>
+				
+				
+				
+				 </div>
+				 
+				 
+			 
+				 
+<?PHP			
+
+			
+		 $totalvendas = count($vendas);	 
+		 $paginas = array();
+		
+		
+		 $g=0;
+		 $totalpaginas = 0;
+		 $TotalComercializacao = 0;
+		 $TotalEstojo = 0;
+		 $TotalBandeja = 0;
+		 
+		 while($totalpaginas != $totalvendas)
+		{
+			 
+			 if($g == 0)$totalpaginas = $totalPrimeiraPagina;
+			 else $totalpaginas = $totalpaginas + $totalOutrasPaginas;
+			 
+			 if($totalpaginas >= $totalvendas)$totalpaginas = $totalvendas;
+			 
+			 for($i=$g; $i<$totalpaginas; $i++)
+			{
+			
+?>				
+				 
+				 <div class="teste ">
+			 
+					
+					 
+					 
+<?PHP
+				 if($i==$totalpaginas-1)
+				{
+?>
+					 <div class="teste1 b_all brz  verticalText "><?PHP echo $vendas[$i][0]; ?></div>
+					 <div class="teste2 b_all brz  verticalText "><?PHP echo $vendas[$i][1]; ?></div>
+					 
+					 
+					 <div class="teste3 b_all brz  verticalText"><?PHP echo $vendas[$i][2]; ?></div>
+					 <div class="teste4 b_all brz  verticalText" ><?PHP echo $vendas[$i][3]; ?></div>
+					 
+					 <div class="teste5 b_all brz  verticalText"><?PHP echo $vendas[$i][4]; ?></div>
+					 
+					 <div class="teste6 b_all  verticalText"><?PHP echo $vendas[$i][5]; ?> Dúzias</div>
+					 
+<?PHP
+			 
+
+
+				}else
+				{
+?>					 
+					 <div class="teste1 b_all brz bbz verticalText "><?PHP echo  $vendas[$i][0]; ?></div>
+					 <div class="teste2 b_all brz bbz verticalText "><?PHP echo $vendas[$i][1]; ?></div>
+					 
+					 
+					 <div class="teste3 b_all brz bbz verticalText"><?PHP echo $vendas[$i][2]; ?></div>
+					 <div class="teste4 b_all brz bbz verticalText" ><?PHP echo $vendas[$i][3]; ?></div>
+					 
+					 <div class="teste5 b_all brz bbz verticalText"><?PHP echo $vendas[$i][4]; ?></div>
+					 
+					 <div class="teste6 b_all bbz verticalText"><?PHP echo $vendas[$i][5]; ?> Dúzias</div>
+					 
+					 
+					 
+					
+<?PHP
+				}
+				
+				 $TotalComercializacao += $vendas[$i][5];
+				 if($vendas[$i][1] == "001/236") $TotalEstojo += $vendas[$i][5];
+				 if($vendas[$i][1] == "004/236") $TotalBandeja += $vendas[$i][5];
+?>				
+				 </div>
+				 
+	 
+<?PHP			
+			
+
+			}	
+			
+						if($totalpaginas == $totalvendas)
+						{
+?>				
+							 <div class="teste " >
+							 <div class="testex b_all brz bggrey verticalText ">Total Rótulo 001/236</div>
+							 <div class="teste6 b_all  verticalText"><?PHP echo $TotalEstojo; ?> Dúzias</div>
+							 </div>
+							 
+							 <div class="teste " >
+							 <div class="testex b_all brz bggrey verticalText ">Total Rótulo 004/236</div>
+							 <div class="teste6 b_all  verticalText"><?PHP echo $TotalBandeja; ?> Dúzias</div>
+							 </div>
+							 
+							 <div class="teste " alt="<?PHP echo $TotalEstojo ."- bande". $TotalBandeja; ?>">
+							 <div class="testex b_all brz bggrey verticalText "><b>TOTAL COMERCIALIZAÇÃO</b></div>
+							 <div class="teste6 b_all  verticalText"><b><?PHP echo $TotalComercializacao; ?> Dúzias</b></div>
+							 </div>
+							 
+							
+				 
+<?PHP	
+						}		 
+			
+			
+			
+			
+			
+			
+			 $g = $totalpaginas;
+			 
+		 ?><div class="teste "></div><?PHP
+			
+		}
+
+		
+
+		
+		///////////////////// Mod.Dipoa 12 ///////////////////////////////////////////////////////	
+	}
+
+?>
+
+
+
+
+
+
+
+
 
 
 
@@ -2041,7 +2223,7 @@
 	///////////////////// AVIARIOS ///////////////////////////////////////////////////////	
 
 
-	 function aviarios($mes, $ano)
+	 function aviarios($mes, $ano, $semanas2)
 	{
 		
 		 
@@ -2062,9 +2244,17 @@
 				 <div class="teste ">
 				 
 					 <div class="teste1 b_all brz bbz bggrey verticalText"><b>Data</b></div>
-					
 					 
-					 <div class="teste2 b_all brz bbz bggrey verticalText"><b>Colheita - Número de Bandejas</b></div>
+					 <div class="teste2 b_all brz bbz bggrey verticalText">
+<?PHP	
+				 if($semanas2 < 18){}
+				 else{
+?>							 
+						 <b>Colheita - Número de Bandejas</b>
+<?PHP	
+				 }
+?>				 
+					 </div>
 					 
 					 
 					 <div class="teste3 b_all  bbz bggrey verticalText"><b> Número Galinhas Mortas</b></div>
@@ -2097,10 +2287,18 @@
 						
 						 
 						 <div class="teste2 b_all <?PHP if($i != $NDias-1)echo "bbz"; ?> verticalText " style="text-align: left;"><b>
+						 
+<?PHP	
+					 if($semanas2 < 18){}
+					 else{
+?>							 
 						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
 						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
 						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
 						 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
+<?PHP	
+					 }
+?>
 						 </b></div>
 						
 						 <div class="teste3 b_all  <?PHP if($i != $NDias-1)echo "bbz"; ?>  verticalText"><b></b></div>
@@ -2217,7 +2415,7 @@
 		
 		 $NDias = cal_days_in_month( CAL_GREGORIAN , $mes , $ano );
 		
-		 $diasemana = array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado');
+		 $diasemana = array('Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb');
 
 					
 					
@@ -2236,11 +2434,10 @@
 					
 					 
 					 <div class="teste3 b_all brz  bggrey verticalText"><b>Postura</b></div>
-					 <div class="teste4 b_all brz  bggrey verticalText"><b>+ Acumul.</b></div>
-					 <div class="teste5 b_all brz  bggrey verticalText"><b>Crescimento</b></div>
-					 <div class="teste6 b_all brz  bggrey verticalText"><b>+ Acumul.</b></div>
-					 <div class="teste7 b_all brz  bggrey verticalText"><b>Inicial</b></div>
-					 <div class="teste8 b_all   bggrey verticalText"><b>+ Acumul.</b></div>
+					 <div class="teste4 b_all brz  bggrey verticalText"><b>Postura Acum.</b></div>
+					 <div class="teste5 b_all brz  bggrey verticalText"><b>Pré-Postura</b></div>
+					 <div class="teste6 b_all brz  bggrey verticalText"><b>Crescimento</b></div>
+					 <div class="teste7 b_all   bggrey verticalText"><b>Inicial</b></div>
 					
 				
 				
@@ -2266,7 +2463,7 @@
 				 
 					 <div class="teste ">
 				 
-						 <div class="teste1 b_all brz  <?PHP if($i != $NDias-1)echo "bbz"; ?> verticalText bggrey"><b><?PHP if(($i+1)<10){echo"0";} echo ($i+1);  echo " - "; echo $diasemana[$diasemana_numero]  ?></b></div>
+						 <div class="teste1 b_all brz  <?PHP if($i != $NDias-1)echo "bbz"; ?> verticalText bggrey"><b><?PHP if(($i+1)<10){echo"0";} echo ($i+1);  echo "-"; echo $diasemana[$diasemana_numero]  ?></b></div>
 						
 						 
 						

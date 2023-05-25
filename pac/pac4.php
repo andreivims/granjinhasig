@@ -519,14 +519,14 @@
 			
 			
 			//////////////////////////////////////////////////
-				 $height = 70;
+				 $height = 77;
 				 $widths[0] = 96;
 				 $widths[1] = 400;
 				 $widths[2] = 524;
 				 
 				 $instrucoes[0] = "<b>Período:</b> <br>Semanal";
 				 $instrucoes[1] = "<b>Parâmetros Avaliados:</b> <br>Avaliar a presença de POEIRA, ODORES, CONDENSAÇÃO e VAPORES";
-				 $instrucoes[2] = "<b>Ações Corretivas:</b> <br>Afastar o produto do local de condensação, secar o local com rodo especifico, realizar a manutenção de ralos que causam mau cheiro";
+				 $instrucoes[2] = "<b>Ações Corretivas:</b> <br>Realizar a limpeza dos equipamento de ventilação, realizar a manutenção de ralos que causam mau cheiro, secar o local com rodo especifico e afastar o produto do local de condensação";
 				 instrucao($height, $widths, $instrucoes);
 				 
 				 

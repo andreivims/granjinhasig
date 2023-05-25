@@ -59,7 +59,9 @@
 								top: 0px;
 								left: 0px;
 								height: 30px;
-								width: 240px;
+								width: 90px;
+								
+								font-size: 11px;
 								
 							}
 							
@@ -73,9 +75,9 @@
 								position: absolute;
 								
 								top: 0px;
-								left: 240px;
+								left: 90px;
 								height: 30px;
-								width: 200px;
+								width: 190px;
 								
 							}
 				             .testeheader3
@@ -85,9 +87,9 @@
 								position: absolute;
 								
 								top: 0px;
-								left: 440px;
+								left: 280px;
 								height: 30px;
-								width: 200px;
+								width: 190px;
 								
 							}
 				             .testeheader4
@@ -97,13 +99,27 @@
 								position: absolute;
 								
 								top: 0px;
-								left: 640px;
+								left: 470px;
 								height: 30px;
-								width: 200px;
+								width: 190px;
 								
 							}
+
+							.testeheader5
+							{
+								
+								float: left;
+								position: absolute;
+								
+								top: 0px;
+								left: 660px;
+								height: 30px;
+								width: 185px;
+								
+							}
+							
 				
-					 .teste1
+					 .teste0
 					{
 						float: left;
 						position: absolute;
@@ -111,25 +127,40 @@
 						top: 0px;
 						left: 0px;
 						height: 30px;
-						width: 110px;
+						width: 88px;
+						
+						font-size: 14px;
 
 						 text-align: left;
-						 padding-left: 10px;
+						 padding-left: 2px;
 					}
 				
+			
+					
+					 .teste1
+					{
+						float: left;
+						position: absolute;
+					
+						top: 0px;
+						left: 90px;
+						height: 30px;
+						width: 95px;	
+					}
+				
+					
 					 .teste2
 					{
 						float: left;
 						position: absolute;
 					
-						
 						top: 0px;
-						left: 120px;
+						left: 185px;
 						height: 30px;
-						width: 120px;	
+						width: 95px;	
 					}
-					
-					
+				
+				
 					
 					
 					 .teste3
@@ -138,9 +169,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 240px;
+						left: 280px;
 						height: 30px;
-						width: 100px;	
+						width: 95px;	
 					}
 				
 					
@@ -150,9 +181,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 340px;
+						left: 375px;
 						height: 30px;
-						width: 100px;	
+						width: 95px;	
 					}
 				
 					
@@ -162,9 +193,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 440px;
+						left: 470px;
 						height: 30px;
-						width: 100px;	
+						width: 95px;	
 					}
 				
 					
@@ -174,9 +205,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 540px;
+						left: 565px;
 						height: 30px;
-						width: 100px;	
+						width: 95px;	
 					}
 				
 					
@@ -186,9 +217,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 640px;
+						left: 660px;
 						height: 30px;
-						width: 100px;	
+						width: 95px;	
 					}
 				
 					
@@ -198,9 +229,9 @@
 						position: absolute;
 					
 						top: 0px;
-						left: 740px;
+						left: 755px;
 						height: 30px;
-						width: 100px;	
+						width: 90px;	
 					}
 				
 					
@@ -216,9 +247,12 @@
 									top: 0px;
 									left: 0px;
 									height: 60px;
-									width: 240px;
-									
+									width: 90px;
+									font-size: 10px;
 								}
+								
+								
+								
 								
 								.testeobs2
 								{
@@ -227,11 +261,12 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 240px;
+									left: 90px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
+								
 								.testeobs3
 								{
 									
@@ -239,9 +274,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 306px;
+									left: 153.33px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs4
@@ -251,9 +286,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 372px;
+									left: 216.66px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs5
@@ -263,9 +298,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 438px;
+									left: 280px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs6
@@ -275,9 +310,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 504px;
+									left: 343.33px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs7
@@ -287,9 +322,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 570px;
+									left: 406.66px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs8
@@ -299,9 +334,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 636px;
+									left: 470px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs9
@@ -311,9 +346,9 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 702px;
+									left: 533.33px;
 									height: 30px;
-									width: 66px;
+									width: 63.33px;
 									
 								}
 								.testeobs10
@@ -323,9 +358,48 @@
 									position: absolute;
 									
 									top: 0px;
-									left: 768px;
+									left: 596.66px;
 									height: 30px;
-									width: 70px;
+									width: 63.33px;
+									
+								}
+					
+					
+								.testeobs11
+								{
+									
+									float: left;
+									position: absolute;
+									
+									top: 0px;
+									left: 660px;
+									height: 30px;
+									width: 63.33px;
+									
+								}
+								.testeobs12
+								{
+									
+									float: left;
+									position: absolute;
+									
+									top: 0px;
+									left: 723.33px;
+									height: 30px;
+									width: 63.33px;
+									
+								}
+								
+								.testeobs13
+								{
+									
+									float: left;
+									position: absolute;
+									
+									top: 0px;
+									left: 786.66px;
+									height: 30px;
+									width: 58.33px;
 									
 								}
 					

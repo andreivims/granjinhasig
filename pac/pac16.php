@@ -68,7 +68,7 @@
 						top: 0px;
 						left: 0px;
 						height: 34px;
-						width: 70px;	
+						width: 120px;	
 						font-size: 13px;
 					}
 					
@@ -321,8 +321,8 @@
 				 $widths[2] = 400;
 				 
 				 $instrucoes[0] = "<b>Período:</b> <br>A cada lote expedido";
-				 $instrucoes[1] = "<b>Parâmetros Avaliados:</b> <br>Caixas limpas e íntegras. Produto íntegro e sem sujidades.";
-				 $instrucoes[2] = "<b>Ações Corretivas:</b> <br>Substituir as caixas, caso as mesmas estejam sujas ou rasgadas. Reprocessar ovo fora do padrão.";
+				 $instrucoes[1] = "<b>Parâmetros Avaliados:</b> <br>Integridade do produto, características sensorias: aspecto, cor e odor.";
+				 $instrucoes[2] = "<b>Ações Corretivas:</b> <br>Não receber ovos que estejam fora dos parâmetros avaliados.";
 				 instrucao($height, $widths, $instrucoes);
 				 
 				 

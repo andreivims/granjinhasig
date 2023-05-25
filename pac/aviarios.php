@@ -259,7 +259,7 @@
 				 <?PHP 
 				 
 				 
-				  aviarios($mes, $ano);
+				  aviarios($mes, $ano, $semanas2);
 
 				 ?>
 			 

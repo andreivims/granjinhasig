@@ -229,7 +229,7 @@
 				
 				$infos = array(
 					"<b>Período:</b> <br>Diário", 
-					"<b>Parâmetros Avaliados:</b> <br>Temperatura Ambiente", 
+					"<b>Parâmetros Avaliados:</b> <br>Temperatura ambiente entre 10ºC e 32ºC", 
 					"<b>Ações Corretivas:</b> <br>Utilizar o exaustor e o ventilador"
 				);
 				
