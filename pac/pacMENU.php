@@ -166,8 +166,8 @@
 		 <div class="conteudo2  b_all" >
 		  <div class="imppac2 b_all"><a href="nc.php" target="_blank">NÃO CONFORMIDADES</a> </div>
 		  <div class="imppac2 b_all"><a href="nc2.php" target="_blank">NÃO CONFORMIDADES 2 FUNDO</a> </div>
-		  <div class="imppac2 b_all"><a href="clientes.php" target="_blank">Clientes</a> </div>
-		  <div class="imppac2 b_all"><a href="clientes2.php" target="_blank">Clientes Rastrear</a> </div>
+		  <!--<div class="imppac2 b_all"><a href="clientes.php" target="_blank">Clientes</a> </div>
+		  <div class="imppac2 b_all"><a href="clientes2.php" target="_blank">Clientes Rastrear</a> </div>-->
 			 
 <?PHP
 
@@ -203,17 +203,19 @@
 		 <div class="imppac2 b_all"><a href="pac6.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 06</a> </div>
 		 <div class="imppac2 b_all"><a href="pac7.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 07</a> </div>
 		 <div class="imppac2 b_all"><a href="pac8.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 08</a> </div>
-		 <div class="imppac2 b_all"><a href="pac9.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 09</a> </div>
+		 <div class="imppac2 b_all"><a href="pac9.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&func1=Tatiane&func2=Andreia&func3=Maria&func4=" target="_blank">Pac 09</a> </div>
 		 <div class="imppac2 b_all"><a href="pac10.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 10</a> </div>
+		 <div class="imppac2 b_all"><a href="pac11.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 11</a> </div>
 		 <div class="imppac2 b_all"><a href="pac.php?CONTROLE=pac12&ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 12</a> </div>
 		 <div class="imppac2 b_all"><a href="pac.php?CONTROLE=pac13&ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Pac 13 (NEW)</a> </div>
-		 <div class="imppac2 b_all"><a href="pac16.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&lote=1108" target="_blank">Pac 16</a> </div>
+		 
 		 
 		 
 		 
 		 
 		 <!--<div class="imppac2 b_all"><a href="mapaovos.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&totalBandejas=3600" target="_blank">Mapa Produção</a> </div>-->
-		 <div class="imppac2 b_all"><a href="mapaovos2.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&totalBandejas=3600" target="_blank">Mapa Produção 2</a> </div>
+		 <!--<div class="imppac2 b_all"><a href="mapaovos2.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>&totalBandejas=3600" target="_blank">Mapa Produção 2</a> </div>-->
+		 <div class="imppac2 b_all"><a href="moddipoa12.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Comercialização</a> </div>
 		 
 		 <div class="imppac2 b_all"><a href="racao.php?ano=<?PHP echo $y; ?>&mes=<?PHP echo $m; ?>" target="_blank">Ração</a> </div>
 		 

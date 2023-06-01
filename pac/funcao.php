@@ -1131,7 +1131,7 @@
 	///////////////////// PAC 09 ///////////////////////////////////////////////////////	
 
 
-	 function pac09content($mes, $ano)
+	 function pac09content($mes, $ano, $func1, $func2, $func3, $func4)
 	{
 		
 		 $NDias = cal_days_in_month( CAL_GREGORIAN , $mes , $ano );
@@ -1148,10 +1148,10 @@
 				 <div class="teste ">
 				 
 					 <div class="testeheader1 b_all brz bbz bggrey verticalText"><b>Colaborador(a):</b></div>
-					 <div class="testeheader2 b_all brz bbz  verticalText"><b></b></div>
-					 <div class="testeheader3 b_all brz bbz  verticalText"><b></b></div>
-					 <div class="testeheader4 b_all  bbz  verticalText"><b></b></div>
-					 <div class="testeheader5 b_all  bbz  verticalText"><b></b></div>
+					 <div class="testeheader2 b_all brz bbz  verticalText"><b><?PHP echo $func1; ?></b></div>
+					 <div class="testeheader3 b_all brz bbz  verticalText"><b><?PHP echo $func2; ?></b></div>
+					 <div class="testeheader4 b_all  bbz  verticalText"><b><?PHP echo $func3; ?></b></div>
+					 <div class="testeheader5 b_all  bbz  verticalText"><b><?PHP echo $func4; ?></b></div>
 					
 					 
 					 
@@ -1472,13 +1472,10 @@
 	///////////////////// PAC 16 ///////////////////////////////////////////////////////	
 
 
-	 function pac16content($mes, $ano, $loteinicio)
+						function pac11content($mes, $ano, $loteinicio)
 	{
 		
-		 $NDias = cal_days_in_month( CAL_GREGORIAN , $mes , $ano );
 		
-		 $diasemana = array('Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb');
-
 					
 				
 					
@@ -1486,16 +1483,16 @@
 		 		 
 				 <div class="teste ">
 				 
-					 <div class="teste1 b_all brz bbz bggrey verticalText"><b>Produção</b></div>
-					 <!--<div class="teste2 b_all brz bbz bggrey verticalText"><b>Lote</b></div>-->
+					 <div class="teste1 b_all brz bbz bggrey verticalText"><b>Dia recebido</b></div>
+					
 					 
+					 <div class="teste2 b_all brz bbz bggrey verticalText"><b>Origem</b></div>
 					 
-					 <div class="teste3header b_all brz bbz bggrey verticalText"><b>Vencimento</b></div>
+					 <div class="teste3 b_all brz bbz bggrey verticalText"><b>Dia produção</b></div>
 					 
-					 <div class="teste4 b_all brz bbz bggrey verticalText"><b>Dia Exp.</b></div>
-					 <div class="teste5 b_all bbz  bggrey verticalText"><b>Produto</b></div>
+					 <div class="teste4 b_all bbz  bggrey verticalText"><b>Qtde (Dúzias)</b></div>
 				
-					 <div class="teste6header b_all   bggrey verticalText" ><b>Destino Clientes Nº (ver anexo)</b></div>
+					 <div class="teste5 b_all   bggrey verticalText" ><b>Avaliação</b></div>
 					 
 				
 				 </div>
@@ -1505,98 +1502,69 @@
 				 
 <?PHP			
 
-			 for($i=0; $i<$NDias; $i++)
+			 for($i=0; $i<27; $i++)
 			{
 				
-				 $data = date($ano . '-'. $mes .'-' . ($i+1));
-				 $datavencimento = strtotime("+25 days",strtotime($data));
-				 
-				 $diasemana_numero = date('w', strtotime($data));
-				 
 				
-				 if( $diasemana_numero != 0)
-				{
 ?>				
 				 
 					 <div class="teste ">
 				 
-						 <div class="teste1 b_all brz bbz verticalText bggrey"><b><?PHP if(($i+1)<10){echo"0";} echo ($i+1) ."/". $mes . "/". $ano ." - " . $diasemana[$diasemana_numero]; ?></b></div>
-						 <!--<div class="teste1 b_all brz bbz verticalText bggrey"><b><?PHP //if(($i+1)<10){echo"0";} echo ($i+1) . " - " . $diasemana[$diasemana_numero]; ?></b></div>
-						 <div class="teste2 b_all brz bbz verticalText bggrey"><b>-->
-						 <?PHP 
-						 /*
-							 if($loteinicio<60)
-							{	
-								 echo "&nbsp;&nbsp;&nbsp;". ($loteinicio+$i) ."&nbsp;&nbsp;&nbsp;";
-							}else if($loteinicio<960)
-							{
-								 echo "&nbsp;". ($loteinicio+$i) ."&nbsp;";
-							}else //if($loteinicio<9960)
-							{
-								 echo ($loteinicio+$i) ;
-								
-							}
-						 */
-						 ?>
-						 <!--</b></div>-->
-						 
-						 
-						 <div class="teste3 b_all brz  bbz verticalText bggrey"><b><?PHP echo date('d/m/Y', $datavencimento); ?></b></div>
-						 
-						 
-						 <div class="teste4content b_all brz bbz verticalText"></div>
-						 
-						 <div class="teste5 b_all br bbz verticalText"><b> (&nbsp;&nbsp;)C &nbsp;(&nbsp;&nbsp;)NC</b></div>
+						 <div class="teste1 b_all brz bbz verticalText "><b></b></div>
 					
-						 <div class="teste55 b_all brz  verticalText" >
 						 
-							 <div class="teste61 bbz " style="line-height: 17px;"> 
-								 <div class=" checkB2"></div>
-								  
-								  
-							 </div>
+						 <div class="teste21 b_all brz bbz verticalText "><b>
+						 
+						 
+						 
+								<div class="teste61 bbz " style="line-height: 17px;"> 
+									 <div class=" checkB2"></div>
+									
+								 </div>
+								 
+								 <div class="teste62    " style="line-height: 12px;" > 
+									<div class=" contentcheckB2"><b>Própria</b></div> 
+									
+								 </div>
+							
+								
+								 
 							 
-							 <div class="teste62    " style="line-height: 12px;" > 
-								<div class=" contentcheckB2"><b>Todos</b></div> 
-								
-							 </div>
+						 </b></div>
+						 <div class="teste22 b_all brz bbz verticalText "><b>
 						 
-						 </div>
 						 
-						 <div class="teste6 b_all   verticalText" >
 						 
-							 <div class="teste61 bb " style="line-height: 17px;"> 
-								 <div class=" checkB"></div><div class=" contentcheckB">1</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">2</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">3</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">4</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">5</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">6</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">7</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">8</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">9</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">10</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">11</div> 
-								  
-								  
-							 </div>
-							 <!--
-							 <div class="teste62    " style="line-height: 12px;" > 
-								 <div class=" checkB"></div><div class=" contentcheckB">12</div> 
-								 <div class=" checkB"></div><div class=" contentcheckB">13</div>
-								 <div class=" checkB"></div><div class=" contentcheckB">14</div>
-							 </div>
-							 -->
-						 </div>
+								<div class="teste61 bbz " style="line-height: 17px;"> 
+									 <div class=" checkB2"> </div>
+									
+								 </div>
+								 
+								 <div class="teste62    " style="line-height: 12px;" > 
+									<div class=" contentcheckB2"><b>_____________________________________________</b></div> 
+									
+								 </div>
+							
+								 
+						 </b></div>
+						 
+						 
+						 
+						 <div class="teste3 b_all brz bbz verticalText"></div>
+						 
+						 <div class="teste4 b_all br bbz verticalText"></div>
 					
-					
+						 
+						 
+						 <div class="teste5 b_all   verticalText" ><b> (&nbsp;&nbsp;)C &nbsp;(&nbsp;&nbsp;)NC</b></div>
+						 
 					 </div>
 				 
 				 
 				 
 				 
 <?PHP			
-				}
+		
 
 			}	 
 

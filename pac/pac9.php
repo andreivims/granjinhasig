@@ -19,6 +19,44 @@
 	}
 	
 	 
+	 
+	 
+	 if(isset($_GET['func1']))
+	{
+		$func1 = $_GET['func1'];
+	}else
+	{
+		 $func1 = "";
+	}
+	
+	 
+	 if(isset($_GET['func2']))
+	{
+		$func2 = $_GET['func2'];
+	}else
+	{
+		 $func2 = "";
+	}
+	
+	 
+	 if(isset($_GET['func3']))
+	{
+		$func3 = $_GET['func3'];
+	}else
+	{
+		 $func3 = "";
+	}
+	
+	 
+	 if(isset($_GET['func4']))
+	{
+		$func4 = $_GET['func4'];
+	}else
+	{
+		 $func4 = "";
+	}
+	
+	 
 	 $mesEscrito = mes_ano($mes, $ano);
 	
 	
@@ -469,7 +507,7 @@
 				 <?PHP 
 				 
 				 
-				  pac09content($mes, $ano);
+				  pac09content($mes, $ano, $func1, $func2, $func3, $func4);
 
 				 ?>
 			 

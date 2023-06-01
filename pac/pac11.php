@@ -37,7 +37,7 @@
 
 	<html>
 		<head>
-			<title>CONTROLE DE EXPEDIÇÃO DE PRODUTOS</title>
+			<title>CONTROLE DE RECEBIMENTO MATÉRIA-PRIMA</title>
 			
 			<link rel="stylesheet" type="text/css" href="css.css" >
 			
@@ -68,46 +68,56 @@
 						top: 0px;
 						left: 0px;
 						height: 34px;
-						width: 120px;	
+						width: 100px;	
 						font-size: 13px;
 					}
+				
 					
-					 .teste2
-					{
-						float: left;
-						position: absolute;
-					
-						
-						top: 0px;
-						left: 70px;
-						height: 34px;
-						width: 50px;
-						font-size: 16px;						
-					}
-					
-					
-					
-					
-					.teste3header
+					.teste2
 					{
 						float: left;
 						position: absolute;
 						
 						top: 0px;
-						left: 120px;
+						left: 100px;
 						height: 34px;
-						width: 100px;
-						font-size: 13px;						
-						
+						width: 450px;	
+						font-size: 16px;
 					}
 					
+							.teste21
+							{
+								float: left;
+								position: absolute;
+								
+								top: 0px;
+								left: 100px;
+								height: 34px;
+								width: 70px;
+								font-size: 16px;						
+								
+							}
+							
+							.teste22
+							{
+								float: left;
+								position: absolute;
+								
+								top: 0px;
+								left: 170px;
+								height: 34px;
+								width: 380px;
+								font-size: 16px;						
+								
+							}
+							
 					.teste3
 					{
 						float: left;
 						position: absolute;
 						
 						top: 0px;
-						left: 120px;
+						left: 550px;
 						height: 34px;
 						width: 100px;	
 						
@@ -116,29 +126,18 @@
 					
 					
 				
-				
+			
+					
 					.teste4
 					{
 						float: left;
 						position: absolute;
 						
 						top: 0px;
-						left: 220px;
+						left: 650px;
 						height: 34px;
-						width: 50px;
-						font-size: 12px;						
-					}
-					
-					.teste4content
-					{
-						float: left;
-						position: absolute;
-						
-						top: 0px;
-						left: 220px;
-						height: 34px;
-						width: 50px;
-						font-size: 16px;
+						width: 100px;
+						font-size: 13px;
 					}
 					
 					
@@ -148,46 +147,14 @@
 						position: absolute;
 						
 						top: 0px;
-						left: 270px;
+						left: 750px;
 						height: 34px;
-						width: 100px;
+						width: 95px;
 						font-size: 16px;
 					}
 					
 					
-					.teste55
-					{
-						float: left;
-						position: absolute;
 						
-						top: 0px;
-						left: 370px;
-						height: 34px;
-						width: 50px;	
-					}
-					
-					.teste6header
-					{
-						float: left;
-						position: absolute;
-						
-						top: 0px;
-						left: 370px;
-						height: 34px;
-						width: 470px;	
-					}
-					
-					.teste6
-					{
-						float: left;
-						position: absolute;
-						
-						top: 0px;
-						left: 420px;
-						height: 34px;
-						width: 420px;	
-					}
-					
 						 .teste61
 						{
 							float: left;
@@ -196,10 +163,8 @@
 							top: 0px;
 							left: 0px;
 							height: 34px;
-							width: 420px;
+							width: 100px;
 
-							 
-							 
 							 
 							 font-size: 14px;
 							 text-align: left;
@@ -213,29 +178,12 @@
 							top: 17px;
 							left: 0px;
 							height: 17px;
-							width: 420px;
+							width: 100px;
 
 							font-size: 14px;
 							
 						}
-						
-						 .checkB 
-						{
-							 float: left;
-							 position: relative;
-							
-							 top: 3px;
-							 left: 0px;
-							
-							 width:10px;
-							 height:14px;
-							 border: 2px solid;
-							 
-							 margin-left:13px;
-							 
-							 
-							 
-						}
+					
 						 .checkB2 
 						{
 							 float: left;
@@ -253,21 +201,7 @@
 							 
 							 
 						}
-						 .contentcheckB 
-						{
-							 float: left;
-							 position: relative;
-							
-							 top: 2px;
-							 left: 0px;
-							
-							 width:8px;
-							 height:8px;
-							 
-							
-							 margin-left:2px;
-							 
-						}
+					
 						.contentcheckB2 
 						{
 							 float: left;
@@ -284,8 +218,10 @@
 							 
 						}
 						
+						
+						
 					
-					.verticalText 
+				.verticalText 
 				{
 					 
 
@@ -307,8 +243,8 @@
 			<?PHP 
 			
 			
-				 $descricao="CONTROLE DE EXPEDIÇÃO DE PRODUTOS";
-				 $info="PAC 16 - FML 19";
+				 $descricao="RECEBIMENTO DE MATÉRIA-PRIMA";
+				 $info="PAC 11 - FML 15";
 				
 				 
 				 cabecalho($descricao, $info, $mesEscrito, $ano);
@@ -320,8 +256,8 @@
 				 $widths[1] = 270;
 				 $widths[2] = 400;
 				 
-				 $instrucoes[0] = "<b>Período:</b> <br>A cada lote expedido";
-				 $instrucoes[1] = "<b>Parâmetros Avaliados:</b> <br>Integridade do produto, características sensorias: aspecto, cor e odor.";
+				 $instrucoes[0] = "<b>Período:</b> <br>A cada recebimento";
+				 $instrucoes[1] = "<b>Parâmetros Avaliados:</b> <br>Integridade dos ovos e características sensoriais: aspecto, cor e odor.";
 				 $instrucoes[2] = "<b>Ações Corretivas:</b> <br>Não receber ovos que estejam fora dos parâmetros avaliados.";
 				 instrucao($height, $widths, $instrucoes);
 				 
@@ -338,7 +274,7 @@
 				 <?PHP 
 				 
 				 
-				  pac16content($mes, $ano, $lote);
+				  pac11content($mes, $ano, $lote);
 
 				 ?>
 			 
